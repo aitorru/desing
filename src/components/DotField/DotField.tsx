@@ -1,4 +1,5 @@
 import { type CSSProperties, type ReactNode, useEffect, useMemo, useRef } from "react";
+import { cx } from "../cx";
 import {
   DOT_PALETTES,
   type DotMotion,
@@ -28,6 +29,11 @@ export interface DotFieldProps {
   seed?: number;
   /** Frame cap; the field is slow by design, 30 is plenty. */
   fps?: number;
+  /**
+   * `palette` paints the palette's own background; `theme` leaves the canvas transparent
+   * over the theme's dotted paper (`--pt-bg`), so it follows Mist / Ink.
+   */
+  surface?: "palette" | "theme";
   className?: string;
   style?: CSSProperties;
   /** Rendered above the dots. */
@@ -63,6 +69,7 @@ export function DotField({
   intensity = 1,
   seed = 7,
   fps = 30,
+  surface = "palette",
   className,
   style,
   children,
@@ -83,6 +90,7 @@ export function DotField({
     if (!sctx) return;
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const ownPaper = surface === "palette";
     let cell = 8;
     let cols = 0;
     let rows = 0;
@@ -107,7 +115,7 @@ export function DotField({
       small.height = Math.max(1, rows);
       image = cols && rows ? sctx.createImageData(cols, rows) : null;
       mask = dotPattern(ctx, cell, dotSize);
-      faint = pal.faint ? dotPattern(ctx, cell, dotSize * 0.7, pal.faint) : null;
+      faint = pal.faint && ownPaper ? dotPattern(ctx, cell, dotSize * 0.7, pal.faint) : null;
       draw(performance.now());
     };
 
@@ -145,7 +153,7 @@ export function DotField({
         ctx.fillStyle = faint;
         ctx.fillRect(0, 0, w, h);
       }
-      if (pal.background) {
+      if (pal.background && ownPaper) {
         ctx.fillStyle = pal.background;
         ctx.fillRect(0, 0, w, h);
       }
@@ -187,12 +195,12 @@ export function DotField({
       document.removeEventListener("visibilitychange", kick);
       reduced.removeEventListener("change", kick);
     };
-  }, [pal, motion, gap, dotSize, pixel, speed, intensity, ribbons, fps]);
+  }, [pal, motion, gap, dotSize, pixel, speed, intensity, ribbons, fps, surface]);
 
   return (
     <div
       ref={rootRef}
-      className={["pt-dotfield", className].filter(Boolean).join(" ")}
+      className={cx("pt-dotfield", surface === "theme" && "pt-dot-paper", className)}
       style={style}
     >
       {/* biome-ignore lint/a11y/noAriaHiddenOnFocusable: a bare canvas is not focusable; it is pure decoration */}

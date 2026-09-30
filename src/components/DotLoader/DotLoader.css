@@ -25,13 +25,13 @@
   opacity: 0.22;
 }
 
-/* Accent: every dot shows its own slice of the aurora gradient. */
-.pt-dotloader--accent {
-  color: var(--pt-magenta);
-}
+/* Accent: each dot takes its own stop of violet → magenta → coral (by grid position). */
 .pt-dotloader--accent .pt-dotloader__dot {
-  background: var(--pt-gradient-aurora);
-  background-size: calc(3 * (var(--dot) + var(--gap))) calc(3 * (var(--dot) + var(--gap)));
+  background: color-mix(
+    in oklab,
+    color-mix(in oklab, var(--pt-violet), var(--pt-magenta) clamp(0%, calc(var(--p) * 200%), 100%)),
+    var(--pt-coral) clamp(0%, calc((var(--p) - 0.5) * 200%), 100%)
+  );
 }
 
 .pt-dotloader--wave .pt-dotloader__dot {

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { DotField, GlassCard, Petals } from "../../index";
+import { soberPalette } from "../theme";
 import "./pages.css";
 
 interface PosterArgs {
@@ -54,9 +55,10 @@ export const Original: StoryObj<PosterArgs> = {
 /** Same layout, sober: graphite dots and a clear glass card. */
 export const Sober: StoryObj<PosterArgs> = {
   args: { pixel: 1 },
-  render: ({ brand, title, subtitle, pixel, seed }) => (
+  render: ({ brand, title, subtitle, pixel, seed }, { globals }) => (
     <DotField
-      palette="graphite"
+      palette={soberPalette(globals)}
+      surface="theme"
       motion="breathe"
       pixel={pixel}
       gap={9}
@@ -68,7 +70,7 @@ export const Sober: StoryObj<PosterArgs> = {
         <GlassCard
           tone="clear"
           padding="none"
-          backdrop={<Petals tone="mist" />}
+          backdrop={<Petals tone={globals.theme === "dark" ? "ink" : "mist"} />}
           className="pg-poster__card"
         >
           <div className="pg-poster__inner">

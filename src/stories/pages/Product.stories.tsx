@@ -117,6 +117,7 @@ function ProductScreen() {
         speed={phase === "running" ? 2.4 : 1}
         seed={21}
         pixel={2}
+        surface="theme"
         className="pg-hero"
       >
         <div className="pg-hero__inner">

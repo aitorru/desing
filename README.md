@@ -51,6 +51,9 @@ Perfiles: `devenv --profile ide shell` activa el LSP de TypeScript.
 | `dotSize`   | diámetro como fracción de `gap`                                   |
 | `pixel`     | agrupa puntos en bloques de N×N del mismo color (aspecto bitmap)  |
 | `speed`, `intensity`, `seed`, `fps` | ritmo, opacidad, composición y tope de fotogramas |
+| `surface`   | `palette` pinta el fondo de la paleta · `theme` deja el canvas transparente sobre el papel del tema (`--pt-bg`) |
+
+Regla para las paletas sobrias: `graphite` sobre Mist y `night` sobre Ink.
 
 El campo se calcula con un píxel por punto y el canvas lo escala y lo recorta con un patrón
 de círculos: tres operaciones de dibujo por fotograma, sea cual sea el tamaño. Se pausa fuera

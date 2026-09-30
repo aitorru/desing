@@ -3,15 +3,13 @@ import { DotField, GlassCard, Petals, Sparkle } from "../index";
 
 <Meta title="Punto/Introducción" />
 
-<div style={{ borderRadius: 28, overflow: "hidden", margin: "8px 0 40px" }}>
+<div className="sb-unstyled" style={{ borderRadius: 28, overflow: "hidden", margin: "8px 0 40px" }}>
   <DotField palette="aurora" seed={3} style={{ height: 320 }}>
     <div style={{ height: "100%", display: "grid", placeItems: "center" }}>
       <GlassCard tone="bloom" padding="lg" style={{ width: 360 }}>
         <div style={{ display: "grid", gap: 12, textAlign: "center" }}>
           <span style={{ fontWeight: 560, letterSpacing: "-0.01em" }}>Punto</span>
-          <h1 className="pt-display" style={{ fontSize: 44 }}>
-            Un lenguaje hecho de puntos
-          </h1>
+          <h1 className="pt-display" style={{ fontSize: 44, color: "#fff" }}>Un lenguaje hecho de puntos</h1>
         </div>
       </GlassCard>
     </div>
@@ -52,11 +50,11 @@ personalidad sin cansar.
     <Petals tone="mist" />
   </div>
   <Sparkle size={56} style={{ color: "#e8399a" }} />
-  <p style={{ maxWidth: 360, margin: 0 }}>
+  <div style={{ maxWidth: 360 }}>
     Cuatro teselas redondeadas (`Petals`) dejan entre sus esquinas una estrella de cuatro puntas
     (`Sparkle`). La estrella es el glifo del sistema: logo, viñeta y marca de «contenido
     simulado».
-  </p>
+  </div>
 </div>
 
 ## Variantes de la textura

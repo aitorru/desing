@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { soberPalette } from "../../stories/theme";
 import { GlassCard } from "../GlassCard/GlassCard";
 import { DotField } from "./DotField";
 import { DOT_PALETTES, type DotPaletteName } from "./field";
@@ -28,6 +29,7 @@ const meta = {
     intensity: { control: { type: "range", min: 0.1, max: 1.5, step: 0.05 } },
     seed: { control: { type: "number", min: 0, step: 1 } },
     fps: { control: { type: "range", min: 6, max: 60, step: 1 } },
+    surface: { control: "inline-radio", options: ["palette", "theme"] },
   },
 } satisfies Meta<typeof DotField>;
 
@@ -101,9 +103,9 @@ export const Motion: Story = {
 
 /** Sober product header: graphite dots, slow breathing, glass on top. */
 export const SoberHeader: Story = {
-  args: { palette: "graphite", motion: "breathe", gap: 10, dotSize: 0.4 },
-  render: (args) => (
-    <DotField {...args} style={{ height: 280 }}>
+  args: { motion: "breathe", gap: 10, dotSize: 0.4, surface: "theme" },
+  render: (args, { globals }) => (
+    <DotField {...args} palette={soberPalette(globals)} style={{ height: 280 }}>
       <div style={{ height: "100%", display: "grid", alignItems: "end", padding: 32 }}>
         <GlassCard padding="md" style={{ maxWidth: 420 }}>
           <span className="pt-eyebrow">Q3 · Plan de capacidad</span>

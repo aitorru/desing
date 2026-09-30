@@ -23,3 +23,11 @@ Una story rota pone `sb-show-errordisplay` en el `<body>` del iframe y el mensaj
 
 No mates el servidor con `pkill -f "storybook dev"`: el patrón coincide con la propia shell.
 Busca el PID con `ss -ltnp | grep 36006`.
+
+## Sin navegador interactivo
+
+Para revisar todas las stories en headless (Chromium de nixpkgs + CDP) sirve el build
+estático (`preview`, :36007): el servidor de desarrollo recarga cientos de módulos por
+navegación y en la Pi tarda ~30 s por story. Lanza Chromium con un `FONTCONFIG_FILE` que
+apunte a alguna fuente (p. ej. dejavu): sin él las fuentes web fallan y el texto de las
+páginas MDX sale en blanco (falso positivo).

@@ -49,7 +49,7 @@ export function DotLoader({
           // biome-ignore lint/suspicious/noArrayIndexKey: fixed 3×3 grid
           key={i}
           className={cx("pt-dotloader__dot", step < 0 && "pt-dotloader__dot--idle")}
-          style={{ "--i": step } as CSSProperties}
+          style={{ "--i": step, "--p": i / 8 } as CSSProperties}
         />
       ))}
     </span>

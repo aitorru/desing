@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { soberPalette } from "../../stories/theme";
 import { Badge } from "../Badge/Badge";
 import { DotBars } from "../DotBars/DotBars";
 import { DotField } from "../DotField/DotField";
@@ -52,8 +53,13 @@ export const Playground: Story = {
 };
 
 export const Tones: Story = {
-  render: () => (
-    <DotField palette="graphite" motion="breathe" style={{ minHeight: "100vh" }}>
+  render: (_, { globals }) => (
+    <DotField
+      palette={soberPalette(globals)}
+      surface="theme"
+      motion="breathe"
+      style={{ minHeight: "100vh" }}
+    >
       <div
         style={{
           display: "grid",
