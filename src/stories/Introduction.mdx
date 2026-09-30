@@ -1,0 +1,82 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { DotField, GlassCard, Petals, Sparkle } from "../index";
+
+<Meta title="Punto/Introducción" />
+
+<div className="sb-unstyled" style={{ borderRadius: 28, overflow: "hidden", margin: "8px 0 40px" }}>
+  <DotField palette="aurora" seed={3} style={{ height: 320 }}>
+    <div style={{ height: "100%", display: "grid", placeItems: "center" }}>
+      <GlassCard tone="bloom" padding="lg" style={{ width: 360 }}>
+        <div style={{ display: "grid", gap: 12, textAlign: "center" }}>
+          <span style={{ fontWeight: 560, letterSpacing: "-0.01em" }}>Punto</span>
+          <h1 className="pt-display" style={{ fontSize: 44, color: "#fff" }}>Un lenguaje hecho de puntos</h1>
+        </div>
+      </GlassCard>
+    </div>
+  </DotField>
+</div>
+
+# Punto — propuesta de lenguaje de diseño
+
+**Punto** parte del póster de _Otherwise_: una superficie de puntos por la que pasan cintas de
+color, y encima un panel de vidrio con una tipografía serif muy tranquila. La idea es convertir
+esa imagen en un sistema: pocas piezas, reglas claras y una única textura animada que da
+personalidad sin cansar.
+
+## Principios
+
+1. **El punto es la unidad.** Todo vive en una rejilla de 4 px (los puntos van cada 8 px). El
+   punto aparece como textura (`DotField`), como estado (`DotLoader`, `DotProgress`), como dato
+   (`DotBars`) y como separador. No hay spinners circulares ni barras lisas.
+2. **Color en cintas, no en bloques.** El color intenso (violeta → magenta → coral) se reserva
+   para superficies grandes y un único botón `aurora` por pantalla. La interfaz de trabajo es
+   _mist_ (lavanda muy claro) o _ink_ (tinta casi negra).
+3. **Vidrio encima del ruido.** Los contenidos se apoyan en paneles de vidrio esmerilado
+   (`GlassCard`) que dejan intuir los puntos de detrás. Radios grandes (32 px), borde de 1 px
+   blanco translúcido y un brillo curvo en la parte superior.
+4. **Serif para decir, sans para hacer.** _Instrument Serif_ para titulares y cifras grandes,
+   con interlineado apretado y tracking negativo. _Inter Tight_ para todo lo demás.
+5. **Movimiento lento y opcional.** Las animaciones duran segundos, no milisegundos: los puntos
+   fluyen, respiran o están quietos. Todo respeta `prefers-reduced-motion` y los lienzos se
+   pausan fuera de pantalla.
+
+## La marca
+
+<div style={{ display: "flex", gap: 32, alignItems: "center", margin: "24px 0" }}>
+  <div style={{ width: 120, height: 120 }}>
+    <Petals tone="bloom" />
+  </div>
+  <div style={{ width: 120, height: 120 }}>
+    <Petals tone="mist" />
+  </div>
+  <Sparkle size={56} style={{ color: "#e8399a" }} />
+  <div style={{ maxWidth: 360 }}>
+    Cuatro teselas redondeadas (`Petals`) dejan entre sus esquinas una estrella de cuatro puntas
+    (`Sparkle`). La estrella es el glifo del sistema: logo, viñeta y marca de «contenido
+    simulado».
+  </div>
+</div>
+
+## Variantes de la textura
+
+| Paleta     | Uso                                                              |
+| ---------- | ---------------------------------------------------------------- |
+| `aurora`   | Héroes, pósters, portadas. La versión completa del póster.       |
+| `ember`    | Solo cálidos (magenta, coral). Estados positivos, campañas.      |
+| `dusk`     | Solo fríos (índigo, violeta). Secciones técnicas, modo análisis. |
+| `graphite` | **Sobria.** Puntos de tinta sobre mist. Producto, dashboards.    |
+| `night`    | **Sobria** en oscuro. Puntos claros sobre ink.                   |
+| `paper`    | **Casi invisible.** Un fondo con textura, no una imagen.         |
+
+Y tres movimientos: `flow` (las cintas se desplazan), `breathe` (quietas, solo pulsan la
+intensidad) y `still` (un único fotograma).
+
+## Estructura
+
+- **Foundations** — color, tipografía, forma y movimiento como tokens CSS (`--pt-*`).
+- **Dots** — la familia de puntos: `DotField`, `DotLoader`, `DotProgress`, `DotBars`.
+- **Components** — `Button`, `Badge`, `GlassCard`, `TextField`, `Segmented`, `Sparkle`,
+  `Petals`.
+- **Pages** — el póster original reconstruido con el sistema y una pantalla de producto.
+
+Usa el selector **Tema** de la barra superior para alternar _Mist_ (claro) e _Ink_ (oscuro).

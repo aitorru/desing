@@ -1,0 +1,61 @@
+.pt-dotprogress {
+  --dot: 6px;
+  display: grid;
+  grid-template-columns: repeat(var(--n), var(--dot));
+  justify-content: space-between;
+  gap: 4px;
+  width: 100%;
+  min-width: calc(var(--n) * (var(--dot) + 4px));
+}
+
+.pt-dotprogress__dot {
+  width: var(--dot);
+  height: var(--dot);
+  border-radius: 50%;
+  background: var(--pt-border-strong);
+  transition:
+    background-color var(--pt-duration-base) var(--pt-ease),
+    transform var(--pt-duration-base) var(--pt-ease);
+  transition-delay: calc(var(--i) * 12ms);
+}
+
+/* Each dot samples the gradient at its own position along the bar. */
+.pt-dotprogress--accent .pt-dotprogress__dot.is-on {
+  background: color-mix(
+    in oklab,
+    color-mix(
+      in oklab,
+      var(--pt-violet),
+      var(--pt-magenta) clamp(0%, calc(var(--i) / var(--n) * 200%), 100%)
+    ),
+    var(--pt-coral) clamp(0%, calc((var(--i) / var(--n) - 0.5) * 200%), 100%)
+  );
+}
+
+.pt-dotprogress--current .pt-dotprogress__dot.is-on {
+  background: currentColor;
+}
+
+.pt-dotprogress--indeterminate .pt-dotprogress__dot {
+  animation: pt-progress-travel 1.8s var(--pt-ease-in-out) infinite;
+  animation-delay: calc(var(--i) * 1.8s / var(--n) - 1.8s);
+}
+
+@keyframes pt-progress-travel {
+  0%,
+  30%,
+  100% {
+    background: var(--pt-border-strong);
+    transform: scale(1);
+  }
+  12% {
+    background: var(--pt-accent);
+    transform: scale(1.25);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pt-dotprogress--indeterminate .pt-dotprogress__dot {
+    animation-duration: 4s;
+  }
+}

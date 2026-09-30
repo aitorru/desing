@@ -1,0 +1,23 @@
+html,
+body,
+#storybook-root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.sb-pt-pad {
+  min-height: 100vh;
+  padding: 48px;
+  box-sizing: border-box;
+}
+
+.sb-pt-full {
+  min-height: 100vh;
+}
+
+.docs-story .sb-pt-pad {
+  min-height: 0;
+}
