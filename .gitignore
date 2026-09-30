@@ -1,0 +1,8 @@
+node_modules/
+dist/
+storybook-static/
+*.log
+.devenv*
+devenv.local.nix
+.pre-commit-config.yaml
+.direnv
