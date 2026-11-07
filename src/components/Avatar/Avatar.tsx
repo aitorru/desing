@@ -30,7 +30,8 @@ function slot(name: string): number {
 
 /** A person: photo or initials on a dotted chip tinted with a slot of the spectrum. */
 export function Avatar({ name, src, size = "md", status, className, style, ...rest }: AvatarProps) {
-  const [failed, setFailed] = useState(false);
+  // Remembers which URL failed, so a new `src` gets its own chance to load.
+  const [failedSrc, setFailedSrc] = useState<string>();
   const label = status ? `${name} · ${STATUS[status]}` : name;
   return (
     <span
@@ -41,8 +42,8 @@ export function Avatar({ name, src, size = "md", status, className, style, ...re
       style={{ "--c": `var(--pt-spectrum-${slot(name)})`, ...style } as CSSProperties}
       {...rest}
     >
-      {src && !failed ? (
-        <img className="pt-avatar__img" src={src} alt="" onError={() => setFailed(true)} />
+      {src && src !== failedSrc ? (
+        <img className="pt-avatar__img" src={src} alt="" onError={() => setFailedSrc(src)} />
       ) : (
         <span className="pt-avatar__initials" aria-hidden="true">
           {initials(name)}

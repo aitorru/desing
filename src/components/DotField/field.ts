@@ -70,7 +70,7 @@ export const DOT_PALETTES = {
   siena: {
     background: "#f1ebe1",
     faint: "rgba(70, 45, 25, 0.09)",
-    ramp: ["#7d2e46", "#a8432f", "#c8552d", "#e0912e", "#f0c36b", "#c8552d"].map(hex),
+    ramp: ["#7d2e46", "#a8432f", "#b84a26", "#e0912e", "#f0c36b", "#b84a26"].map(hex),
     strength: 0.95,
   },
   /** Cítrico palette: emerald → lime → gold over stone. */
