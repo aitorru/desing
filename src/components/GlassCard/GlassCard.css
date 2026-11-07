@@ -40,18 +40,28 @@
   box-sizing: border-box;
 }
 
-/* Tinted tones flip the text roles to white. */
+/*
+ * Tinted tones flip the text roles to the colour that reads on them: white on bloom,
+ * the palette's `--pt-on-aurora` on aurora (dark on Cítrico's bright gradient).
+ */
 .pt-glass--bloom,
 .pt-glass--aurora {
-  --pt-fg: #fff;
-  --pt-fg-muted: rgb(255 255 255 / 0.84);
-  --pt-fg-subtle: rgb(255 255 255 / 0.7);
-  --pt-border: rgb(255 255 255 / 0.22);
-  --pt-border-strong: rgb(255 255 255 / 0.4);
-  --pt-accent: #fff;
-  --pt-focus: #fff;
+  --on: #fff;
+  --pt-fg: var(--on);
+  --pt-fg-muted: color-mix(in srgb, var(--on) 84%, transparent);
+  --pt-fg-subtle: color-mix(in srgb, var(--on) 70%, transparent);
+  --pt-border: color-mix(in srgb, var(--on) 22%, transparent);
+  --pt-border-strong: color-mix(in srgb, var(--on) 40%, transparent);
+  --pt-accent: var(--on);
+  --pt-focus: var(--on);
+  --pt-positive: var(--on);
+  --pt-negative: var(--on);
   border-color: rgb(255 255 255 / 0.35);
-  color: #fff;
+  color: var(--on);
+}
+
+.pt-glass--aurora {
+  --on: var(--pt-on-aurora);
 }
 
 .pt-glass--bloom {
@@ -63,7 +73,11 @@
   content: "";
   position: absolute;
   inset: 45% 0 0;
-  background: linear-gradient(0deg, rgb(255 205 222 / 0.34), rgb(255 205 222 / 0));
+  background: linear-gradient(
+    0deg,
+    color-mix(in srgb, var(--pt-bloom-wash) 34%, transparent),
+    transparent
+  );
   pointer-events: none;
   z-index: 1;
 }

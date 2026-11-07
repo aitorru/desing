@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { DotField, GlassCard, Petals } from "../../index";
-import { soberPalette } from "../theme";
+import { heroPalette, soberPalette } from "../theme";
 import "./pages.css";
 
 interface PosterArgs {
@@ -30,8 +30,14 @@ export default meta;
 
 /** The reference poster, rebuilt only with Punto pieces. */
 export const Original: StoryObj<PosterArgs> = {
-  render: ({ brand, title, subtitle, pixel, seed }) => (
-    <DotField palette="aurora" pixel={pixel} gap={7} seed={seed} className="pg-poster">
+  render: ({ brand, title, subtitle, pixel, seed }, { globals }) => (
+    <DotField
+      palette={heroPalette(globals)}
+      pixel={pixel}
+      gap={7}
+      seed={seed}
+      className="pg-poster"
+    >
       <div className="pg-poster__stage">
         <GlassCard
           tone="bloom"

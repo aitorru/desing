@@ -66,7 +66,7 @@
   background: var(--pt-gradient-aurora);
   background-size: 160% 100%;
   background-position: 0% 50%;
-  color: #fff;
+  color: var(--pt-on-aurora);
   box-shadow: 0 1px 0 rgb(255 255 255 / 0.35) inset;
   transition:
     transform var(--pt-duration-fast) var(--pt-ease),
@@ -77,7 +77,7 @@
   background-position: 100% 50%;
   box-shadow:
     0 1px 0 rgb(255 255 255 / 0.35) inset,
-    0 10px 30px -12px var(--pt-magenta);
+    0 10px 30px -12px var(--pt-spectrum-4);
 }
 
 /* glass: sits over DotField / imagery */

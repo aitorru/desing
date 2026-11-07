@@ -18,11 +18,11 @@
   border-color: color-mix(in srgb, var(--c) 30%, transparent);
 }
 .pt-badge--positive {
-  --c: #2f9e6e;
+  --c: var(--pt-positive);
   border-color: color-mix(in srgb, var(--c) 30%, transparent);
 }
 .pt-badge--negative {
-  --c: var(--pt-rose);
+  --c: var(--pt-negative);
   border-color: color-mix(in srgb, var(--c) 30%, transparent);
 }
 .pt-badge--glass {

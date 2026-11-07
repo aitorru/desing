@@ -1,0 +1,93 @@
+.pt-callout {
+  --c: var(--pt-fg-muted);
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--pt-space-3);
+  padding: var(--pt-space-4) var(--pt-space-4) var(--pt-space-4) var(--pt-space-5);
+  border-radius: var(--pt-radius-md);
+  border: 1px solid color-mix(in srgb, var(--c) 24%, transparent);
+  background: color-mix(in srgb, var(--c) 7%, var(--pt-bg-raised));
+  color: var(--pt-fg);
+  font-size: var(--pt-text-sm);
+  line-height: var(--pt-leading-body);
+}
+
+/* The dotted edge: a column of dots in the tone colour instead of a solid stripe. */
+.pt-callout::before {
+  content: "";
+  position: absolute;
+  inset: var(--pt-space-3) auto var(--pt-space-3) var(--pt-space-2);
+  width: var(--pt-dot-gap);
+  background: var(--c);
+  mask:
+    radial-gradient(circle at center, #000 0 1.4px, transparent 1.8px) 50% 0 / var(--pt-dot-gap)
+    var(--pt-dot-gap) repeat-y;
+  -webkit-mask:
+    radial-gradient(circle at center, #000 0 1.4px, transparent 1.8px) 50% 0 / var(--pt-dot-gap)
+    var(--pt-dot-gap) repeat-y;
+}
+
+.pt-callout--accent {
+  --c: var(--pt-accent);
+}
+.pt-callout--positive {
+  --c: var(--pt-positive);
+}
+.pt-callout--negative {
+  --c: var(--pt-negative);
+}
+
+.pt-callout__icon {
+  display: inline-flex;
+  margin-top: 2px;
+  margin-left: var(--pt-space-1);
+  color: var(--c);
+}
+
+.pt-callout__body {
+  flex: 1;
+  display: grid;
+  gap: var(--pt-space-1);
+  min-width: 0;
+}
+
+.pt-callout__title {
+  margin: 0;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+}
+
+.pt-callout__text {
+  color: var(--pt-fg-muted);
+}
+
+.pt-callout__text > p {
+  margin: 0;
+}
+
+.pt-callout__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pt-space-2);
+  margin-top: var(--pt-space-2);
+}
+
+.pt-callout__close {
+  display: inline-grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin: -4px -4px 0 0;
+  border: 0;
+  border-radius: var(--pt-radius-pill);
+  background: transparent;
+  color: var(--pt-fg-subtle);
+  cursor: pointer;
+  transition: background-color var(--pt-duration-fast) var(--pt-ease);
+}
+
+.pt-callout__close:hover {
+  background: var(--pt-border);
+  color: var(--pt-fg);
+}

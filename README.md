@@ -8,10 +8,14 @@ para los titulares. Todo se documenta y se prueba en un Storybook.
   radios y movimiento, con tema claro (_Mist_) y oscuro (_Ink_).
 - **Familia de puntos**: `DotField` (la textura animada, en canvas), `DotLoader`,
   `DotProgress` y `DotBars`.
+- **Paletas**: `punto` (la original), `marea`, `siena` y `citrico`, intercambiables con
+  `data-pt-palette` en el mismo elemento que `data-pt-theme`.
 - **Componentes**: `Button`, `Badge`, `GlassCard`, `TextField`, `Segmented`, `Sparkle`,
   `Petals`.
-- **Páginas**: el póster original reconstruido con el sistema y una pantalla de producto
-  interactiva (pulsa «Simular»).
+- **Transversales**: `Stack`, `SectionHeader`, `Stat`, `Callout`, `Switch`, `Avatar` /
+  `AvatarGroup` y `DotDivider`.
+- **Páginas**: el póster original reconstruido con el sistema, una pantalla de producto
+  interactiva (pulsa «Simular») y un panel de equipo (`Workspace`).
 
 La propuesta completa (principios, paletas y cuándo usar cada una) está en la página
 **Punto › Introducción** del Storybook.
@@ -35,6 +39,17 @@ devenv shell -- preview   # sirve storybook-static/
 
 Perfiles: `devenv --profile ide shell` activa el LSP de TypeScript.
 
+## Paletas
+
+```html
+<html data-pt-theme="dark" data-pt-palette="marea">
+```
+
+Los componentes leen roles y el espectro (`--pt-spectrum-1…6`, `--pt-spectrum-accent`,
+`--pt-spectrum-soft`), nunca un tono con nombre; cada paleta reasigna neutros y espectro.
+`PALETTES` y `heroDotPalette()` (exportados) dan la lista y la textura de `DotField` que
+corresponde a cada una.
+
 ## DotField
 
 ```tsx
@@ -45,7 +60,7 @@ Perfiles: `devenv --profile ide shell` activa el LSP de TypeScript.
 
 | Prop        | Valores                                                           |
 | ----------- | ----------------------------------------------------------------- |
-| `palette`   | `aurora` · `ember` · `dusk` · `graphite` · `night` · `paper` (o una propia) |
+| `palette`   | `aurora` · `ember` · `dusk` · `graphite` · `night` · `paper` · `marea` · `siena` · `citrico` (o una propia) |
 | `motion`    | `flow` (se desplaza) · `breathe` (pulsa en su sitio) · `still`    |
 | `gap`       | distancia entre puntos en px                                      |
 | `dotSize`   | diámetro como fracción de `gap`                                   |

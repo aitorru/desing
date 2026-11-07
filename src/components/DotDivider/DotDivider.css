@@ -1,0 +1,56 @@
+.pt-dotdivider {
+  --c: var(--pt-border-strong);
+  --dot: radial-gradient(circle at center, #000 0 1.2px, transparent 1.6px);
+  display: flex;
+  align-items: center;
+  gap: var(--pt-space-3);
+  color: var(--pt-fg-subtle);
+}
+
+.pt-dotdivider--strong {
+  --c: var(--pt-fg-subtle);
+}
+
+.pt-dotdivider__line {
+  flex: 1;
+  background: var(--c);
+  mask: var(--dot) 0 50% / var(--pt-dot-gap) var(--pt-dot-gap) repeat-x;
+  -webkit-mask: var(--dot) 0 50% / var(--pt-dot-gap) var(--pt-dot-gap) repeat-x;
+}
+
+.pt-dotdivider--aurora .pt-dotdivider__line {
+  background: var(--pt-gradient-aurora);
+}
+
+.pt-dotdivider--horizontal {
+  width: 100%;
+  height: var(--pt-dot-gap);
+}
+
+.pt-dotdivider--horizontal .pt-dotdivider__line {
+  height: 100%;
+}
+
+.pt-dotdivider--vertical {
+  align-self: stretch;
+  flex-direction: column;
+  width: var(--pt-dot-gap);
+  min-height: var(--pt-space-5);
+}
+
+.pt-dotdivider--vertical .pt-dotdivider__line {
+  width: 100%;
+  mask: var(--dot) 50% 0 / var(--pt-dot-gap) var(--pt-dot-gap) repeat-y;
+  -webkit-mask: var(--dot) 50% 0 / var(--pt-dot-gap) var(--pt-dot-gap) repeat-y;
+}
+
+.pt-dotdivider__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pt-space-2);
+  font-size: var(--pt-text-xs);
+  font-weight: 560;
+  letter-spacing: var(--pt-tracking-caps);
+  text-transform: uppercase;
+  white-space: nowrap;
+}

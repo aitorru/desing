@@ -1,0 +1,59 @@
+.pt-sectionheader {
+  --title: var(--pt-display-md);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--pt-space-4) var(--pt-space-6);
+}
+
+.pt-sectionheader--sm {
+  --title: var(--pt-display-sm);
+}
+
+.pt-sectionheader--lg {
+  --title: clamp(var(--pt-display-md), 6vw, var(--pt-display-lg));
+}
+
+.pt-sectionheader__text {
+  display: grid;
+  gap: var(--pt-space-2);
+  flex: 1 1 320px;
+  max-width: 720px;
+}
+
+.pt-sectionheader__title {
+  font-size: var(--title);
+  color: var(--pt-fg);
+}
+
+.pt-sectionheader__lead {
+  max-width: 560px;
+}
+
+.pt-sectionheader--lg .pt-sectionheader__lead {
+  font-size: var(--pt-text-lg);
+  line-height: var(--pt-leading-snug);
+}
+
+.pt-sectionheader__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--pt-space-2);
+}
+
+.pt-sectionheader--center {
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.pt-sectionheader--center .pt-sectionheader__text {
+  flex-basis: auto;
+  justify-items: center;
+}
+
+.pt-sectionheader--center .pt-sectionheader__actions {
+  justify-content: center;
+}

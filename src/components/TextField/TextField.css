@@ -32,7 +32,7 @@
 }
 
 .pt-field--error .pt-field__control {
-  border-color: var(--pt-rose);
+  border-color: var(--pt-negative);
 }
 
 .pt-field__leading {
@@ -63,5 +63,5 @@
 }
 
 .pt-field--error .pt-field__note {
-  color: var(--pt-rose);
+  color: var(--pt-negative);
 }

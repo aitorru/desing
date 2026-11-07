@@ -49,13 +49,34 @@ personalidad sin cansar.
   <div style={{ width: 120, height: 120 }}>
     <Petals tone="mist" />
   </div>
-  <Sparkle size={56} style={{ color: "#e8399a" }} />
+  <Sparkle size={56} style={{ color: "var(--pt-spectrum-4)" }} />
   <div style={{ maxWidth: 360 }}>
     Cuatro teselas redondeadas (`Petals`) dejan entre sus esquinas una estrella de cuatro puntas
     (`Sparkle`). La estrella es el glifo del sistema: logo, viñeta y marca de «contenido
     simulado».
   </div>
 </div>
+
+## Paletas
+
+El lenguaje no depende de un color: los componentes leen roles (`--pt-bg`, `--pt-accent`…) y un
+espectro de seis tonos (`--pt-spectrum-1…6`). Una paleta reasigna los neutros y el espectro con
+`data-pt-palette`, en el mismo elemento que `data-pt-theme` (o en uno superior):
+
+```html
+<html data-pt-theme="light" data-pt-palette="siena">
+```
+
+| Paleta    | Neutros                    | Espectro                       | Carácter            |
+| --------- | -------------------------- | ------------------------------ | ------------------- |
+| `punto`   | lavanda · tinta violácea   | violeta → magenta → coral      | Expresivo (original) |
+| `marea`   | niebla marina · azul marino | azur → turquesa → verde mar    | Sereno, técnico     |
+| `siena`   | papel hueso · tinta café   | vino → terracota → ocre        | Cálido, editorial   |
+| `citrico` | piedra · negro oliva       | esmeralda → lima → oro         | Fresco, enérgico    |
+
+Cada paleta tiene su textura de héroe en `DotField` (`aurora`, `marea`, `siena`, `citrico`;
+`heroDotPalette(nombre)` la devuelve) y funciona en _Mist_ y en _Ink_. Compáralas en
+**Foundations › Palettes** o cambia la de todo el Storybook con el selector **Paleta**.
 
 ## Variantes de la textura
 
@@ -67,6 +88,7 @@ personalidad sin cansar.
 | `graphite` | **Sobria.** Puntos de tinta sobre mist. Producto, dashboards.    |
 | `night`    | **Sobria** en oscuro. Puntos claros sobre ink.                   |
 | `paper`    | **Casi invisible.** Un fondo con textura, no una imagen.         |
+| `marea` · `siena` · `citrico` | Héroes de las paletas alternativas.  |
 
 Y tres movimientos: `flow` (las cintas se desplazan), `breathe` (quietas, solo pulsan la
 intensidad) y `still` (un único fotograma).
@@ -77,6 +99,12 @@ intensidad) y `still` (un único fotograma).
 - **Dots** — la familia de puntos: `DotField`, `DotLoader`, `DotProgress`, `DotBars`.
 - **Components** — `Button`, `Badge`, `GlassCard`, `TextField`, `Segmented`, `Sparkle`,
   `Petals`.
-- **Pages** — el póster original reconstruido con el sistema y una pantalla de producto.
+- **Transversales** — piezas para montar pantallas sin CSS propio: `Stack` (layout en la
+  rejilla de 4 px), `SectionHeader` (eyebrow + titular + acciones), `Stat` (KPI con su gráfico
+  de puntos), `Callout` (mensajes con borde de puntos), `Switch`, `Avatar` / `AvatarGroup` y
+  `DotDivider` (el separador de puntos).
+- **Pages** — el póster original, una pantalla de producto y un panel de equipo
+  (`Workspace`) hecho casi solo con los transversales.
 
-Usa el selector **Tema** de la barra superior para alternar _Mist_ (claro) e _Ink_ (oscuro).
+Usa el selector **Tema** de la barra superior para alternar _Mist_ (claro) e _Ink_ (oscuro), y
+**Paleta** para cambiar de paleta.
