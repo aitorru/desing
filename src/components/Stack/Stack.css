@@ -1,0 +1,21 @@
+.pt-stack {
+  display: flex;
+  gap: var(--gap);
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pt-stack--column {
+  flex-direction: column;
+}
+
+.pt-stack--row {
+  flex-direction: row;
+  align-items: center;
+}
+
+.pt-stack--wrap {
+  flex-wrap: wrap;
+}

@@ -35,8 +35,10 @@ export const Palette: StoryObj = {
         Color
       </h1>
       <p className="pt-body" style={{ maxWidth: 560 }}>
-        Dos neutros con un tinte lavanda (mist e ink) para la interfaz, y ocho acentos que solo
-        aparecen juntos, en gradiente, sobre superficies grandes.
+        Dos neutros (mist e ink) para la interfaz y un espectro de seis tonos que solo aparece
+        junto, en gradiente, sobre superficies grandes. Los acentos con nombre (violeta, magenta…)
+        son la paleta Punto; los componentes leen el espectro, así que cambiar de paleta (selector
+        «Paleta») no toca ningún componente.
       </p>
       <Group title="Mist · superficies claras">
         {[50, 100, 200, 300, 400].map((s) => (
@@ -52,6 +54,13 @@ export const Palette: StoryObj = {
         {["indigo", "violet", "orchid", "magenta", "rose", "coral", "peach", "blush"].map((c) => (
           <Swatch key={c} name={c[0]?.toUpperCase() + c.slice(1)} token={`--pt-${c}`} />
         ))}
+      </Group>
+      <Group title="Espectro · lo que leen los componentes (cambia con «Paleta»)">
+        {[1, 2, 3, 4, 5, 6].map((n) => (
+          <Swatch key={n} name={`Espectro ${n}`} token={`--pt-spectrum-${n}`} />
+        ))}
+        <Swatch name="Acento" token="--pt-spectrum-accent" note="Legible sobre Mist" />
+        <Swatch name="Suave" token="--pt-spectrum-soft" note="Acento sobre Ink" />
       </Group>
       <Group title="Gradientes">
         <Swatch name="Aurora" token="--pt-gradient-aurora" note="Héroes, un botón por pantalla" />
@@ -80,6 +89,8 @@ export const SemanticRoles: StoryObj = {
         <Swatch name="Texto sutil" token="--pt-fg-subtle" />
         <Swatch name="Acento" token="--pt-accent" />
         <Swatch name="Foco" token="--pt-focus" />
+        <Swatch name="Positivo" token="--pt-positive" />
+        <Swatch name="Negativo" token="--pt-negative" />
       </Group>
     </div>
   ),

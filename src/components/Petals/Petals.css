@@ -1,36 +1,36 @@
 .pt-petals {
   /* Tile colours: top-left, top-right, bottom-left, bottom-right. */
-  --t1: #7b7590;
-  --t2: #e8456f;
-  --t3: #a34fd8;
-  --t4: #ff4f5e;
-  --glow: rgb(255 214 232 / 0.9);
+  --t1: color-mix(in oklab, var(--pt-ink-500) 85%, var(--pt-mist-300));
+  --t2: color-mix(in oklab, var(--pt-spectrum-4) 70%, var(--pt-spectrum-5));
+  --t3: color-mix(in oklab, var(--pt-spectrum-3) 80%, var(--pt-spectrum-2));
+  --t4: color-mix(in oklab, var(--pt-spectrum-5) 85%, var(--pt-spectrum-4));
+  --glow: color-mix(in srgb, var(--pt-bloom-wash) 90%, transparent);
   width: 100%;
   height: 100%;
   container-type: size;
 }
 
 .pt-petals--aurora {
-  --t1: #7c5cf5;
-  --t2: #e8399a;
-  --t3: #b257e6;
-  --t4: #ff5b4a;
+  --t1: var(--pt-spectrum-2);
+  --t2: var(--pt-spectrum-4);
+  --t3: var(--pt-spectrum-3);
+  --t4: var(--pt-spectrum-5);
 }
 
 .pt-petals--mist {
-  --t1: #d6d2e6;
-  --t2: #ead4e2;
-  --t3: #d8cfea;
-  --t4: #f0d6dc;
+  --t1: color-mix(in oklab, var(--pt-mist-300) 70%, #fff);
+  --t2: color-mix(in oklab, var(--pt-mist-200) 75%, var(--pt-spectrum-soft));
+  --t3: color-mix(in oklab, var(--pt-mist-300) 94%, var(--pt-spectrum-2));
+  --t4: color-mix(in oklab, var(--pt-mist-200) 88%, var(--pt-spectrum-5));
   --glow: rgb(255 255 255 / 0.95);
 }
 
 .pt-petals--ink {
-  --t1: #37324a;
-  --t2: #514b66;
-  --t3: #221e31;
-  --t4: #37324a;
-  --glow: rgb(255 159 200 / 0.8);
+  --t1: var(--pt-ink-700);
+  --t2: var(--pt-ink-600);
+  --t3: var(--pt-ink-800);
+  --t4: var(--pt-ink-700);
+  --glow: color-mix(in srgb, var(--pt-spectrum-soft) 80%, transparent);
 }
 
 /*

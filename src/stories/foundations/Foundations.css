@@ -87,3 +87,77 @@
     left: calc(100% - 12px);
   }
 }
+
+/* ── Palettes comparison ──────────────────────────────────────── */
+.fd-pals {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(300px, 1fr));
+  gap: 16px;
+  padding: 16px;
+  background: #18181b;
+}
+
+.fd-pal {
+  display: grid;
+  align-content: start;
+  border-radius: var(--pt-radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--pt-border);
+}
+
+.fd-pal__hero {
+  height: 176px;
+}
+
+.fd-pal__stage {
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.fd-pal__card {
+  width: 220px;
+  border-radius: var(--pt-radius-lg);
+}
+
+.fd-pal__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--pt-text-xs);
+  font-weight: 560;
+}
+
+.fd-pal__title {
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+.fd-pal__body {
+  padding: 20px;
+}
+
+.fd-pal__desc {
+  margin: 0;
+  font-size: var(--pt-text-sm);
+  color: var(--pt-fg-muted);
+  line-height: var(--pt-leading-snug);
+}
+
+.fd-pal__dots {
+  display: flex;
+  gap: 8px;
+}
+
+.fd-pal__dots > span {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px var(--pt-border);
+}
+
+.fd-pal__gradient {
+  height: 12px;
+  border-radius: var(--pt-radius-pill);
+  background: var(--pt-gradient-aurora);
+}

@@ -6,6 +6,7 @@ import {
   DotBars,
   DotField,
   DotLoader,
+  type DotPaletteName,
   DotProgress,
   GlassCard,
   Petals,
@@ -13,6 +14,7 @@ import {
   Sparkle,
   TextField,
 } from "../../index";
+import { heroPalette } from "../theme";
 import "./pages.css";
 
 const meta: Meta = {
@@ -65,7 +67,7 @@ const SCENARIOS: Scenario[] = [
 
 type Phase = "idle" | "running" | "done";
 
-function ProductScreen() {
+function ProductScreen({ hero }: { hero: DotPaletteName }) {
   const [question, setQuestion] = useState("¿Qué pasa si subimos el precio un 8 % en enero?");
   const [phase, setPhase] = useState<Phase>("done");
   const [progress, setProgress] = useState(100);
@@ -112,7 +114,7 @@ function ProductScreen() {
       </header>
 
       <DotField
-        palette="aurora"
+        palette={hero}
         motion={phase === "running" ? "flow" : "breathe"}
         speed={phase === "running" ? 2.4 : 1}
         seed={21}
@@ -216,4 +218,6 @@ function ProductScreen() {
 }
 
 /** A full product screen. Press «Simular» to see every dot component work together. */
-export const Scenarios: StoryObj = { render: () => <ProductScreen /> };
+export const Scenarios: StoryObj = {
+  render: (_, { globals }) => <ProductScreen hero={heroPalette(globals)} />,
+};

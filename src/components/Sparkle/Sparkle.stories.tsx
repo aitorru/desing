@@ -19,7 +19,7 @@ export const SparkleGlyph: Story = {
       <Sparkle {...args} size={16} />
       <Sparkle {...args} size={24} />
       <Sparkle {...args} />
-      <Sparkle {...args} size={96} style={{ color: "var(--pt-violet)" }} />
+      <Sparkle {...args} size={96} style={{ color: "var(--pt-spectrum-2)" }} />
     </div>
   ),
 };

@@ -46,7 +46,17 @@ export const Pixelated: Story = {
   render: (args) => <DotField {...args} style={{ height: "100vh" }} />,
 };
 
-const ALL: DotPaletteName[] = ["aurora", "ember", "dusk", "graphite", "night", "paper"];
+const ALL: DotPaletteName[] = [
+  "aurora",
+  "ember",
+  "dusk",
+  "graphite",
+  "night",
+  "paper",
+  "marea",
+  "siena",
+  "citrico",
+];
 const NOTES: Record<DotPaletteName, string> = {
   aurora: "Completa · héroes y pósters",
   ember: "Cálida",
@@ -54,9 +64,12 @@ const NOTES: Record<DotPaletteName, string> = {
   graphite: "Sobria · producto",
   night: "Sobria · oscuro",
   paper: "Casi invisible · fondo",
+  marea: "Héroe de la paleta Marea",
+  siena: "Héroe de la paleta Siena",
+  citrico: "Héroe de la paleta Cítrico",
 };
 
-/** Every palette side by side. The last three are the sober ones for product UI. */
+/** Every palette side by side. `graphite`, `night` and `paper` are the sober ones for product UI; the last three are the heroes of the alternative colour palettes. */
 export const Palettes: Story = {
   render: (args) => (
     <div

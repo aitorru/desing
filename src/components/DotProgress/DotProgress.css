@@ -25,10 +25,10 @@
     in oklab,
     color-mix(
       in oklab,
-      var(--pt-violet),
-      var(--pt-magenta) clamp(0%, calc(var(--i) / var(--n) * 200%), 100%)
+      var(--pt-spectrum-2),
+      var(--pt-spectrum-4) clamp(0%, calc(var(--i) / var(--n) * 200%), 100%)
     ),
-    var(--pt-coral) clamp(0%, calc((var(--i) / var(--n) - 0.5) * 200%), 100%)
+    var(--pt-spectrum-5) clamp(0%, calc((var(--i) / var(--n) - 0.5) * 200%), 100%)
   );
 }
 

@@ -190,3 +190,49 @@
   font-size: var(--pt-text-sm);
   color: var(--pt-fg-muted);
 }
+
+/* ── Workspace ──────────────────────────────────────────────── */
+.pg-ws__hero {
+  padding-block: 56px;
+}
+
+.pg-ws__intro {
+  width: min(880px, 100%);
+}
+
+.pg-ws__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.pg-ws__cols {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(280px, 2fr);
+  gap: 32px;
+  margin-top: 16px;
+}
+
+@media (max-width: 860px) {
+  .pg-ws__cols {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pg-ws__line {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--pt-text-sm);
+  color: var(--pt-fg-muted);
+}
+
+.pg-ws__line strong {
+  color: var(--pt-fg);
+  font-weight: 560;
+}
+
+.pg-ws__when {
+  font-size: var(--pt-text-xs);
+  color: var(--pt-fg-subtle);
+  white-space: nowrap;
+}

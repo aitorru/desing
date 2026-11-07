@@ -59,6 +59,27 @@ export const DOT_PALETTES = {
     ramp: ["#c9c5dc", "#ff9fc8", "#b98cf0", "#c9c5dc"].map(hex),
     strength: 0.6,
   },
+  /** Marea palette: azure → teal → sea green over sea fog. */
+  marea: {
+    background: "#e6eef2",
+    faint: "rgba(14, 40, 60, 0.09)",
+    ramp: ["#1b3a9e", "#1f6fe0", "#148fc4", "#0aa39a", "#2fbf8f", "#8fe0bf"].map(hex),
+    strength: 0.95,
+  },
+  /** Siena palette: wine → terracotta → ochre over bone paper. */
+  siena: {
+    background: "#f1ebe1",
+    faint: "rgba(70, 45, 25, 0.09)",
+    ramp: ["#7d2e46", "#a8432f", "#c8552d", "#e0912e", "#f0c36b", "#c8552d"].map(hex),
+    strength: 0.95,
+  },
+  /** Cítrico palette: emerald → lime → gold over stone. */
+  citrico: {
+    background: "#eceee7",
+    faint: "rgba(25, 35, 20, 0.09)",
+    ramp: ["#0b5d4c", "#0d9b6c", "#45b54a", "#a8cc1f", "#f5b800", "#45b54a"].map(hex),
+    strength: 0.95,
+  },
   /** Barely there: a texture, not an image. */
   paper: {
     background: "#f7f6fb",
