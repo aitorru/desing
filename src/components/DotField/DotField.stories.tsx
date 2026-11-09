@@ -60,7 +60,7 @@ const ALL: DotPaletteName[] = [
   "monoNight",
 ];
 const NOTES: Record<DotPaletteName, string> = {
-  aurora: "Completa · héroes y pósters",
+  aurora: "Completa · portadas y héroes",
   ember: "Cálida",
   dusk: "Fría",
   graphite: "Sobria · producto",
@@ -125,9 +125,9 @@ export const SoberHeader: Story = {
     <DotField {...args} palette={soberPalette(globals)} style={{ height: 280 }}>
       <div style={{ height: "100%", display: "grid", alignItems: "end", padding: 32 }}>
         <GlassCard padding="md" style={{ maxWidth: 420 }}>
-          <span className="pt-eyebrow">Q3 · Plan de capacidad</span>
+          <span className="pt-eyebrow">Semana 45 · Capacidad</span>
           <h2 className="pt-display" style={{ fontSize: 36, marginTop: 8 }}>
-            Tres escenarios, una decisión
+            Tres regiones, un error budget
           </h2>
         </GlassCard>
       </div>

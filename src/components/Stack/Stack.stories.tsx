@@ -73,7 +73,7 @@ export const Toolbar: Story = {
         <Badge tone="accent" dot="pulse">
           En directo
         </Badge>
-        <Badge>12 escenarios</Badge>
+        <Badge>12 servicios</Badge>
       </Stack>
       <Stack direction="row" gap={2}>
         <Button variant="ghost" size="sm">

@@ -6,7 +6,7 @@ const ENTRIES: LogEntry[] = [
     time: "12:04:31",
     level: "info",
     source: "api-gateway",
-    message: "GET /v1/escenarios 200 · 84 ms",
+    message: "GET /v1/carrito 200 · 84 ms",
   },
   {
     time: "12:04:33",
@@ -17,7 +17,7 @@ const ENTRIES: LogEntry[] = [
   {
     time: "12:04:38",
     level: "warn",
-    source: "simulador",
+    source: "búsqueda",
     message: "p95 412 ms supera el umbral de 300 ms",
   },
   {

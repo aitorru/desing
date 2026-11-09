@@ -11,8 +11,8 @@ export const Radius: StoryObj = {
   render: () => (
     <div className="fd-section">
       <p className="pt-body">
-        Radios generosos: el póster es un rectángulo muy redondeado. Los botones son siempre
-        píldoras.
+        Radios generosos: las tarjetas son rectángulos muy redondeados y los botones, siempre
+        píldoras. En Dot 2 y en Mono se enderezan.
       </p>
       <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
         {["sm", "md", "lg", "xl", "pill"].map((r) => (

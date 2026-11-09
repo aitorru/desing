@@ -24,23 +24,23 @@ const meta: Meta = {
 export default meta;
 
 const RANGES = [
-  { value: "3", label: "3 meses" },
-  { value: "12", label: "12 meses" },
-  { value: "36", label: "3 años" },
+  { value: "1h", label: "1 h" },
+  { value: "24h", label: "24 h" },
+  { value: "7d", label: "7 d" },
 ] as const;
 
 /** The same screen fragment, set in one version of the language. */
 function Sample({ version, theme }: { version: "1" | "2"; theme: ThemeName }) {
-  const [range, setRange] = useState<(typeof RANGES)[number]["value"]>("12");
+  const [range, setRange] = useState<(typeof RANGES)[number]["value"]>("24h");
   const v2 = version === "2";
   const intro = (
     <GlassCard padding="md" className="fd-ver__intro">
       <SectionHeader
         size="sm"
         index={v2 ? "01" : undefined}
-        eyebrow="Plan 2027"
-        title="Prueba la decisión antes de tomarla"
-        description="Tres escenarios listos para revisar."
+        eyebrow="Producción"
+        title="Estado de la plataforma"
+        description="Un servicio degradado y un despliegue en canario."
       />
     </GlassCard>
   );
@@ -86,20 +86,20 @@ function Sample({ version, theme }: { version: "1" | "2"; theme: ThemeName }) {
       )}
 
       <Stack direction="row" gap={3} wrap>
-        <Button variant="aurora">Nueva simulación</Button>
-        <Button>Guardar</Button>
+        <Button variant="aurora">Nuevo despliegue</Button>
+        <Button>Revertir</Button>
         <Button variant="ghost">Cancelar</Button>
-        <Segmented label="Horizonte" options={RANGES} value={range} onChange={setRange} />
+        <Segmented label="Ventana" options={RANGES} value={range} onChange={setRange} />
       </Stack>
 
       <div className="fd-ver__grid">
         <GlassCard tone="solid">
           <Stat
-            label="Ingresos p50"
-            value="1,8 M€"
-            delta="+12,4 %"
-            trend="positive"
-            chart={<DotBars values={[3, 4, 4, 5, 6, 6, 7, 8]} rows={5} label="Ingresos" />}
+            label="Latencia p95"
+            value="182 ms"
+            delta="+12 ms"
+            trend="negative"
+            chart={<DotBars values={[3, 4, 4, 5, 6, 6, 7, 8]} rows={5} label="p95 por hora" />}
           />
         </GlassCard>
         <GlassCard
@@ -119,17 +119,17 @@ function Sample({ version, theme }: { version: "1" | "2"; theme: ThemeName }) {
             ) : undefined
           }
         >
-          <Stat label="Escenario elegido" value="B" note="Subir precio 8 %" />
+          <Stat label="Incidentes abiertos" value="1" note="notificaciones · hace 6 min" />
         </GlassCard>
       </div>
 
       <Stack direction="row" gap={3} align="end" wrap>
-        <TextField label="Pregunta" placeholder="¿Y si subimos el precio un 8 %?" />
+        <TextField label="Imagen" placeholder="checkout:2.32.0" />
         <Badge tone="accent" dot>
-          Simulado
+          canario
         </Badge>
         <Badge tone="positive" dot>
-          +12,4 %
+          SLO ok
         </Badge>
       </Stack>
     </section>

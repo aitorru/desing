@@ -9,9 +9,10 @@ const meta = {
   component: SectionHeader,
   parameters: { layout: "padded" },
   args: {
-    eyebrow: "Resultados",
-    title: "Compara escenarios",
-    description: "Diez mil trayectorias por escenario. Elige uno para ver el detalle.",
+    eyebrow: "Servicios",
+    title: "Lo que está corriendo",
+    description:
+      "Seis servicios en eu-west-1. Pulsa uno para ver sus réplicas y su último despliegue.",
     size: "md",
     align: "start",
     level: 2,
@@ -36,7 +37,7 @@ export const Playground: Story = {
             Exportar
           </Button>
           <Button size="sm" icon={<Sparkle size={12} />}>
-            Nueva simulación
+            Nuevo despliegue
           </Button>
         </>
       }
@@ -53,8 +54,8 @@ export const Sizes: Story = {
         align="center"
         level={1}
         eyebrow="Dot"
-        title="Prueba la decisión antes de tomarla"
-        description="Simula resultados, compara escenarios y avanza con más confianza."
+        title="Todo verde, por ahora"
+        description="Estado, despliegues e incidentes en una sola página. No arregla nada, pero se lee bien."
         actions={
           <Button variant="aurora" size="lg" icon={<Sparkle size={14} />}>
             Empezar
@@ -62,16 +63,16 @@ export const Sizes: Story = {
         }
       />
       <SectionHeader
-        eyebrow="Q3 · Capacidad"
-        title="Tres escenarios, una decisión"
+        eyebrow="Semana 45 · Capacidad"
+        title="Tres regiones, un error budget"
         actions={<Button size="sm">Compartir</Button>}
       />
       <SectionHeader
         size="sm"
         level={3}
-        eyebrow="Equipo"
-        title="Quién ha participado"
-        description="Las personas con acceso a este espacio."
+        eyebrow="Guardia"
+        title="Quién respondió"
+        description="Las personas que tocaron el incidente."
       />
     </Stack>
   ),

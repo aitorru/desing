@@ -7,9 +7,9 @@ const meta = {
   component: TextField,
   parameters: { layout: "padded" },
   args: {
-    label: "¿Qué decisión quieres probar?",
-    placeholder: "Subir el precio un 8 % en enero",
-    hint: "Descríbela en una frase; la convertimos en variables.",
+    label: "Imagen a desplegar",
+    placeholder: "checkout:2.32.0",
+    hint: "Repositorio y etiqueta. latest no cuenta.",
   },
 } satisfies Meta<typeof TextField>;
 
@@ -27,14 +27,18 @@ export const Playground: Story = {
 export const States: Story = {
   render: () => (
     <div style={{ maxWidth: 420, display: "grid", gap: 24 }}>
-      <TextField label="Nombre del escenario" defaultValue="Expansión Lisboa" />
+      <TextField label="Nombre del servicio" defaultValue="worker-colas" />
       <TextField
-        label="Pregunta"
-        placeholder="¿Y si…?"
+        label="Buscar en el registro"
+        placeholder="level:error service:checkout"
         leading={<Sparkle size={14} />}
         hint="Con icono inicial."
       />
-      <TextField label="Horizonte (meses)" defaultValue="-4" error="Debe ser un número positivo." />
+      <TextField
+        label="Réplicas"
+        defaultValue="-4"
+        error="Debe ser un número positivo. Cero también vale, pero piénsalo."
+      />
       <TextField label="Desactivado" defaultValue="Bloqueado" disabled />
     </div>
   ),

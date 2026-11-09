@@ -38,16 +38,16 @@ export const Variants: Story = {
         tone="aurora"
         label={
           <>
-            <Sparkle size={12} /> Simulado
+            <Sparkle size={12} /> Datos de ejemplo
           </>
         }
       />
       <Stack direction="row" gap={4} style={{ height: 40 }}>
-        <span>Escenarios</span>
+        <span>Servicios</span>
         <DotDivider orientation="vertical" />
-        <span>Modelos</span>
+        <span>Despliegues</span>
         <DotDivider orientation="vertical" tone="aurora" />
-        <span>Equipo</span>
+        <span>Guardias</span>
       </Stack>
     </Stack>
   ),

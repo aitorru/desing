@@ -10,8 +10,8 @@ const meta = {
   parameters: { layout: "padded" },
   args: {
     tone: "accent",
-    title: "Resultado simulado",
-    children: "Estas cifras salen de 10 000 trayectorias, no de datos reales.",
+    title: "Datos de ejemplo",
+    children: "Estas cifras son inventadas. Los incidentes, por desgracia, suenan a reales.",
   },
   argTypes: {
     tone: { control: "inline-radio", options: ["neutral", "accent", "positive", "negative"] },
@@ -33,7 +33,7 @@ function Dismissible() {
   const [open, setOpen] = useState(true);
   return open ? (
     <Callout
-      title="Nueva versión del modelo"
+      title="Nueva versión del runbook"
       onDismiss={() => setOpen(false)}
       actions={
         <>
@@ -44,7 +44,7 @@ function Dismissible() {
         </>
       }
     >
-      Ahora tiene en cuenta la estacionalidad. Vuelve a simular para comparar.
+      Ahora explica cómo vaciar la cola sin perder mensajes. Léelo antes de la guardia.
     </Callout>
   ) : (
     <Button size="sm" variant="ghost" onClick={() => setOpen(true)}>
@@ -58,16 +58,16 @@ export const Tones: Story = {
   render: () => (
     <Stack gap={4} style={{ maxWidth: 560 }}>
       <Callout tone="neutral" title="Consejo">
-        Pulsa una tarjeta para elegir el escenario.
+        Pulsa una fila para ver el último despliegue del servicio.
       </Callout>
-      <Callout tone="accent" title="Resultado simulado">
-        Estas cifras salen de 10 000 trayectorias, no de datos reales.
+      <Callout tone="accent" title="Mantenimiento programado">
+        postgres pasa de la 15 a la 17 el jueves, de 02:00 a 03:00.
       </Callout>
-      <Callout tone="positive" title="Por encima del plan" role="status">
-        El escenario B supera el objetivo de Q3 en un 12 %.
+      <Callout tone="positive" title="Despliegue completado" role="status">
+        checkout v2.31.0 está al 100 % en las tres regiones.
       </Callout>
-      <Callout tone="negative" title="Riesgo alto" role="alert">
-        En el 30 % de las trayectorias los ingresos caen por debajo de 1 M€.
+      <Callout tone="negative" title="notificaciones caído" role="alert">
+        CrashLoopBackOff desde las 12:04. La guardia ya está avisada.
       </Callout>
       <Dismissible />
     </Stack>

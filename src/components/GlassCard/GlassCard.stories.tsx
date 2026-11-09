@@ -24,18 +24,18 @@ function Content() {
   return (
     <div style={{ display: "grid", gap: 12 }}>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-        <span className="pt-eyebrow">Escenario B</span>
+        <span className="pt-eyebrow">checkout · p95</span>
         <Badge tone="positive" dot>
-          +12,4 %
+          −22 ms
         </Badge>
       </div>
       <p className="pt-display" style={{ fontSize: 44 }}>
-        1,8 M€
+        141 ms
       </p>
       <p className="pt-body" style={{ fontSize: 14 }}>
-        Ingresos esperados a 12 meses (p50).
+        Latencia p95 de la última hora, en eu-west-1.
       </p>
-      <DotBars values={[3, 4, 4, 6, 5, 7, 8, 9]} highlight={7} label="Tendencia al alza" />
+      <DotBars values={[3, 4, 4, 6, 5, 7, 8, 9]} highlight={7} label="Peticiones por hora" />
     </div>
   );
 }
@@ -77,7 +77,7 @@ export const Tones: Story = {
           <GlassCard key={tone} tone={tone}>
             <span className="pt-eyebrow">{tone}</span>
             <p className="pt-display" style={{ fontSize: 32, marginTop: 8 }}>
-              Compare scenarios
+              Estado de la plataforma
             </p>
           </GlassCard>
         ))}
@@ -108,7 +108,7 @@ export const WithPetals: Story = {
             style={{ height: "100%", display: "grid", alignContent: "end", textAlign: "center" }}
           >
             <p className="pt-display" style={{ fontSize: 40 }}>
-              Before you make it
+              Todo verde, por ahora
             </p>
           </div>
         </GlassCard>
