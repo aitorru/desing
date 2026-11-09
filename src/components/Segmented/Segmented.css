@@ -6,7 +6,7 @@
   grid-template-columns: repeat(var(--n), 1fr);
   height: var(--h);
   padding: var(--pad);
-  border-radius: var(--pt-radius-pill);
+  border-radius: var(--pt-radius-control);
   border: 1px solid var(--pt-border);
   background: color-mix(in srgb, var(--pt-bg-sunken) 60%, transparent);
   backdrop-filter: blur(12px);
@@ -28,7 +28,7 @@
   bottom: var(--pad);
   left: var(--pad);
   width: calc((100% - 2 * var(--pad)) / var(--n));
-  border-radius: var(--pt-radius-pill);
+  border-radius: calc(var(--pt-radius-control) - var(--pad));
   background: var(--pt-bg-raised);
   box-shadow:
     0 1px 2px color-mix(in srgb, var(--pt-shadow-hue) 8%, transparent),
@@ -44,7 +44,7 @@
   border: 0;
   background: transparent;
   padding: 0 16px;
-  border-radius: var(--pt-radius-pill);
+  border-radius: calc(var(--pt-radius-control) - var(--pad));
   color: var(--pt-fg-muted);
   font: 500 var(--pt-text-sm) / 1 var(--pt-font-sans);
   cursor: pointer;

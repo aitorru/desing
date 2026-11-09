@@ -6,12 +6,15 @@ para los titulares. Todo se documenta y se prueba en un Storybook.
 
 - **Tokens** en CSS (`--pt-*`): color (mist, ink y acentos), gradientes, tipografía, espacio,
   radios y movimiento, con tema claro (_Mist_) y oscuro (_Ink_).
-- **Familia de puntos**: `DotField` (la textura animada, en canvas), `DotLoader`,
-  `DotProgress` y `DotBars`.
+- **Familia de puntos**: `DotField` (la textura animada, en canvas), `DotPattern` (patrones
+  compuestos y quietos, en SVG), `DotLoader`, `DotProgress` y `DotBars`.
+- **Punto 2** (`data-pt-version="2"`): la edición formal. Siena de serie, un solo acento
+  sólido, papel con filete en vez de vidrio, radios en la rejilla y patrones anclados en
+  lugar de cintas. Ver [Punto 2](#punto-2).
 - **Paletas**: `punto` (la original), `marea`, `siena` y `citrico`, intercambiables con
   `data-pt-palette` en el mismo elemento que `data-pt-theme`.
 - **Componentes**: `Button`, `Badge`, `GlassCard`, `TextField`, `Segmented`, `Sparkle`,
-  `Petals`.
+  `Petals`, `DotMark`.
 - **Transversales**: `Stack`, `SectionHeader`, `Stat`, `Callout`, `Switch`, `Avatar` /
   `AvatarGroup` y `DotDivider`.
 - **Páginas**: el póster original reconstruido con el sistema, una pantalla de producto
@@ -49,6 +52,34 @@ Los componentes leen roles y el espectro (`--pt-spectrum-1…6`, `--pt-spectrum-
 `--pt-spectrum-soft`), nunca un tono con nombre; cada paleta reasigna neutros y espectro.
 `PALETTES` y `heroDotPalette()` (exportados) dan la lista y la textura de `DotField` que
 corresponde a cada una.
+
+## Punto 2
+
+```html
+<html data-pt-theme="light" data-pt-version="2">
+```
+
+`src/tokens/v2.css` solo reajusta tokens y recetas (radios, vidrio → papel, degradado →
+sello, `bloom` → lámina de tinta), así que todos los componentes lo siguen sin reglas
+propias. Sin `data-pt-palette`, un ámbito v2 usa Siena. La pieza nueva es `DotPattern`:
+
+```tsx
+<GlassCard backdrop={<DotPattern motif="rings" anchor="top-right" cols={22} rows={14} highlight={2} />}>
+  …
+</GlassCard>
+```
+
+| Prop        | Valores                                                           |
+| ----------- | ----------------------------------------------------------------- |
+| `motif`     | `grid` · `fade` · `rings` · `orb` · `wave` · `diagonal`           |
+| `cols`, `rows` | tamaño en puntos; sin ellos rellena el contenedor posicionado  |
+| `anchor`    | esquina, borde o centro al que se fija (`origin` cambia desde dónde crece el motivo) |
+| `highlight` | banda (anillo, cresta, diagonal…) que lleva el acento             |
+| `tone`, `intensity`, `period`, `falloff`, `motion` | tinta, opacidad, separación, caída y respiración |
+
+Es geometría determinista sobre la rejilla, lee los roles del tema (sirve en cualquier
+paleta, en Mist y en Ink) y pinta como mucho diez `<path>` por patrón. La propuesta completa
+está en **Punto › Versión 2**; las páginas, en **Pages › Punto 2**.
 
 ## DotField
 

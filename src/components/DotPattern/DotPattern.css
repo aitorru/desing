@@ -1,0 +1,101 @@
+.pt-dotpattern {
+  --tone: var(--pt-fg);
+  display: block;
+  flex: none;
+  max-width: none;
+  color: var(--tone);
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  pointer-events: none;
+  user-select: none;
+}
+
+.pt-dotpattern--accent {
+  --tone: var(--pt-accent);
+}
+
+.pt-dotpattern--current {
+  --tone: currentColor;
+}
+
+.pt-dotpattern__base {
+  opacity: var(--pt-pattern-intensity, 0.3);
+}
+
+/* The one accented band. Override `--pt-pattern-accent` on tinted surfaces. */
+.pt-dotpattern__accent {
+  color: var(--pt-pattern-accent, var(--pt-accent));
+}
+
+/* ── Placement ──────────────────────────────────────────────── */
+.pt-dotpattern--fill {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.pt-dotpattern--anchored {
+  position: absolute;
+}
+
+.pt-dotpattern--at-top-left,
+.pt-dotpattern--at-top,
+.pt-dotpattern--at-top-right {
+  top: 0;
+}
+
+.pt-dotpattern--at-bottom-left,
+.pt-dotpattern--at-bottom,
+.pt-dotpattern--at-bottom-right {
+  bottom: 0;
+}
+
+.pt-dotpattern--at-top-left,
+.pt-dotpattern--at-left,
+.pt-dotpattern--at-bottom-left {
+  left: 0;
+}
+
+.pt-dotpattern--at-top-right,
+.pt-dotpattern--at-right,
+.pt-dotpattern--at-bottom-right {
+  right: 0;
+}
+
+.pt-dotpattern--at-top,
+.pt-dotpattern--at-bottom {
+  left: 50%;
+  translate: -50% 0;
+}
+
+.pt-dotpattern--at-left,
+.pt-dotpattern--at-right {
+  top: 50%;
+  translate: 0 -50%;
+}
+
+.pt-dotpattern--at-center {
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+}
+
+/* ── Motion: one slow breath, never a loop you notice ───────── */
+.pt-dotpattern--breathe .pt-dotpattern__base {
+  animation: pt-dotpattern-breathe calc(var(--pt-duration-breath) * 3) var(--pt-ease-in-out)
+    infinite alternate;
+}
+
+@keyframes pt-dotpattern-breathe {
+  to {
+    opacity: calc(var(--pt-pattern-intensity, 0.3) * 0.55);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pt-dotpattern--breathe .pt-dotpattern__base {
+    animation: none;
+  }
+}

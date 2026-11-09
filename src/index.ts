@@ -2,6 +2,7 @@ import "@fontsource/instrument-serif/400.css";
 import "@fontsource/instrument-serif/400-italic.css";
 import "@fontsource-variable/inter-tight";
 import "./tokens/tokens.css";
+import "./tokens/v2.css";
 
 export {
   Avatar,
@@ -20,6 +21,8 @@ export {
   type DotLoaderProps,
   type DotLoaderVariant,
 } from "./components/DotLoader/DotLoader";
+export { DotMark, type DotMarkProps } from "./components/DotMark/DotMark";
+export * from "./components/DotPattern";
 export { DotProgress, type DotProgressProps } from "./components/DotProgress/DotProgress";
 export { GlassCard, type GlassCardProps, type GlassTone } from "./components/GlassCard/GlassCard";
 export { Petals, type PetalsProps, type PetalsTone } from "./components/Petals/Petals";

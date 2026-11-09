@@ -6,12 +6,15 @@ import "./preview.css";
 
 const withTheme: Decorator = (Story, context) => {
   const theme = context.globals.theme === "dark" ? "dark" : "light";
-  const palette = typeof context.globals.palette === "string" ? context.globals.palette : "punto";
+  const palette = typeof context.globals.palette === "string" ? context.globals.palette : "siena";
+  // A story can pin its version (`parameters.ptVersion`): the v2 pages, the v1/v2 comparison.
+  const version = context.parameters.ptVersion ?? context.globals.version;
   const fullscreen = context.parameters.layout === "fullscreen";
   return (
     <div
       data-pt-theme={theme}
       data-pt-palette={palette}
+      data-pt-version={version === "2" ? "2" : undefined}
       className={fullscreen ? "sb-pt-full" : "sb-pt-pad pt-dot-paper"}
     >
       <Story />
@@ -43,8 +46,20 @@ const preview: Preview = {
         dynamicTitle: true,
       },
     },
+    version: {
+      description: "Punto version",
+      toolbar: {
+        title: "Versión",
+        icon: "bookmarkhollow",
+        items: [
+          { value: "1", title: "Punto 1 (original)" },
+          { value: "2", title: "Punto 2 (formal)" },
+        ],
+        dynamicTitle: true,
+      },
+    },
   },
-  initialGlobals: { theme: "light", palette: "punto" },
+  initialGlobals: { theme: "light", palette: "siena", version: "2" },
   parameters: {
     layout: "fullscreen",
     backgrounds: { disable: true },

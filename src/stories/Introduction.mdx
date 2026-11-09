@@ -96,15 +96,20 @@ intensidad) y `still` (un único fotograma).
 ## Estructura
 
 - **Foundations** — color, tipografía, forma y movimiento como tokens CSS (`--pt-*`).
-- **Dots** — la familia de puntos: `DotField`, `DotLoader`, `DotProgress`, `DotBars`.
+- **Dots** — la familia de puntos: `DotField`, `DotPattern` (el patrón compuesto de v2),
+  `DotLoader`, `DotProgress`, `DotBars`.
 - **Components** — `Button`, `Badge`, `GlassCard`, `TextField`, `Segmented`, `Sparkle`,
-  `Petals`.
+  `Petals`, `DotMark`.
 - **Transversales** — piezas para montar pantallas sin CSS propio: `Stack` (layout en la
   rejilla de 4 px), `SectionHeader` (eyebrow + titular + acciones), `Stat` (KPI con su gráfico
   de puntos), `Callout` (mensajes con borde de puntos), `Switch`, `Avatar` / `AvatarGroup` y
   `DotDivider` (el separador de puntos).
 - **Pages** — el póster original, una pantalla de producto y un panel de equipo
   (`Workspace`) hecho casi solo con los transversales.
+
+> **Punto 2.** Hay una propuesta de evolución —más formal, con patrones compuestos en vez
+> de cintas— que convive con esta: está en **Punto › Versión 2** y se activa con
+> `data-pt-version="2"` o con el selector **Versión**.
 
 Usa el selector **Tema** de la barra superior para alternar _Mist_ (claro) e _Ink_ (oscuro), y
 **Paleta** para cambiar de paleta.
