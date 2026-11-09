@@ -95,6 +95,7 @@
 
 .ov-palettes__chip {
   display: grid;
+  padding: 8px;
   place-items: center;
   align-content: center;
   gap: 12px;
@@ -102,6 +103,11 @@
   background: var(--pt-bg);
   color: var(--pt-fg);
   font-weight: 520;
+}
+
+/* The fifth chip (Mono) takes the whole last row. */
+.ov-palettes__chip:nth-child(5) {
+  grid-column: span 2;
 }
 
 .ov-palettes__dots {

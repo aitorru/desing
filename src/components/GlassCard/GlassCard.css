@@ -3,7 +3,7 @@
   isolation: isolate;
   overflow: hidden;
   border-radius: var(--pt-radius-xl);
-  border: 1px solid var(--pt-glass-border);
+  border: var(--pt-stroke) solid var(--pt-glass-border);
   background: var(--pt-glass-bg);
   box-shadow: var(--pt-glass-shadow);
   backdrop-filter: var(--pt-glass-blur);

@@ -80,6 +80,20 @@ export const DOT_PALETTES = {
     ramp: ["#0b5d4c", "#0d9b6c", "#45b54a", "#a8cc1f", "#f5b800", "#45b54a"].map(hex),
     strength: 0.95,
   },
+  /** Mono palette: ink dots on white paper, no hue at all. */
+  mono: {
+    background: "#ffffff",
+    faint: "rgba(0, 0, 0, 0.10)",
+    ramp: ["#000000", "#2b2b2b", "#000000", "#5c5c5c", "#000000"].map(hex),
+    strength: 1,
+  },
+  /** Mono at night: paper dots on black. */
+  monoNight: {
+    background: "#000000",
+    faint: "rgba(255, 255, 255, 0.10)",
+    ramp: ["#ffffff", "#d4d4d4", "#ffffff", "#a3a3a3", "#ffffff"].map(hex),
+    strength: 1,
+  },
   /** Barely there: a texture, not an image. */
   paper: {
     background: "#f7f6fb",

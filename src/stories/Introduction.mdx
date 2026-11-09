@@ -73,8 +73,12 @@ espectro de seis tonos (`--pt-spectrum-1…6`). Una paleta reasigna los neutros 
 | `marea`   | niebla marina · azul marino | azur → turquesa → verde mar    | Sereno, técnico     |
 | `siena`   | papel hueso · tinta café   | vino → terracota → ocre        | Cálido, editorial   |
 | `citrico` | piedra · negro oliva       | esmeralda → lima → oro         | Fresco, enérgico    |
+| `mono`    | blanco puro · negro puro   | grises; color solo en estados  | Brutalista          |
 
-Cada paleta tiene su textura de héroe en `DotField` (`aurora`, `marea`, `siena`, `citrico`;
+`mono` trae además su forma: esquinas rectas, trazo de 2 px en tinta y sombra dura en vez de
+vidrio (`mono.css`).
+
+Cada paleta tiene su textura de héroe en `DotField` (`aurora`, `marea`, `siena`, `citrico`, `mono`;
 `heroDotPalette(nombre)` la devuelve) y funciona en _Mist_ y en _Ink_. Compáralas en
 **Foundations › Palettes** o cambia la de todo el Storybook con el selector **Paleta**.
 
@@ -88,7 +92,7 @@ Cada paleta tiene su textura de héroe en `DotField` (`aurora`, `marea`, `siena`
 | `graphite` | **Sobria.** Puntos de tinta sobre mist. Producto, dashboards.    |
 | `night`    | **Sobria** en oscuro. Puntos claros sobre ink.                   |
 | `paper`    | **Casi invisible.** Un fondo con textura, no una imagen.         |
-| `marea` · `siena` · `citrico` | Héroes de las paletas alternativas.  |
+| `marea` · `siena` · `citrico` · `mono` | Héroes de las paletas alternativas (`monoNight` para Mono en oscuro). |
 
 Y tres movimientos: `flow` (las cintas se desplazan), `breathe` (quietas, solo pulsan la
 intensidad) y `still` (un único fotograma).

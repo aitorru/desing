@@ -36,6 +36,11 @@ function themeFromTokens(): ThemeVars {
     return /^(#|rgb)/.test(value) ? value : undefined;
   };
   const dark = document.documentElement.dataset.ptTheme !== "light";
+  // Radii follow the tokens too (Mono squares them off).
+  const radius = (name: string) => {
+    const px = Number.parseFloat(css.getPropertyValue(name));
+    return Number.isFinite(px) ? px : undefined;
+  };
   const vars: Partial<ThemeVars> = {
     colorPrimary: color("--pt-accent"),
     colorSecondary: color("--pt-accent"),
@@ -45,6 +50,8 @@ function themeFromTokens(): ThemeVars {
     textColor: color("--pt-fg"),
     textMutedColor: color("--pt-fg-muted"),
     barBg: color("--pt-bg-raised"),
+    appBorderRadius: radius("--pt-radius-lg"),
+    inputBorderRadius: radius("--pt-radius-md"),
   };
   const defined = Object.fromEntries(Object.entries(vars).filter(([, v]) => v !== undefined));
   return create({

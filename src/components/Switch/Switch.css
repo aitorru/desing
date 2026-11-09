@@ -38,7 +38,7 @@
   position: absolute;
   inset: 0;
   border-radius: var(--pt-radius-pill);
-  border: 1px solid var(--pt-border-strong);
+  border: var(--pt-stroke) solid var(--pt-border-strong);
   background-color: var(--pt-bg-sunken);
   background-image: radial-gradient(
     circle at center,

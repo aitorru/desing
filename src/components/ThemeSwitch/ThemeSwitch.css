@@ -9,7 +9,7 @@
   min-width: 0;
   margin: 0;
   padding: var(--pad);
-  border: 1px solid var(--pt-border);
+  border: var(--pt-stroke) solid var(--pt-border);
   border-radius: var(--pt-radius-control);
   background: color-mix(in srgb, var(--pt-bg-sunken) 60%, transparent);
   isolation: isolate;
@@ -27,7 +27,7 @@
   bottom: var(--pad);
   left: var(--pad);
   width: calc((100% - 2 * var(--pad)) / var(--n));
-  border: 1px solid var(--pt-border);
+  border: var(--pt-stroke) solid var(--pt-border);
   border-radius: calc(var(--pt-radius-control) - var(--pad));
   background: var(--pt-bg-raised);
   box-sizing: border-box;

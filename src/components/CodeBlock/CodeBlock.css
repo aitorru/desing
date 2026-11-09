@@ -2,7 +2,7 @@
   margin: 0;
   min-width: 0;
   overflow: hidden;
-  border: 1px solid var(--pt-border-strong);
+  border: var(--pt-stroke) solid var(--pt-border-strong);
   border-radius: var(--pt-radius-md);
   background: var(--pt-bg-sunken);
   color: var(--pt-fg);
@@ -40,7 +40,7 @@
 .pt-code__copy {
   height: 28px;
   padding: 0 var(--pt-space-3);
-  border: 1px solid var(--pt-border-strong);
+  border: var(--pt-stroke) solid var(--pt-border-strong);
   border-radius: var(--pt-radius-sm);
   background: transparent;
   color: var(--pt-fg);

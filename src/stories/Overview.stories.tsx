@@ -69,7 +69,7 @@ function Board({ palette, night }: { palette: ReturnType<typeof heroPalette>; ni
         </div>
       </Tile>
 
-      <Tile area="palettes" title="Cuatro paletas">
+      <Tile area="palettes" title="Cinco paletas">
         <div className="ov-palettes">
           {PALETTES.map((p) => (
             <div key={p.name} data-pt-palette={p.name} className="ov-palettes__chip">

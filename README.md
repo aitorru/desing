@@ -16,8 +16,9 @@ para los titulares. Todo se documenta y se prueba en un Storybook.
 - **Dot 2** (`data-pt-version="2"`): la edición formal. Siena de serie, un solo acento
   sólido, papel con filete en vez de vidrio, radios en la rejilla y patrones anclados en
   lugar de cintas. Ver [Dot 2](#dot-2).
-- **Paletas**: `punto` (la original), `marea`, `siena` y `citrico`, intercambiables con
-  `data-pt-palette` en el mismo elemento que `data-pt-theme`.
+- **Paletas**: `punto` (la original), `marea`, `siena`, `citrico` y `mono`, intercambiables
+  con `data-pt-palette` en el mismo elemento que `data-pt-theme`. `mono` es la brutalista:
+  blanco y negro, esquinas rectas, trazo de 2 px y sombra dura.
 - **Componentes**: `Button`, `Badge`, `GlassCard`, `TextField`, `Segmented`, `Sparkle`,
   `Petals`, `DotMark`.
 - **Transversales**: `Stack`, `SectionHeader`, `Stat`, `Callout`, `Switch`, `Avatar` /
@@ -147,7 +148,7 @@ const { preference, theme, setPreference } = useTheme({ night: "oled" });
 
 | Prop        | Valores                                                           |
 | ----------- | ----------------------------------------------------------------- |
-| `palette`   | `aurora` · `ember` · `dusk` · `graphite` · `night` · `paper` · `marea` · `siena` · `citrico` (o una propia) |
+| `palette`   | `aurora` · `ember` · `dusk` · `graphite` · `night` · `paper` · `marea` · `siena` · `citrico` · `mono` · `monoNight` (o una propia) |
 | `motion`    | `flow` (se desplaza) · `breathe` (pulsa en su sitio) · `still`    |
 | `gap`       | distancia entre puntos en px                                      |
 | `dotSize`   | diámetro como fracción de `gap`                                   |

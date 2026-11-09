@@ -100,6 +100,8 @@
   --pt-radius-pill: 999px;
   /* Buttons and segmented controls: a pill in v1, a squared control in Dot 2. */
   --pt-radius-control: var(--pt-radius-pill);
+  /* Border width of panels and controls (Mono doubles it). */
+  --pt-stroke: 1px;
 
   /* ── Motion ──────────────────────────────────────────────── */
   --pt-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -356,6 +358,39 @@
     radial-gradient(100% 100% at 100% 100%, rgb(140 190 40 / 0.9) 0%, transparent 65%),
     linear-gradient(160deg, #1d5e4a 0%, #2f9a5a 100%);
   --pt-bloom-wash: rgb(220 245 160);
+}
+
+/*
+ * Mono — black and white, nothing in between but greys; colour is left to status alone.
+ * The brutalist shape that goes with it (square corners, 2px strokes, hard offset shadow)
+ * lives in mono.css, loaded after v2.css so it holds in both versions.
+ */
+[data-pt-palette="mono"] {
+  --pt-mist-50: #ffffff;
+  --pt-mist-100: #ffffff;
+  --pt-mist-200: #ebebeb;
+  --pt-mist-300: #cccccc;
+  --pt-mist-400: #a3a3a3;
+  --pt-ink-500: #6b6b6b;
+  --pt-ink-600: #474747;
+  --pt-ink-700: #2b2b2b;
+  --pt-ink-800: #141414;
+  --pt-ink-900: #000000;
+  --pt-spectrum-1: #000000;
+  --pt-spectrum-2: #1f1f1f;
+  --pt-spectrum-3: #3d3d3d;
+  --pt-spectrum-4: #5c5c5c;
+  --pt-spectrum-5: #8a8a8a;
+  --pt-spectrum-6: #c2c2c2;
+  --pt-spectrum-accent: #000000;
+  --pt-spectrum-soft: #ffffff;
+  --pt-on-aurora: #fff;
+  --pt-positive-hue: #1a7f37;
+  --pt-negative-hue: #d1242f;
+  --pt-warning-hue: #9a6700;
+  --pt-shadow-hue: rgb(0 0 0);
+  --pt-gradient-bloom: linear-gradient(#000, #000);
+  --pt-bloom-wash: transparent;
 }
 
 /* ── Base type helpers ──────────────────────────────────────── */

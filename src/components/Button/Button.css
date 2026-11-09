@@ -8,7 +8,7 @@
   gap: 8px;
   height: var(--h);
   padding: 0 var(--px);
-  border: 1px solid transparent;
+  border: var(--pt-stroke) solid transparent;
   border-radius: var(--pt-radius-control);
   font: 500 var(--pt-text-sm) / 1 var(--pt-font-sans);
   letter-spacing: -0.005em;
