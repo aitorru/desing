@@ -141,11 +141,7 @@ function Board({ palette, night }: { palette: ReturnType<typeof heroPalette>; ni
           }
         >
           <div className="ov-hero">
-            <span className="pt-folio">Lenguaje de diseño · edición 2</span>
-            <h1 className="pt-display ov-hero__name">Dot</h1>
-            <p className="ov-hero__lead">
-              Un lenguaje hecho de <em>puntos</em>
-            </p>
+            <h1 className="pt-display ov-hero__name">dot</h1>
           </div>
         </GlassCard>
       </Tile>

@@ -1,4 +1,4 @@
-# Dot — lenguaje de diseño
+# Dot
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/overview-dark.png">

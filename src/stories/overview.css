@@ -154,21 +154,13 @@
   box-sizing: border-box;
   display: grid;
   align-content: end;
-  gap: 16px;
   padding: 56px;
 }
 
 .ov-hero__name {
   margin: 0;
-  font-size: 13rem;
+  font-size: 16rem;
   line-height: 0.85;
-}
-
-.ov-hero__lead {
-  margin: 0;
-  font-family: var(--pt-font-display);
-  font-size: 2.25rem;
-  opacity: 0.86;
 }
 
 .ov-status {
