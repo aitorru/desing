@@ -24,7 +24,7 @@ const preview: Preview = {
   decorators: [withTheme],
   globalTypes: {
     theme: {
-      description: "Punto theme",
+      description: "Dot theme",
       toolbar: {
         title: "Tema",
         icon: "contrast",
@@ -37,7 +37,7 @@ const preview: Preview = {
       },
     },
     palette: {
-      description: "Punto colour palette",
+      description: "Dot colour palette",
       toolbar: {
         title: "Paleta",
         icon: "paintbrush",
@@ -46,13 +46,13 @@ const preview: Preview = {
       },
     },
     version: {
-      description: "Punto version",
+      description: "Dot version",
       toolbar: {
         title: "Versión",
         icon: "bookmarkhollow",
         items: [
-          { value: "1", title: "Punto 1 (original)" },
-          { value: "2", title: "Punto 2 (formal)" },
+          { value: "1", title: "Dot 1 (original)" },
+          { value: "2", title: "Dot 2 (formal)" },
         ],
         dynamicTitle: true,
       },
@@ -67,7 +67,7 @@ const preview: Preview = {
     options: {
       storySort: {
         order: [
-          "Punto",
+          "Dot",
           ["Introducción", "*"],
           "Foundations",
           "Dots",

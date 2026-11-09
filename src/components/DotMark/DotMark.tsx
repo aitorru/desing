@@ -12,7 +12,7 @@ export interface DotMarkProps extends Omit<SVGProps<SVGSVGElement>, "children"> 
 
 const CELLS = [0, 1, 2, 3, 4, 5, 6, 7, 8] as const;
 
-/** The Punto 2 mark: nine dots on the grid, one of them sealed with the accent. */
+/** The Dot 2 mark: nine dots on the grid, one of them sealed with the accent. */
 export function DotMark({ size = 20, seal = 2, title, className, ...rest }: DotMarkProps) {
   return (
     // biome-ignore lint/a11y/noSvgWithoutTitle: decorative unless `title` is given (then it renders one)

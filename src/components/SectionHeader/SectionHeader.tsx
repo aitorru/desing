@@ -20,7 +20,7 @@ export interface SectionHeaderProps extends Omit<HTMLAttributes<HTMLElement>, "t
   level?: 1 | 2 | 3 | 4;
 }
 
-/** Eyebrow + serif title + lead + actions: the opening of every Punto section. */
+/** Eyebrow + serif title + lead + actions: the opening of every Dot section. */
 export function SectionHeader({
   index,
   eyebrow,

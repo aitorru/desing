@@ -1,0 +1,215 @@
+/*
+ * Dot/Resumen — the summary board (README image). A 6 × 3 bento on the 8px grid:
+ * paper tiles with a hairline, one ink plate in the middle carrying the name.
+ */
+.ov-board {
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 24px;
+  display: grid;
+  gap: 24px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  grid-template-rows: repeat(3, minmax(296px, 1fr));
+  grid-template-areas:
+    "themes themes palettes field field mark"
+    "type   comps  hero     hero  status status"
+    "tokens loaders hero    hero  pipe   pipe";
+  background: var(--pt-bg);
+  color: var(--pt-fg);
+}
+
+.ov-tile {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 32px;
+  border: 1px solid var(--pt-border);
+  border-radius: var(--pt-radius-xl);
+  background: var(--pt-bg-raised);
+}
+
+.ov-tile--bleed {
+  padding: 0;
+}
+
+.ov-tile--plate {
+  border: 0;
+}
+
+.ov-fill {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.ov-tile__title {
+  margin: 0;
+  font-family: var(--pt-font-sans);
+  font-size: 1.375rem;
+  font-weight: 560;
+  letter-spacing: -0.01em;
+  text-align: center;
+}
+
+.ov-tile__title--over {
+  position: relative;
+  padding: 32px;
+}
+
+.ov-center {
+  flex: 1;
+  display: grid;
+  place-items: center;
+}
+
+/* Themes: three small panels, each in its own theme. */
+.ov-themes {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.ov-themes__panel {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 16px;
+  border: 1px solid var(--pt-border-strong);
+  border-radius: var(--pt-radius-lg);
+}
+
+.ov-themes__aa {
+  font-size: 4rem;
+}
+
+/* Palettes: a 2 × 2 of chips, each re-scoped to its palette. */
+.ov-palettes {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.ov-palettes__chip {
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 12px;
+  border-radius: var(--pt-radius-md);
+  background: var(--pt-bg);
+  color: var(--pt-fg);
+  font-weight: 520;
+}
+
+.ov-palettes__dots {
+  display: flex;
+  gap: 6px;
+}
+
+.ov-palettes__dots i {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+}
+
+/* Type: the three families, largest first. */
+.ov-type {
+  flex: 1;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.ov-type__serif {
+  font-size: 3rem;
+}
+
+.ov-type__sans {
+  font-size: 1.125rem;
+  font-weight: 520;
+}
+
+.ov-type__mono {
+  color: var(--pt-fg-muted);
+}
+
+.ov-comps {
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+/* The ink plate: the name, set large, with the pattern behind it. */
+.ov-hero {
+  position: relative;
+  height: 100%;
+  box-sizing: border-box;
+  display: grid;
+  align-content: end;
+  gap: 16px;
+  padding: 56px;
+}
+
+.ov-hero__name {
+  margin: 0;
+  font-size: 13rem;
+  line-height: 0.85;
+}
+
+.ov-hero__lead {
+  margin: 0;
+  font-family: var(--pt-font-display);
+  font-size: 2.25rem;
+  opacity: 0.86;
+}
+
+.ov-status {
+  flex: 1;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 40px;
+}
+
+.ov-status__list {
+  display: grid;
+  gap: 14px;
+  font-size: 1.0625rem;
+}
+
+.ov-tokens {
+  flex: 1;
+  margin: 0;
+  display: grid;
+  align-content: center;
+  font-size: 0.95rem;
+  line-height: 2;
+  color: var(--pt-fg-muted);
+}
+
+.ov-loaders {
+  flex: 1;
+  display: grid;
+  align-content: center;
+  gap: 32px;
+}
+
+.ov-loaders__row {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+}
+
+.ov-pipe {
+  flex: 1;
+  display: grid;
+  align-content: center;
+}

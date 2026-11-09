@@ -1,4 +1,9 @@
-# Punto — lenguaje de diseño
+# Dot — lenguaje de diseño
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/overview-dark.png">
+  <img alt="Resumen de Dot: temas Mist, Ink y OLED, cuatro paletas, la textura DotField, la marca, tipografía, componentes, consola de plataforma, estados de puntos y pipelines alrededor de una lámina de tinta con el nombre." src="docs/overview-light.png">
+</picture>
 
 Propuesta de lenguaje de diseño inspirada en el póster de _Otherwise_: superficies de puntos
 por las que pasan cintas de color, paneles de vidrio esmerilado encima y una serif tranquila
@@ -8,9 +13,9 @@ para los titulares. Todo se documenta y se prueba en un Storybook.
   radios y movimiento, con tema claro (_Mist_) y oscuro (_Ink_).
 - **Familia de puntos**: `DotField` (la textura animada, en canvas), `DotPattern` (patrones
   compuestos y quietos, en SVG), `DotLoader`, `DotProgress` y `DotBars`.
-- **Punto 2** (`data-pt-version="2"`): la edición formal. Siena de serie, un solo acento
+- **Dot 2** (`data-pt-version="2"`): la edición formal. Siena de serie, un solo acento
   sólido, papel con filete en vez de vidrio, radios en la rejilla y patrones anclados en
-  lugar de cintas. Ver [Punto 2](#punto-2).
+  lugar de cintas. Ver [Dot 2](#dot-2).
 - **Paletas**: `punto` (la original), `marea`, `siena` y `citrico`, intercambiables con
   `data-pt-palette` en el mismo elemento que `data-pt-theme`.
 - **Componentes**: `Button`, `Badge`, `GlassCard`, `TextField`, `Segmented`, `Sparkle`,
@@ -21,7 +26,11 @@ para los titulares. Todo se documenta y se prueba en un Storybook.
   interactiva (pulsa «Simular») y un panel de equipo (`Workspace`).
 
 La propuesta completa (principios, paletas y cuándo usar cada una) está en la página
-**Punto › Introducción** del Storybook.
+**Dot › Introducción** del Storybook.
+
+> Antes se llamaba **Punto**. El nombre cambia; la API no: los tokens, las clases y los
+> atributos siguen con el prefijo `pt-` (`--pt-*`, `.pt-folio`, `data-pt-theme`), y la paleta
+> original sigue siendo `punto`.
 
 ## Desarrollo
 
@@ -42,6 +51,17 @@ devenv shell -- preview   # sirve storybook-static/
 
 Perfiles: `devenv --profile ide shell` activa el LSP de TypeScript.
 
+La imagen de arriba es la story **Dot › Resumen**, capturada a 1920 × 1080 con el
+Storybook estático en marcha (`preview`):
+
+```bash
+for t in light dark; do
+  nix shell nixpkgs#chromium -c chromium --headless --hide-scrollbars \
+    --window-size=1920,1080 --virtual-time-budget=6000 --screenshot="docs/overview-$t.png" \
+    "http://localhost:36007/iframe.html?id=dot-resumen--resumen&viewMode=story&globals=theme:$t;palette:siena"
+done
+```
+
 ## Paletas
 
 ```html
@@ -53,7 +73,7 @@ Los componentes leen roles y el espectro (`--pt-spectrum-1…6`, `--pt-spectrum-
 `PALETTES` y `heroDotPalette()` (exportados) dan la lista y la textura de `DotField` que
 corresponde a cada una.
 
-## Punto 2
+## Dot 2
 
 ```html
 <html data-pt-theme="light" data-pt-version="2">
@@ -79,12 +99,12 @@ propias. Sin `data-pt-palette`, un ámbito v2 usa Siena. La pieza nueva es `DotP
 
 Es geometría determinista sobre la rejilla, lee los roles del tema (sirve en cualquier
 paleta, en Mist y en Ink) y pinta como mucho diez `<path>` por patrón. La propuesta completa
-está en **Punto › Versión 2**; las páginas, en **Pages › Punto 2**.
+está en **Dot › Versión 2**; las páginas, en **Pages › Dot 2**.
 
 ## DevOps
 
 Componentes para consolas y paneles de operación (grupo **DevOps** del Storybook; juntos en
-**Pages › Punto 2 › Operaciones**):
+**Pages › Dot 2 › Operaciones**):
 
 | Componente | Para qué |
 | ---------- | -------- |

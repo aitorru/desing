@@ -1,9 +1,9 @@
 ---
 name: add-component
-description: Añade un componente nuevo al lenguaje Punto (tsx + css + stories + export). Úsala para "crea un componente", "añade un Tooltip/Tabs/…", o al ampliar el sistema.
+description: Añade un componente nuevo al lenguaje Dot (tsx + css + stories + export). Úsala para "crea un componente", "añade un Tooltip/Tabs/…", o al ampliar el sistema.
 ---
 
-# Nuevo componente Punto
+# Nuevo componente Dot
 
 1. `src/components/<Nombre>/<Nombre>.tsx` — función con props tipadas y JSDoc corto en cada
    prop que no sea obvia. Clases `pt-<nombre>`, `pt-<nombre>--<variante>`,

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 
-/** A Punto theme: `light` is Mist, `dark` is Ink, `oled` is Ink on true black. */
+/** A Dot theme: `light` is Mist, `dark` is Ink, `oled` is Ink on true black. */
 export type ThemeName = "light" | "dark" | "oled";
 
 /** What a person picks: a theme, or `system` to follow the device. */

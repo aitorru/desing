@@ -1,5 +1,5 @@
 /*
- * Punto — design tokens.
+ * Dot — design tokens.
  *
  * Layers: raw palette (--pt-<hue>-<step>) and its spectrum (--pt-spectrum-*), semantic
  * roles (--pt-bg, --pt-fg…) that switch with the theme, and component recipes (glass,
@@ -98,7 +98,7 @@
   --pt-radius-lg: 22px;
   --pt-radius-xl: 32px;
   --pt-radius-pill: 999px;
-  /* Buttons and segmented controls: a pill in v1, a squared control in Punto 2. */
+  /* Buttons and segmented controls: a pill in v1, a squared control in Dot 2. */
   --pt-radius-control: var(--pt-radius-pill);
 
   /* ── Motion ──────────────────────────────────────────────── */
@@ -113,7 +113,7 @@
   --pt-dot-gap: 8px;
   --pt-dot-size: 3px;
 
-  /* ── Glass knobs (Punto 2 turns the blur down and the shine off) ── */
+  /* ── Glass knobs (Dot 2 turns the blur down and the shine off) ── */
   --pt-glass-blur: blur(22px) saturate(150%);
   --pt-glass-shine: 1;
 }
@@ -290,7 +290,7 @@
 
 /*
  * Siena — bone paper and espresso ink; wine → terracotta → ochre. Warm, editorial.
- * It is also the house palette of Punto 2: a v2 scope with no palette on it or above gets Siena.
+ * It is also the house palette of Dot 2: a v2 scope with no palette on it or above gets Siena.
  */
 [data-pt-palette="siena"],
 [data-pt-version="2"]:not([data-pt-palette], [data-pt-palette] *) {

@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }:
 
 {
-  name = "desing";
+  name = "dot";
 
   packages = [
     pkgs.git
