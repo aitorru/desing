@@ -15,9 +15,10 @@ const meta: Meta<PosterArgs> = {
   title: "Pages/Poster",
   parameters: { layout: "fullscreen" },
   args: {
-    brand: "Otherwise",
-    title: "Test the decision before you make it",
-    subtitle: "Simulate outcomes, compare scenarios, and move with more confidence",
+    brand: "dot",
+    title: "Todo verde, por ahora",
+    subtitle:
+      "Estado de servicios, despliegues e incidentes. Sin sorpresas, salvo las de producción",
     pixel: 3,
     seed: 11,
   },
@@ -28,7 +29,7 @@ const meta: Meta<PosterArgs> = {
 };
 export default meta;
 
-/** The reference poster, rebuilt only with Dot pieces. */
+/** A status poster for the office screen, built only with Dot pieces. */
 export const Original: StoryObj<PosterArgs> = {
   render: ({ brand, title, subtitle, pixel, seed }, { globals }) => (
     <DotField

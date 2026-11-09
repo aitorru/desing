@@ -32,29 +32,29 @@ export default meta;
 const ON_PLATE = { "--pt-pattern-accent": "var(--pt-spectrum-6)" } as CSSProperties;
 
 const FIGURES = [
-  { label: "Trayectorias por pregunta", value: "10 000", note: "Monte Carlo, semilla fija" },
-  { label: "Ingresos p50", value: "1,8 M€", note: "A doce meses" },
-  { label: "Riesgo de caída", value: "30 %", note: "Por debajo de 1 M€" },
-  { label: "Tiempo de respuesta", value: "4 s", note: "De la pregunta al informe" },
+  { label: "Disponibilidad", value: "99,95 %", note: "SLO 99,9 % · cumplido" },
+  { label: "Despliegues", value: "61", note: "4 revertidos, ninguno en viernes" },
+  { label: "MTTR", value: "23 min", note: "Mediana de dos incidentes" },
+  { label: "Error budget", value: "64 %", note: "Lo que queda del mes" },
 ];
 
 const STEPS = [
   {
     n: "01",
-    title: "Plantea",
-    text: "Escribe la decisión como una pregunta y marca los supuestos que la mueven.",
+    title: "Lo que se rompió",
+    text: "notificaciones perdió la conexión con colas el martes de madrugada: 41 minutos sin avisos.",
     motif: "fade",
   },
   {
     n: "02",
-    title: "Simula",
-    text: "Cada supuesto se convierte en una distribución; el resto es aritmética paciente.",
+    title: "Lo que mejoró",
+    text: "El p95 de checkout bajó de 180 a 141 ms al mover la caché de sesiones a redis.",
     motif: "diagonal",
   },
   {
     n: "03",
-    title: "Compara",
-    text: "Tres escenarios en la misma escala, con su riesgo a la vista y sin adjetivos.",
+    title: "Lo que viene",
+    text: "postgres pasa de la 15 a la 17 el jueves, de 02:00 a 03:00. Habrá café.",
     motif: "grid",
   },
 ] as const;
@@ -75,20 +75,20 @@ function CoverPage() {
           intensity={0.36}
         />
         <div className="fm-cover__text">
-          <span className="pt-folio">Informe anual · 2026</span>
+          <span className="pt-folio">Informe semanal de plataforma</span>
           <h1 className="pt-display fm-cover__title">
-            Probar la decisión <em>antes</em> de tomarla.
+            Una semana <em>casi</em> tranquila.
           </h1>
           <p className="pt-body fm-cover__lead">
-            Simula resultados, compara escenarios y decide con más calma. Diez mil trayectorias por
-            cada pregunta, resumidas en una sola página.
+            Dos incidentes, 61 despliegues y un error budget que aguanta. Lo de siempre, resumido en
+            una página para quien no estuvo de guardia.
           </p>
           <Stack direction="row" gap={3} wrap>
             <Button variant="aurora" size="lg">
-              Nueva simulación
+              Abrir el panel
             </Button>
             <Button variant="ghost" size="lg">
-              Leer el método
+              Leer el post-mortem
             </Button>
           </Stack>
         </div>
@@ -104,12 +104,12 @@ function CoverPage() {
         <hr className="pt-rule" />
       </section>
 
-      <section className="fm-section fm-gutter" id="método">
+      <section className="fm-section fm-gutter" id="incidentes">
         <SectionHeader
           index="01"
-          eyebrow="Método"
-          title="Tres pasos, una página"
-          description="El mismo orden en cada informe: lo que cambia es la pregunta, no la forma de leerla."
+          eyebrow="La semana"
+          title="Tres cosas que contar"
+          description="El mismo orden cada lunes: qué se rompió, qué mejoró y qué toca. Sin adjetivos."
         />
         <div className="fm-steps">
           {STEPS.map((s) => (
@@ -153,11 +153,11 @@ function CoverPage() {
           }
         >
           <figure className="fm-quote">
-            <span className="pt-eyebrow">Lámina I · Principio</span>
+            <span className="pt-eyebrow">Nota de la guardia</span>
             <blockquote className="pt-display fm-quote__text">
-              No buscamos acertar el futuro; buscamos que no nos <em>sorprenda</em>.
+              Ninguna alerta a las cuatro de la mañana. Lo apuntamos por si no se <em>repite</em>.
             </blockquote>
-            <figcaption className="fm-quote__by">Lucía Ortega, dirección de estrategia</figcaption>
+            <figcaption className="fm-quote__by">Guardia de plataforma, semana 45</figcaption>
           </figure>
         </GlassCard>
       </section>
@@ -176,18 +176,28 @@ const TEAM = [
   { name: "Jon Etxeberria" },
 ];
 
-const ACTIVITY = [
-  { who: "Lucía Ortega", what: "simuló «Subir precio 8 %»", when: "hace 4 min", tag: "+12,4 %" },
-  { who: "Mateo Ibarra", what: "comentó en «Nuevo mercado»", when: "hace 1 h", tag: null },
-  { who: "Noa Villanueva", what: "compartió el informe de Q3", when: "ayer", tag: null },
+const TIMELINE = [
+  {
+    who: "Noa Villanueva",
+    what: "reconoció la alerta ColaSinConsumidores",
+    when: "03:16",
+    tag: null,
+  },
+  {
+    who: "Iker Salaberria",
+    what: "reinició el broker y drenó la cola",
+    when: "03:41",
+    tag: "mitigado",
+  },
+  { who: "Mateo Ibarra", what: "cerró el incidente y abrió PLAT-318", when: "03:53", tag: null },
 ];
 
 function ReportPage() {
-  const [live, setLive] = useState(true);
-  const [digest, setDigest] = useState(false);
+  const [queueAlert, setQueueAlert] = useState(true);
+  const [autoRestart, setAutoRestart] = useState(false);
   return (
     <div className="fm-page">
-      <Masthead current="Resumen" />
+      <Masthead current="Incidentes" />
 
       <section className="fm-head fm-gutter">
         <DotPattern
@@ -202,52 +212,58 @@ function ReportPage() {
         <SectionHeader
           size="lg"
           level={1}
-          index="Plan 2027"
-          eyebrow="Resumen del espacio"
+          index="INC-212"
+          eyebrow="Post-mortem · notificaciones"
           title={
             <>
-              Buenos días, <em>Lucía</em>
+              Cuarenta y un minutos sin <em>avisos</em>
             </>
           }
-          description="Tres escenarios listos para revisar y una simulación en curso."
+          description="El martes a las 03:12 notificaciones dejó de hablar con colas. Esto es lo que pasó y lo que vamos a cambiar."
         />
         <Stack direction="row" gap={3} wrap className="fm-head__actions">
-          <Button variant="aurora">Nueva simulación</Button>
-          <Button variant="ghost">Ver informe</Button>
-          <AvatarGroup people={TEAM} max={4} size="sm" label="Equipo" />
+          <Button variant="aurora">Ver la cronología</Button>
+          <Button variant="ghost">Abrir PLAT-318</Button>
+          <AvatarGroup people={TEAM} max={4} size="sm" label="Respondieron" />
         </Stack>
       </section>
       <hr className="pt-rule" />
 
-      <main className="fm-main fm-gutter" id="resumen">
+      <main className="fm-main fm-gutter" id="incidentes">
         <div className="fm-stats">
           <GlassCard>
             <Stat
-              label="Ingresos p50"
-              value="1,8 M€"
-              delta="+12,4 %"
-              trend="positive"
-              note="A 12 meses"
+              label="Duración"
+              value="41 min"
+              delta="detectado en 4"
+              trend="neutral"
+              note="De 03:12 a 03:53"
             />
           </GlassCard>
           <GlassCard>
             <Stat
-              label="Abandono"
-              value="2,1 %"
-              delta="−0,4 pp"
+              label="Mensajes retrasados"
+              value="12 400"
+              delta="0 perdidos"
               trend="positive"
               chart={
-                <DotBars values={[7, 6, 6, 5, 5, 4, 4, 3]} rows={5} label="Abandono mensual" />
+                <DotBars
+                  values={[1, 3, 5, 7, 7, 6, 3, 1]}
+                  rows={5}
+                  label="Cola por cada cinco minutos"
+                />
               }
             />
           </GlassCard>
           <GlassCard>
             <Stat
-              label="Objetivo Q3"
+              label="Error budget"
               value="64 %"
-              delta="−6 %"
+              delta="−18 pp"
               trend="negative"
-              chart={<DotProgress value={64} count={20} tone="current" label="Objetivo Q3" />}
+              chart={
+                <DotProgress value={64} count={20} tone="current" label="Error budget restante" />
+              }
             />
           </GlassCard>
           <GlassCard
@@ -265,7 +281,7 @@ function ReportPage() {
               />
             }
           >
-            <Stat label="Escenario elegido" value="B" note="Subir precio 8 %" />
+            <Stat label="Severidad" value="SEV-2" note="Sin pérdida de datos" />
           </GlassCard>
         </div>
 
@@ -274,17 +290,13 @@ function ReportPage() {
             <SectionHeader
               size="sm"
               index="01"
-              eyebrow="Actividad"
-              title="Lo último del equipo"
-              actions={
-                <Badge dot="pulse" tone="accent">
-                  En directo
-                </Badge>
-              }
+              eyebrow="Cronología"
+              title="Quién hizo qué"
+              actions={<Badge tone="positive">Resuelto</Badge>}
             />
             <GlassCard>
               <Stack gap={3}>
-                {ACTIVITY.map((a, i) => (
+                {TIMELINE.map((a, i) => (
                   <Fragment key={a.what}>
                     {i > 0 && <DotDivider />}
                     <Stack direction="row" gap={3}>
@@ -303,30 +315,34 @@ function ReportPage() {
                 ))}
               </Stack>
             </GlassCard>
-            <Callout tone="accent" title="Resultado simulado">
-              Las cifras salen de 10 000 trayectorias, no de datos reales.
+            <Callout tone="accent" title="Sin culpables">
+              Este post-mortem describe sistemas, no personas. La alerta tardó; nadie se durmió.
             </Callout>
           </Stack>
 
-          <Stack gap={5} id="ajustes">
-            <SectionHeader size="sm" index="02" eyebrow="Ajustes" title="Este espacio" />
+          <Stack gap={5} id="guardias">
+            <SectionHeader size="sm" index="02" eyebrow="Acciones" title="Para que no vuelva" />
             <GlassCard>
               <Stack gap={4}>
                 <Switch
-                  label="Simulación en directo"
-                  description="Recalcula al cambiar cualquier supuesto."
-                  checked={live}
-                  onChange={(e) => setLive(e.target.checked)}
+                  label="Alerta por cola llena"
+                  description="Avisa si colas pasa de 5 000 mensajes sin consumir."
+                  checked={queueAlert}
+                  onChange={(e) => setQueueAlert(e.target.checked)}
                 />
                 <DotDivider />
                 <Switch
-                  label="Resumen semanal"
-                  description="Los lunes, en tu correo."
-                  checked={digest}
-                  onChange={(e) => setDigest(e.target.checked)}
+                  label="Reinicio automático del broker"
+                  description="Una vez por hora como mucho. Más es tapar el problema."
+                  checked={autoRestart}
+                  onChange={(e) => setAutoRestart(e.target.checked)}
                 />
                 <DotDivider />
-                <Switch label="Exportar a contabilidad" description="Plan Empresa." disabled />
+                <Switch
+                  label="Autoescalado de colas"
+                  description="Pendiente de PLAT-318."
+                  disabled
+                />
               </Stack>
             </GlassCard>
           </Stack>
@@ -362,16 +378,16 @@ function Plate({ ink }: { ink?: boolean }) {
         <div className="fm-plate__top">
           <span className="fm-mast__brand">
             <DotMark size={16} />
-            Otherwise
+            plataforma
           </span>
-          <span className="pt-folio">{ink ? "Lámina II" : "Lámina I"}</span>
+          <span className="pt-folio">{ink ? "De noche" : "De día"}</span>
         </div>
         <div className="fm-plate__copy">
           <h2 className="pt-display fm-plate__title">
-            Test the decision <em>before</em> you make it
+            Todo verde, <em>por ahora</em>
           </h2>
           <p className="fm-plate__sub">
-            Simulate outcomes, compare scenarios, and move with more confidence
+            Estado de servicios, despliegues e incidentes. Sin sorpresas, salvo las de producción
           </p>
         </div>
       </div>
@@ -379,10 +395,10 @@ function Plate({ ink }: { ink?: boolean }) {
   );
 }
 
-/** The cover of a report: rings from the corner, one of them sealed, and nothing moving. */
+/** The cover of a weekly platform report: rings from the corner, one of them sealed, and nothing moving. */
 export const Portada: StoryObj = { render: () => <CoverPage /> };
 
-/** The Workspace dashboard, re-set in v2: paper panels, hairlines, folios and one ink plate. */
+/** A post-mortem in v2: paper panels, hairlines, folios and one ink plate for the severity. */
 export const Informe: StoryObj = { render: () => <ReportPage /> };
 
 /**
@@ -399,7 +415,7 @@ export const Operaciones: StoryObj = {
   ),
 };
 
-/** The original poster, formalised: a halftone sun instead of ribbons, on paper and on ink. */
+/** A status poster for the office screen: a halftone sun instead of ribbons, on paper and on ink. */
 export const Lamina: StoryObj = {
   name: "Lámina",
   render: () => (

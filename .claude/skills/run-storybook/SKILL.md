@@ -13,7 +13,7 @@ Escucha en `0.0.0.0:36006` (`http://pi-home:36006` desde el tailnet). Tarda ~20 
 vez (optimización de dependencias de Vite).
 
 - Story aislada: `/iframe.html?id=<id>&viewMode=story` (p. ej. `pages-poster--original`,
-  `pages-product--scenarios`, `dots-dotfield--palettes`).
+  `pages-product--despliegue`, `dots-dotfield--palettes`).
 - Página MDX: `/iframe.html?id=punto-introducción--docs&viewMode=docs`.
 - Lista de ids: `/index.json`.
 - Tema oscuro: añade `&globals=theme:dark`.

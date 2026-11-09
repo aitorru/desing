@@ -61,7 +61,7 @@ const SERVICES: Service[] = [
     deployed: "ayer",
   },
   {
-    name: "simulador",
+    name: "búsqueda",
     status: "warn",
     state: "Degradado",
     version: "v1.9.3",
@@ -127,7 +127,7 @@ const NODES: DiagramNode[] = [
   { id: "cdn", label: "CDN", sub: "14 PoP", col: 0, row: 1, kind: "external" },
   { id: "gw", label: "api-gateway", sub: ":443 · 6 réplicas", col: 1, row: 1, status: "ok" },
   { id: "web", label: "web", sub: "3 réplicas", col: 2, row: 0, status: "ok" },
-  { id: "sim", label: "simulador", sub: "3/4 réplicas", col: 2, row: 1, status: "warn" },
+  { id: "sim", label: "búsqueda", sub: "3/4 réplicas", col: 2, row: 1, status: "warn" },
   { id: "notif", label: "notificaciones", sub: "0/2 réplicas", col: 2, row: 2, status: "error" },
   { id: "pg", label: "postgres", sub: "primario + 2", col: 3, row: 0, kind: "store", status: "ok" },
   { id: "redis", label: "redis", sub: "caché", col: 3, row: 1, kind: "store", status: "ok" },
@@ -175,7 +175,7 @@ const LOGS: LogEntry[] = [
     time: "12:04:31",
     level: "info",
     source: "api-gateway   ",
-    message: "GET /v1/escenarios 200 · 84 ms",
+    message: "GET /v1/carrito 200 · 84 ms",
   },
   {
     time: "12:04:33",
@@ -186,7 +186,7 @@ const LOGS: LogEntry[] = [
   {
     time: "12:04:38",
     level: "warn",
-    source: "simulador     ",
+    source: "búsqueda      ",
     message: "p95 412 ms supera el umbral de 300 ms",
   },
   {
@@ -211,7 +211,7 @@ const LOGS: LogEntry[] = [
     time: "12:05:02",
     level: "info",
     source: "api-gateway   ",
-    message: "POST /v1/simulaciones 202 · 141 ms",
+    message: "POST /v1/pedidos 202 · 141 ms",
   },
 ];
 

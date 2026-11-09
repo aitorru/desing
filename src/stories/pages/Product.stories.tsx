@@ -25,42 +25,42 @@ export default meta;
 
 type Key = "a" | "b" | "c";
 
-interface Scenario {
+interface Region {
   key: Key;
   name: string;
   value: string;
   delta: string;
   positive: boolean;
-  risk: string;
+  budget: string;
   series: number[];
 }
 
-const SCENARIOS: Scenario[] = [
+const REGIONS: Region[] = [
   {
     key: "a",
-    name: "Mantener",
-    value: "1,6 M€",
-    delta: "+2,1 %",
+    name: "eu-west-1",
+    value: "141 ms",
+    delta: "−22 ms",
     positive: true,
-    risk: "Bajo",
+    budget: "82 %",
     series: [5, 5, 6, 5, 6, 6, 6, 7, 6, 7],
   },
   {
     key: "b",
-    name: "Subir precio 8 %",
-    value: "1,8 M€",
-    delta: "+12,4 %",
+    name: "eu-central-1",
+    value: "156 ms",
+    delta: "−9 ms",
     positive: true,
-    risk: "Medio",
+    budget: "64 %",
     series: [5, 6, 5, 7, 7, 8, 8, 9, 10, 11],
   },
   {
     key: "c",
-    name: "Nuevo mercado",
-    value: "1,4 M€",
-    delta: "−6,8 %",
+    name: "us-east-1",
+    value: "238 ms",
+    delta: "+41 ms",
     positive: false,
-    risk: "Alto",
+    budget: "21 %",
     series: [5, 4, 3, 3, 4, 5, 6, 8, 9, 12],
   },
 ];
@@ -68,7 +68,7 @@ const SCENARIOS: Scenario[] = [
 type Phase = "idle" | "running" | "done";
 
 function ProductScreen({ hero }: { hero: DotPaletteName }) {
-  const [question, setQuestion] = useState("¿Qué pasa si subimos el precio un 8 % en enero?");
+  const [question, setQuestion] = useState("checkout:2.32.0");
   const [phase, setPhase] = useState<Phase>("done");
   const [progress, setProgress] = useState(100);
   const [chosen, setChosen] = useState<Key>("b");
@@ -76,7 +76,7 @@ function ProductScreen({ hero }: { hero: DotPaletteName }) {
 
   useEffect(() => () => clearInterval(timer.current), []);
 
-  const simulate = () => {
+  const deploy = () => {
     clearInterval(timer.current);
     setPhase("running");
     setProgress(0);
@@ -99,17 +99,17 @@ function ProductScreen({ hero }: { hero: DotPaletteName }) {
           <span className="pg-nav__mark">
             <Petals tone="bloom" />
           </span>
-          Otherwise
+          plataforma
         </div>
         <nav className="pg-nav__links" aria-label="Principal">
-          <a href="#decisiones" aria-current="page">
-            Decisiones
+          <a href="#despliegues" aria-current="page">
+            Despliegues
           </a>
-          <a href="#modelos">Modelos</a>
-          <a href="#equipo">Equipo</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#guardias">Guardias</a>
         </nav>
         <Button variant="ghost" size="sm">
-          Invitar
+          Runbooks
         </Button>
       </header>
 
@@ -127,14 +127,14 @@ function ProductScreen({ hero }: { hero: DotPaletteName }) {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                simulate();
+                deploy();
               }}
               className="pg-ask__form"
             >
-              <span className="pt-eyebrow">Nueva simulación</span>
-              <h1 className="pt-display pg-ask__title">Test the decision before you make it</h1>
+              <span className="pt-eyebrow">Nuevo despliegue</span>
+              <h1 className="pt-display pg-ask__title">Desplegar sin contener la respiración</h1>
               <TextField
-                label="Decisión"
+                label="Imagen"
                 hideLabel
                 value={question}
                 onChange={(e) => setQuestion(e.target.value)}
@@ -148,35 +148,35 @@ function ProductScreen({ hero }: { hero: DotPaletteName }) {
                   loading={phase === "running"}
                   icon={<Sparkle size={14} />}
                 >
-                  {phase === "running" ? "Simulando" : "Simular"}
+                  {phase === "running" ? "Desplegando" : "Desplegar"}
                 </Button>
-                <span className="pg-ask__meta">10 000 trayectorias · 12 meses</span>
+                <span className="pg-ask__meta">canario 10 → 50 → 100 · 3 regiones</span>
               </div>
               {phase === "running" && (
-                <DotProgress value={progress} count={32} label="Progreso de la simulación" />
+                <DotProgress value={progress} count={32} label="Progreso del despliegue" />
               )}
             </form>
           </GlassCard>
         </div>
       </DotField>
 
-      <main className="pg-results" id="decisiones">
+      <main className="pg-results" id="despliegues">
         <div className="pg-results__head">
           <div>
-            <span className="pt-eyebrow">Resultados</span>
-            <h2 className="pt-display pg-results__title">Compare scenarios</h2>
+            <span className="pt-eyebrow">Después del despliegue</span>
+            <h2 className="pt-display pg-results__title">Por región</h2>
           </div>
           <Segmented
-            options={SCENARIOS.map((s) => ({ value: s.key, label: s.name }))}
+            options={REGIONS.map((s) => ({ value: s.key, label: s.name }))}
             value={chosen}
             onChange={setChosen}
-            label="Escenario elegido"
+            label="Región"
             size="sm"
           />
         </div>
 
         <div className="pg-results__grid" aria-busy={phase === "running"}>
-          {SCENARIOS.map((s) => (
+          {REGIONS.map((s) => (
             <GlassCard
               key={s.key}
               tone={s.key === chosen ? "bloom" : "solid"}
@@ -186,7 +186,7 @@ function ProductScreen({ hero }: { hero: DotPaletteName }) {
             >
               {phase === "running" ? (
                 <div className="pg-scenario__loading">
-                  <DotLoader variant="wave" size="lg" label={`Calculando ${s.name}`} />
+                  <DotLoader variant="wave" size="lg" label={`Desplegando en ${s.name}`} />
                 </div>
               ) : (
                 <div className="pg-scenario__body">
@@ -200,12 +200,12 @@ function ProductScreen({ hero }: { hero: DotPaletteName }) {
                     </Badge>
                   </div>
                   <p className="pt-display pg-scenario__value">{s.value}</p>
-                  <p className="pg-scenario__note">Ingresos p50 a 12 meses · riesgo {s.risk}</p>
+                  <p className="pg-scenario__note">Latencia p95 · error budget {s.budget}</p>
                   <DotBars
                     values={s.series}
                     rows={7}
                     highlight={s.key === chosen ? s.series.length - 1 : undefined}
-                    label={`Evolución mensual de ${s.name}`}
+                    label={`p95 por hora en ${s.name}`}
                   />
                 </div>
               )}
@@ -217,7 +217,7 @@ function ProductScreen({ hero }: { hero: DotPaletteName }) {
   );
 }
 
-/** A full product screen. Press «Simular» to see every dot component work together. */
-export const Scenarios: StoryObj = {
+/** A full deploy screen. Press «Desplegar» to see every dot component work together. */
+export const Despliegue: StoryObj = {
   render: (_, { globals }) => <ProductScreen hero={heroPalette(globals)} />,
 };

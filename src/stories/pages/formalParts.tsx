@@ -1,12 +1,12 @@
 import type { ReactNode } from "react";
 import { Button, DotMark, DotPattern } from "../../index";
 
-const LINKS = ["Resumen", "Escenarios", "Método", "Ajustes"];
+const LINKS = ["Resumen", "Servicios", "Incidentes", "Guardias"];
 
 export function Masthead({
   current,
   links = LINKS,
-  issue = "Nº 02 · Otoño 2026",
+  issue = "Semana 45 · 2026",
   end,
 }: {
   current: string;
@@ -20,7 +20,7 @@ export function Masthead({
       <header className="fm-mast fm-gutter">
         <span className="fm-mast__brand">
           <DotMark size={18} />
-          Otherwise
+          plataforma
         </span>
         <nav className="fm-mast__links" aria-label="Principal">
           {links.map((l) => (
@@ -36,7 +36,7 @@ export function Masthead({
         {issue != null && <span className="pt-folio fm-mast__issue">{issue}</span>}
         {end ?? (
           <Button variant="ghost" size="sm">
-            Entrar
+            Runbooks
           </Button>
         )}
       </header>
@@ -52,8 +52,8 @@ export function Colophon() {
         <DotPattern motif="grid" falloff={0} intensity={0.34} highlight={0} origin="left" />
       </div>
       <div className="fm-foot__line">
-        <span>Otherwise · Dot 2, edición formal</span>
-        <span>Compuesto en Instrument Serif, Inter Tight e IBM Plex Mono</span>
+        <span>Equipo de plataforma · informe hecho con Dot 2</span>
+        <span>Cifras de ejemplo. Si se parecen a las tuyas, lo sentimos</span>
       </div>
     </footer>
   );
