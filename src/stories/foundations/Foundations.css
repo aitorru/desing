@@ -161,3 +161,54 @@
   border-radius: var(--pt-radius-pill);
   background: var(--pt-gradient-aurora);
 }
+
+/* ── Versions: Punto 1 next to Punto 2 ──────────────────────── */
+.fd-ver__pair {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(520px, 100%), 1fr));
+  min-height: 100vh;
+}
+
+.fd-ver {
+  display: grid;
+  align-content: start;
+  gap: 24px;
+  padding: 40px;
+}
+
+.fd-ver__desc {
+  font-size: var(--pt-text-sm);
+  color: var(--pt-fg-muted);
+}
+
+.fd-ver__hero {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  align-items: end;
+  min-height: 272px;
+  padding: 24px;
+  border-radius: var(--pt-radius-xl);
+}
+
+.fd-ver__hero > .pt-dotfield__content {
+  display: grid;
+  align-items: end;
+  height: 100%;
+}
+
+.fd-ver__hero--paper {
+  border: 1px solid var(--pt-border-strong);
+  background: var(--pt-bg-raised);
+}
+
+.fd-ver__intro {
+  position: relative;
+  max-width: 420px;
+}
+
+.fd-ver__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}

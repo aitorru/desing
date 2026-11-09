@@ -47,6 +47,8 @@
   --pt-on-aurora: #fff;
   --pt-positive-hue: #2f9e6e;
   --pt-negative-hue: var(--pt-rose);
+  /* Degraded / needs attention. Shared by every palette: a status must not change meaning. */
+  --pt-warning-hue: #a86a12;
   /* Tint of the soft shadows under glass on the light theme. */
   --pt-shadow-hue: rgb(60 30 90);
 
@@ -63,7 +65,7 @@
   /* ── Typography ──────────────────────────────────────────── */
   --pt-font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
   --pt-font-sans: "Inter Tight Variable", "Inter Tight", system-ui, sans-serif;
-  --pt-font-mono: ui-monospace, "SF Mono", "JetBrains Mono", monospace;
+  --pt-font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", "JetBrains Mono", monospace;
 
   --pt-text-xs: 0.75rem;
   --pt-text-sm: 0.875rem;
@@ -96,6 +98,8 @@
   --pt-radius-lg: 22px;
   --pt-radius-xl: 32px;
   --pt-radius-pill: 999px;
+  /* Buttons and segmented controls: a pill in v1, a squared control in Punto 2. */
+  --pt-radius-control: var(--pt-radius-pill);
 
   /* ── Motion ──────────────────────────────────────────────── */
   --pt-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -108,6 +112,10 @@
   /* ── Dots ────────────────────────────────────────────────── */
   --pt-dot-gap: 8px;
   --pt-dot-size: 3px;
+
+  /* ── Glass knobs (Punto 2 turns the blur down and the shine off) ── */
+  --pt-glass-blur: blur(22px) saturate(150%);
+  --pt-glass-shine: 1;
 }
 
 /*
@@ -143,6 +151,7 @@
   --pt-focus: var(--pt-spectrum-2);
   --pt-positive: var(--pt-positive-hue);
   --pt-negative: var(--pt-negative-hue);
+  --pt-warning: var(--pt-warning-hue);
   --pt-dot-faint: color-mix(in srgb, var(--pt-ink-900) 7%, transparent);
 
   --pt-glass-bg: linear-gradient(160deg, rgb(255 255 255 / 0.55), rgb(255 255 255 / 0.3));
@@ -153,8 +162,9 @@
     0 2px 6px color-mix(in srgb, var(--pt-shadow-hue) 6%, transparent);
 }
 
-/* ── Semantic roles: dark ───────────────────────────────────── */
-[data-pt-theme="dark"] {
+/* ── Semantic roles: dark (Ink) and OLED (true black) ───────── */
+[data-pt-theme="dark"],
+[data-pt-theme="oled"] {
   color-scheme: dark;
   --pt-bg: var(--pt-ink-900);
   --pt-bg-raised: var(--pt-ink-800);
@@ -169,6 +179,7 @@
   --pt-focus: var(--pt-spectrum-soft);
   --pt-positive: color-mix(in oklab, var(--pt-positive-hue), #fff 30%);
   --pt-negative: color-mix(in oklab, var(--pt-negative-hue), #fff 30%);
+  --pt-warning: color-mix(in oklab, var(--pt-warning-hue), #fff 42%);
   --pt-dot-faint: rgb(255 255 255 / 0.06);
 
   --pt-glass-bg: linear-gradient(160deg, rgb(255 255 255 / 0.12), rgb(255 255 255 / 0.04));
@@ -176,6 +187,25 @@
   --pt-glass-shadow:
     0 1px 0 rgb(255 255 255 / 0.12) inset, 0 24px 60px -24px rgb(0 0 0 / 0.6),
     0 2px 6px rgb(0 0 0 / 0.2);
+}
+
+/*
+ * OLED: Ink on a true-black page, so unlit pixels stay off. Depth cannot come from shadow
+ * on black, so surfaces lift by a step of ink and hairlines carry the structure. Text is
+ * one step below pure white to keep glare and smearing down on scroll.
+ */
+[data-pt-theme="oled"] {
+  --pt-bg: #000;
+  --pt-bg-raised: color-mix(in srgb, var(--pt-ink-900) 72%, #000);
+  --pt-bg-sunken: #000;
+  --pt-fg: var(--pt-mist-100);
+  --pt-border: rgb(255 255 255 / 0.13);
+  --pt-border-strong: rgb(255 255 255 / 0.26);
+  --pt-dot-faint: rgb(255 255 255 / 0.08);
+
+  --pt-glass-bg: linear-gradient(160deg, rgb(255 255 255 / 0.09), rgb(255 255 255 / 0.03));
+  --pt-glass-border: rgb(255 255 255 / 0.18);
+  --pt-glass-shadow: 0 1px 0 rgb(255 255 255 / 0.1) inset;
 }
 
 [data-pt-theme] {
@@ -258,8 +288,12 @@
   --pt-bloom-wash: rgb(190 240 230);
 }
 
-/* Siena — bone paper and espresso ink; wine → terracotta → ochre. Warm, editorial. */
-[data-pt-palette="siena"] {
+/*
+ * Siena — bone paper and espresso ink; wine → terracotta → ochre. Warm, editorial.
+ * It is also the house palette of Punto 2: a v2 scope without a palette gets Siena.
+ */
+[data-pt-palette="siena"],
+[data-pt-version="2"]:not([data-pt-palette]) {
   --pt-mist-50: #faf7f2;
   --pt-mist-100: #f3eee5;
   --pt-mist-200: #e7dfd2;
@@ -360,6 +394,33 @@
     transparent 1.4px
   );
   background-size: var(--pt-dot-gap) var(--pt-dot-gap);
+}
+
+/* Folio: the small tabular number that orders sections, figures and plates ("01", "Nº 02"). */
+.pt-folio {
+  font-family: var(--pt-font-sans);
+  font-size: var(--pt-text-xs);
+  font-weight: 560;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--pt-tracking-caps);
+  text-transform: uppercase;
+  color: var(--pt-accent);
+}
+
+/* Machine text: identifiers, versions, hashes, figures in tables. */
+.pt-mono {
+  font-family: var(--pt-font-mono);
+  font-size: 0.92em;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* Hairline rule: the solid counterpart of the dotted divider, for mastheads and tables. */
+.pt-rule {
+  height: 1px;
+  margin: 0;
+  border: 0;
+  background: var(--pt-border-strong);
 }
 
 .pt-sr-only {

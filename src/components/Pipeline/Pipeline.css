@@ -1,0 +1,150 @@
+.pt-pipeline {
+  --node: 16px;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--pt-fg);
+  font-family: var(--pt-font-sans);
+}
+
+.pt-pipeline--vertical {
+  flex-direction: column;
+}
+
+.pt-pipeline__stage {
+  --c: var(--pt-fg-subtle);
+  flex: 1 1 0;
+  display: grid;
+  gap: var(--pt-space-3);
+  min-width: 0;
+}
+
+.pt-pipeline__stage:last-child {
+  flex: 0 1 auto;
+}
+
+.pt-pipeline--vertical .pt-pipeline__stage {
+  grid-template-columns: var(--node) 1fr;
+  gap: var(--pt-space-4);
+  min-height: 64px;
+}
+
+.pt-pipeline__stage--ok {
+  --c: var(--pt-positive);
+}
+.pt-pipeline__stage--warn {
+  --c: var(--pt-warning);
+}
+.pt-pipeline__stage--error {
+  --c: var(--pt-negative);
+}
+.pt-pipeline__stage--running {
+  --c: var(--pt-accent);
+}
+
+.pt-pipeline__track {
+  display: flex;
+  align-items: center;
+  gap: var(--pt-space-2);
+  height: var(--node);
+}
+
+.pt-pipeline--vertical .pt-pipeline__track {
+  flex-direction: column;
+  height: auto;
+}
+
+.pt-pipeline__node {
+  flex: none;
+  width: var(--node);
+  height: var(--node);
+  border-radius: 50%;
+  background: var(--c);
+  box-sizing: border-box;
+}
+
+/* Not started: a hollow dot. In progress: a core inside a breathing ring. */
+.pt-pipeline__stage--idle .pt-pipeline__node {
+  background: transparent;
+  border: 1.5px solid var(--pt-border-strong);
+}
+
+.pt-pipeline__stage--running .pt-pipeline__node {
+  background: radial-gradient(circle, var(--c) 0 4px, transparent 4.6px);
+  border: 1.5px solid var(--c);
+  animation: pt-pipeline-pulse 1.8s var(--pt-ease-in-out) infinite;
+}
+
+@keyframes pt-pipeline-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--c) 40%, transparent);
+  }
+  60% {
+    box-shadow: 0 0 0 6px color-mix(in srgb, var(--c) 0%, transparent);
+  }
+}
+
+/* The link is dotted; it is solid ink once its stage is done. */
+.pt-pipeline__link {
+  --dot: radial-gradient(circle at center, #000 0 1.3px, transparent 1.7px);
+  flex: 1;
+  min-width: var(--pt-space-4);
+  height: var(--pt-dot-gap);
+  margin-right: var(--pt-space-2);
+  background: var(--pt-border-strong);
+  mask: var(--dot) 0 50% / var(--pt-dot-gap) var(--pt-dot-gap) repeat-x;
+  -webkit-mask: var(--dot) 0 50% / var(--pt-dot-gap) var(--pt-dot-gap) repeat-x;
+}
+
+.pt-pipeline--vertical .pt-pipeline__link {
+  width: var(--pt-dot-gap);
+  min-width: 0;
+  min-height: var(--pt-space-4);
+  height: auto;
+  margin: 0 0 var(--pt-space-2);
+  mask: var(--dot) 50% 0 / var(--pt-dot-gap) var(--pt-dot-gap) repeat-y;
+  -webkit-mask: var(--dot) 50% 0 / var(--pt-dot-gap) var(--pt-dot-gap) repeat-y;
+}
+
+.pt-pipeline__stage--ok .pt-pipeline__link,
+.pt-pipeline__stage--warn .pt-pipeline__link {
+  background: var(--pt-fg);
+}
+
+.pt-pipeline__text {
+  display: grid;
+  gap: 2px;
+  min-width: 0;
+  padding-right: var(--pt-space-3);
+}
+
+.pt-pipeline__label {
+  overflow-wrap: break-word;
+  font-size: var(--pt-text-sm);
+  font-weight: 560;
+  letter-spacing: -0.005em;
+}
+
+.pt-pipeline__stage--idle .pt-pipeline__label {
+  color: var(--pt-fg-muted);
+  font-weight: 500;
+}
+
+.pt-pipeline__meta {
+  font-size: var(--pt-text-xs);
+  color: var(--pt-fg-subtle);
+  font-variant-numeric: tabular-nums;
+}
+
+.pt-pipeline__stage--error .pt-pipeline__meta,
+.pt-pipeline__stage--running .pt-pipeline__meta {
+  color: var(--c);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pt-pipeline__stage--running .pt-pipeline__node {
+    animation: none;
+  }
+}

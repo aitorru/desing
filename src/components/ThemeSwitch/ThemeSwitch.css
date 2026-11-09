@@ -1,0 +1,102 @@
+.pt-themeswitch {
+  --h: 40px;
+  --pad: 4px;
+  position: relative;
+  display: inline-grid;
+  grid-template-columns: repeat(var(--n), 1fr);
+  /* The row carries the height: a fieldset does not stretch its grid to a fixed height. */
+  grid-auto-rows: calc(var(--h) - 2 * var(--pad) - 2px);
+  min-width: 0;
+  margin: 0;
+  padding: var(--pad);
+  border: 1px solid var(--pt-border);
+  border-radius: var(--pt-radius-control);
+  background: color-mix(in srgb, var(--pt-bg-sunken) 60%, transparent);
+  isolation: isolate;
+}
+
+.pt-themeswitch--sm {
+  --h: 32px;
+  --pad: 3px;
+}
+
+.pt-themeswitch__thumb {
+  position: absolute;
+  z-index: -1;
+  top: var(--pad);
+  bottom: var(--pad);
+  left: var(--pad);
+  width: calc((100% - 2 * var(--pad)) / var(--n));
+  border: 1px solid var(--pt-border);
+  border-radius: calc(var(--pt-radius-control) - var(--pad));
+  background: var(--pt-bg-raised);
+  box-sizing: border-box;
+  transform: translateX(calc(var(--i) * 100%));
+  transition: transform var(--pt-duration-base) var(--pt-ease);
+}
+
+.pt-themeswitch__item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 14px;
+  border-radius: calc(var(--pt-radius-control) - var(--pad));
+  color: var(--pt-fg-muted);
+  font: 500 var(--pt-text-sm) / 1 var(--pt-font-sans);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color var(--pt-duration-base) var(--pt-ease);
+}
+
+.pt-themeswitch--sm .pt-themeswitch__item {
+  padding: 0 10px;
+  font-size: var(--pt-text-xs);
+}
+
+.pt-themeswitch--icons .pt-themeswitch__item {
+  padding: 0 10px;
+}
+
+.pt-themeswitch__item.is-active {
+  color: var(--pt-fg);
+}
+
+.pt-themeswitch__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.pt-themeswitch__item:has(:focus-visible) {
+  outline: 2px solid var(--pt-focus);
+  outline-offset: 1px;
+}
+
+/* The glyphs are dots, like everything else. */
+.pt-themeswitch__glyph {
+  flex: none;
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid currentColor;
+  border-radius: 50%;
+  box-sizing: border-box;
+}
+
+.pt-themeswitch__glyph--system {
+  background: linear-gradient(90deg, currentColor 50%, transparent 50%);
+}
+
+.pt-themeswitch__glyph--dark {
+  background: currentColor;
+}
+
+.pt-themeswitch__glyph--oled {
+  background: currentColor;
+  box-shadow:
+    0 0 0 1.5px var(--pt-bg-raised),
+    0 0 0 3px currentColor;
+  width: 8px;
+  height: 8px;
+  margin: 2px;
+}

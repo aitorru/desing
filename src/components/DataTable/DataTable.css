@@ -1,0 +1,144 @@
+.pt-table {
+  --row: 48px;
+  --px: var(--pt-space-4);
+  width: 100%;
+  overflow-x: auto;
+  color: var(--pt-fg);
+  font-family: var(--pt-font-sans);
+  font-size: var(--pt-text-sm);
+}
+
+.pt-table--compact {
+  --row: 36px;
+  --px: var(--pt-space-3);
+}
+
+.pt-table__table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.pt-table__caption {
+  padding: 0 0 var(--pt-space-3);
+  text-align: start;
+  font-size: var(--pt-text-sm);
+  color: var(--pt-fg-muted);
+  caption-side: top;
+}
+
+.pt-table__th,
+.pt-table__td {
+  height: var(--row);
+  padding: 0 var(--px);
+  text-align: start;
+  white-space: nowrap;
+}
+
+.pt-table__th:first-child,
+.pt-table__td:first-child {
+  padding-inline-start: 0;
+}
+
+.pt-table__th:last-child,
+.pt-table__td:last-child {
+  padding-inline-end: 0;
+}
+
+.pt-table__th.is-end,
+.pt-table__td.is-end {
+  text-align: end;
+}
+
+/* Header: small caps over a strong hairline, like the head of a ledger. */
+.pt-table__th {
+  height: 36px;
+  border-bottom: 1px solid var(--pt-fg);
+  color: var(--pt-fg-subtle);
+  font-size: var(--pt-text-xs);
+  font-weight: 560;
+  letter-spacing: var(--pt-tracking-caps);
+  text-transform: uppercase;
+}
+
+.pt-table__sort {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: var(--pt-radius-sm);
+  background: none;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+
+.pt-table__sort:hover {
+  color: var(--pt-fg);
+}
+
+/* Sort mark: two dots; the one in the sort direction lights up. */
+.pt-table__arrow {
+  width: 4px;
+  height: 12px;
+  background:
+    radial-gradient(circle, currentColor 0 1.6px, transparent 2px) 50% 0 / 4px 4px no-repeat,
+    radial-gradient(circle, currentColor 0 1.6px, transparent 2px) 50% 100% / 4px 4px no-repeat;
+  opacity: 0.45;
+}
+
+.pt-table__arrow.is-asc {
+  background:
+    radial-gradient(circle, var(--pt-accent) 0 2px, transparent 2.4px) 50% 0 / 4px 4px no-repeat,
+    radial-gradient(circle, currentColor 0 1.2px, transparent 1.6px) 50% 100% / 4px 4px no-repeat;
+  opacity: 1;
+}
+
+.pt-table__arrow.is-desc {
+  background:
+    radial-gradient(circle, currentColor 0 1.2px, transparent 1.6px) 50% 0 / 4px 4px no-repeat,
+    radial-gradient(circle, var(--pt-accent) 0 2px, transparent 2.4px) 50% 100% / 4px 4px no-repeat;
+  opacity: 1;
+}
+
+.pt-table__td {
+  border-bottom: 1px solid var(--pt-border);
+}
+
+.pt-table__row:last-child > .pt-table__td {
+  border-bottom-color: var(--pt-border-strong);
+}
+
+/* Selected: an accent edge on the first cell, not a filled row. */
+.pt-table__row.is-selected > .pt-table__td {
+  background: color-mix(in srgb, var(--pt-accent) 7%, transparent);
+}
+
+.pt-table__row.is-interactive {
+  cursor: pointer;
+}
+
+.pt-table__row.is-interactive:hover > .pt-table__td {
+  background: color-mix(in srgb, var(--pt-fg) 4%, transparent);
+}
+
+.pt-table__row:focus-visible {
+  outline: 2px solid var(--pt-focus);
+  outline-offset: -2px;
+}
+
+.pt-table__row.is-selected > .pt-table__td:first-child {
+  box-shadow: inset 2px 0 0 var(--pt-accent);
+  padding-inline-start: var(--pt-space-3);
+}
+
+.pt-table__empty {
+  height: 96px;
+  text-align: center;
+  color: var(--pt-fg-subtle);
+  border-bottom: 1px solid var(--pt-border-strong);
+}

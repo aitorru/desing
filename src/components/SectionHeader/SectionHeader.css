@@ -22,6 +22,12 @@
   max-width: 720px;
 }
 
+.pt-sectionheader__eyebrow {
+  display: flex;
+  align-items: baseline;
+  gap: var(--pt-space-3);
+}
+
 .pt-sectionheader__title {
   font-size: var(--title);
   color: var(--pt-fg);

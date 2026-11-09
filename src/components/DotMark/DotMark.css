@@ -1,0 +1,10 @@
+.pt-dotmark {
+  display: inline-block;
+  flex: none;
+  fill: currentColor;
+  vertical-align: middle;
+}
+
+.pt-dotmark__seal {
+  fill: var(--pt-accent);
+}

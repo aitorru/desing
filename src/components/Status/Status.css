@@ -1,0 +1,65 @@
+.pt-status {
+  --c: var(--pt-fg-subtle);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--pt-space-2);
+  color: var(--pt-fg);
+  font: 500 var(--pt-text-sm) / 1.2 var(--pt-font-sans);
+  white-space: nowrap;
+}
+
+.pt-status--ok {
+  --c: var(--pt-positive);
+}
+.pt-status--warn {
+  --c: var(--pt-warning);
+}
+.pt-status--error {
+  --c: var(--pt-negative);
+}
+.pt-status--running {
+  --c: var(--pt-accent);
+}
+
+.pt-status__dot {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c);
+}
+
+/* Shape backs the colour up: idle is hollow, warn is a half, error a ring with a core. */
+.pt-status--idle .pt-status__dot {
+  background: transparent;
+  box-shadow: inset 0 0 0 1.5px var(--c);
+}
+
+.pt-status--warn .pt-status__dot {
+  background: linear-gradient(0deg, var(--c) 50%, transparent 50%);
+  box-shadow: inset 0 0 0 1.5px var(--c);
+}
+
+.pt-status--error .pt-status__dot {
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--c) 28%, transparent);
+}
+
+.pt-status__dot--pulse {
+  animation: pt-status-pulse 1.8s var(--pt-ease-in-out) infinite;
+}
+
+@keyframes pt-status-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--c) 45%, transparent);
+  }
+  60% {
+    box-shadow: 0 0 0 5px color-mix(in srgb, var(--c) 0%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pt-status__dot--pulse {
+    animation: none;
+  }
+}

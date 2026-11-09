@@ -1,0 +1,181 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import { DotMark, DotPattern, GlassCard } from "../index";
+
+<Meta title="Punto/Versión 2" />
+
+<div
+  className="sb-unstyled"
+  data-pt-theme="light"
+  data-pt-version="2"
+  style={{
+    position: "relative",
+    overflow: "hidden",
+    borderRadius: 16,
+    border: "1px solid var(--pt-border-strong)",
+    margin: "8px 0 40px",
+    padding: "96px 40px 40px",
+  }}
+>
+  <DotPattern motif="rings" anchor="top-right" cols={64} rows={36} period={7} highlight={4} intensity={0.36} />
+  <div style={{ position: "relative", display: "grid", gap: 12, maxWidth: 440 }}>
+    <span className="pt-folio">Propuesta · Punto 2</span>
+    <h1 className="pt-display" style={{ fontSize: 52 }}>
+      El mismo punto, <em>compuesto</em>
+    </h1>
+  </div>
+</div>
+
+# Punto 2 — la edición formal
+
+Punto 1 convirtió un póster en un sistema. Funciona, pero habla siempre en voz alta: cintas de
+color que fluyen, vidrio esmerilado y un degradado en cada llamada a la acción. **Punto 2
+conserva la unidad —el punto, la rejilla, la serif tranquila— y cambia el tono**: del póster
+al informe. Menos textura, más composición.
+
+Se activa con un atributo, junto al tema, y no rompe nada de v1:
+
+```html
+<html data-pt-theme="light" data-pt-version="2">
+```
+
+## Cinco decisiones
+
+| | Punto 1 | Punto 2 |
+| --- | --- | --- |
+| **Puntos** | Textura: cintas aleatorias que fluyen (`DotField`) | **Patrón**: seis motivos geométricos, quietos y anclados (`DotPattern`) |
+| **Color** | Degradado violeta → magenta → coral | **Un sello**: un único acento sólido por pantalla |
+| **Superficie** | Vidrio esmerilado con brillo | **Papel y filete**: panel casi opaco, borde de 1 px, sombra corta |
+| **Forma** | Radios 8 / 14 / 22 / 32 y botones píldora | **Todo en la rejilla**: 4 / 8 / 12 / 16 y controles rectos |
+| **Paleta** | Punto (lavanda) | **Siena** de serie: papel hueso, tinta café, terracota |
+
+1. **El patrón sustituye a la cinta.** Un patrón no es ruido: es geometría sobre la rejilla de
+   8 px, sale siempre igual y se coloca con intención —en una esquina, en un borde, detrás de
+   una cifra—. Uno por superficie.
+2. **Un solo sello.** El color intenso deja de ser un degradado y pasa a ser una marca: el
+   botón principal, un anillo del patrón, un folio. Si hay dos sellos en pantalla, sobra uno.
+3. **Papel antes que vidrio.** Los paneles son papel con un filete. El tinte `bloom` se
+   convierte en una **lámina de tinta**: la superficie oscura que lleva la cita o la cifra
+   elegida, con su patrón en ocre.
+4. **Orden editorial.** Folios (`.pt-folio`, `SectionHeader index="01"`), filetes (`.pt-rule`)
+   y cursivas de la serif para el énfasis. Las cifras van en fila pautada, no en cuatro
+   tarjetas.
+5. **Quieto por defecto.** Un patrón no se mueve; como mucho respira (`motion="breathe"`, un
+   ciclo de siete segundos). `DotField` sigue existiendo para lo ceremonial: una portada, un
+   lanzamiento.
+
+## Los motivos
+
+<div
+  className="sb-unstyled"
+  data-pt-theme="light"
+  data-pt-version="2"
+  style={{
+    display: "grid",
+    gridTemplateColumns: "repeat(3, 1fr)",
+    gap: 16,
+    margin: "24px 0",
+    background: "transparent",
+  }}
+>
+  {["grid", "fade", "rings", "orb", "wave", "diagonal"].map((m) => (
+    <GlassCard
+      key={m}
+      padding="none"
+      backdrop={
+        <DotPattern
+          motif={m}
+          anchor={m === "orb" ? "right" : "top-right"}
+          cols={m === "orb" ? 16 : 26}
+          rows={16}
+          highlight={m === "fade" || m === "grid" ? null : 1}
+          intensity={0.4}
+          style={m === "orb" ? { right: 16 } : undefined}
+        />
+      }
+    >
+      <div style={{ padding: "136px 16px 16px" }}>
+        <span className="pt-folio">{m}</span>
+      </div>
+    </GlassCard>
+  ))}
+</div>
+
+```tsx
+<GlassCard backdrop={<DotPattern motif="rings" anchor="top-right" cols={22} rows={14} highlight={2} />}>
+  …
+</GlassCard>
+```
+
+| Prop | Qué hace |
+| --- | --- |
+| `motif` | `grid` · `fade` · `rings` · `orb` · `wave` · `diagonal` |
+| `cols`, `rows` | Tamaño en puntos. Sin ellos, rellena el contenedor posicionado |
+| `anchor` | Lo fija a una esquina, un borde o el centro; el motivo crece desde ahí (`origin` lo cambia) |
+| `highlight` | La banda (anillo, cresta, diagonal…) que lleva el sello. `null` = ninguna |
+| `tone`, `intensity` | `ink` / `accent` / `current` y opacidad: un patrón se intuye, no se lee |
+| `period`, `falloff` | Separación entre bandas y cuánto se apaga al alejarse del origen |
+
+A diferencia de `DotField`, **lee los roles del tema**: el mismo patrón sirve en cualquier
+paleta, en Mist y en Ink, sin una variante de color propia.
+
+## La marca
+
+<div
+  className="sb-unstyled"
+  data-pt-theme="light"
+  data-pt-version="2"
+  style={{ display: "flex", gap: 32, alignItems: "center", margin: "24px 0", background: "transparent" }}
+>
+  <DotMark size={72} />
+  <div style={{ maxWidth: 420 }}>
+    Nueve puntos y un sello (`DotMark`). Es la rejilla mínima del sistema; la estrella
+    (`Sparkle`) queda como puntuación.
+  </div>
+</div>
+
+## Para el día a día: operaciones
+
+Punto 2 nace con las piezas de una consola de plataforma, todas hechas de puntos y filetes:
+
+| Componente | Para qué |
+| --- | --- |
+| `Status` | Un estado como punto + palabra: correcto, degradado, caído, en curso, sin datos. La forma del punto acompaña al color |
+| `DataTable` | Tabla pautada: cabeceras en versalitas, cifras en mono, orden por columna, fila seleccionada |
+| `Diagram` | Cajas y conectores de puntos sobre una rejilla: arquitectura, caminos de petición, dependencias |
+| `Pipeline` | Una ejecución como línea de puntos: compilar → probar → desplegar |
+| `KeyValue` | Metadatos con guía de puntos (commit, región, imagen) |
+| `CodeBlock` · `LogView` | Configuración y registros en IBM Plex Mono, sin colores de sintaxis |
+| `DotUptime` | Historial como tira de puntos: solo las incidencias llevan color |
+
+Están juntas en **Pages › Punto 2 › Operaciones**.
+
+## Modo noche y OLED
+
+Hay un tercer tema, `oled`: Ink sobre negro puro (`#000`). Sin sombras —no se ven sobre
+negro—, las superficies suben un paso de tinta y el filete lleva la estructura; el texto baja
+un punto de blanco para no deslumbrar.
+
+```tsx
+const { preference, setPreference } = useTheme({ night: "oled" });
+<ThemeSwitch value={preference} onChange={setPreference} />
+```
+
+`useTheme()` recuerda la elección (`localStorage`), sigue al sistema mientras la preferencia
+sea `system` y mantiene `data-pt-theme` en `<html>`. `themeInitScript()` devuelve el script
+en línea para el `<head>` que evita el destello blanco al cargar.
+
+## Qué no cambia
+
+- La rejilla de 4 px y los puntos cada 8.
+- Instrument Serif para decir, Inter Tight para hacer.
+- Los puntos como estado y como dato: `DotLoader`, `DotProgress`, `DotBars`, `DotDivider`.
+- Mist e Ink, y las cuatro paletas: en v2 cada una aporta su sello y su lámina.
+- `prefers-reduced-motion`.
+
+## Dónde verlo
+
+- **Pages › Punto 2** — _Portada_, _Informe_, _Operaciones_ y _Lámina_.
+- **DevOps** — cada componente de operaciones por separado.
+- **Foundations › Versions** — la misma pantalla en v1 y en v2.
+- **Dots › DotPattern** — los motivos, los anclajes y un _playground_.
+- El selector **Versión** de la barra superior cambia todo el Storybook entre v1 y v2.
