@@ -81,6 +81,42 @@ Es geometría determinista sobre la rejilla, lee los roles del tema (sirve en cu
 paleta, en Mist y en Ink) y pinta como mucho diez `<path>` por patrón. La propuesta completa
 está en **Punto › Versión 2**; las páginas, en **Pages › Punto 2**.
 
+## DevOps
+
+Componentes para consolas y paneles de operación (grupo **DevOps** del Storybook; juntos en
+**Pages › Punto 2 › Operaciones**):
+
+| Componente | Para qué |
+| ---------- | -------- |
+| `Status` | estado como punto + palabra (`ok` · `warn` · `error` · `running` · `idle`) |
+| `DataTable` | tabla pautada con orden por columna, cifras en mono, densidad y fila seleccionada |
+| `Diagram` | nodos en una rejilla (`service` · `store` · `queue` · `external`) unidos por conectores de puntos |
+| `Pipeline` | etapas de una ejecución, horizontal o vertical |
+| `KeyValue` | metadatos con guía de puntos, o apilados en columnas |
+| `CodeBlock` | código o configuración, con números, líneas marcadas y copiar |
+| `LogView` | líneas de registro con hora, nivel y origen (`role="log"`) |
+| `DotUptime` | historial por periodos como tira de puntos |
+
+Usan `--pt-font-mono` (IBM Plex Mono) y un rol nuevo, `--pt-warning`.
+
+## Temas y modo noche
+
+`data-pt-theme` admite `light` (Mist), `dark` (Ink) y `oled` (Ink sobre negro puro).
+
+```tsx
+import { ThemeSwitch, themeInitScript, useTheme } from "desing";
+
+const { preference, theme, setPreference } = useTheme({ night: "oled" });
+<ThemeSwitch value={preference} onChange={setPreference} />;
+```
+
+- `useTheme()` guarda la preferencia (`system` · `light` · `dark` · `oled`) en `localStorage`,
+  sigue a `prefers-color-scheme` mientras sea `system` (`night` decide si eso es `dark` u
+  `oled`) y pone `data-pt-theme` en `<html>` (o en `target`; con `target: null` no toca nada).
+- `themeInitScript()` devuelve el script en línea para el `<head>` que aplica el tema antes
+  del primer pintado.
+- `ThemeSwitch` es controlado; `variant="icons"` para barras, `options` para acortar la lista.
+
 ## DotField
 
 ```tsx

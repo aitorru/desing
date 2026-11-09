@@ -12,6 +12,7 @@ import {
   Stack,
   Stat,
   TextField,
+  type ThemeName,
 } from "../../index";
 import "./Foundations.css";
 
@@ -29,7 +30,7 @@ const RANGES = [
 ] as const;
 
 /** The same screen fragment, set in one version of the language. */
-function Sample({ version, theme }: { version: "1" | "2"; theme: "light" | "dark" }) {
+function Sample({ version, theme }: { version: "1" | "2"; theme: ThemeName }) {
   const [range, setRange] = useState<(typeof RANGES)[number]["value"]>("12");
   const v2 = version === "2";
   const intro = (
@@ -77,7 +78,7 @@ function Sample({ version, theme }: { version: "1" | "2"; theme: "light" | "dark
           motion="still"
           pixel={2}
           seed={11}
-          surface={theme === "dark" ? "theme" : "palette"}
+          surface={theme === "light" ? "palette" : "theme"}
           className="fd-ver__hero"
         >
           {intro}
@@ -139,7 +140,8 @@ function Sample({ version, theme }: { version: "1" | "2"; theme: "light" | "dark
 export const BeforeAfter: StoryObj = {
   name: "Antes y después",
   render: (_, { globals }) => {
-    const theme = globals.theme === "dark" ? "dark" : "light";
+    const theme: ThemeName =
+      globals.theme === "dark" || globals.theme === "oled" ? globals.theme : "light";
     return (
       <div className="fd-ver__pair">
         <Sample version="1" theme={theme} />

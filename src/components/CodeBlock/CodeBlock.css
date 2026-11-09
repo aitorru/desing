@@ -1,0 +1,110 @@
+.pt-code {
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--pt-border-strong);
+  border-radius: var(--pt-radius-md);
+  background: var(--pt-bg-sunken);
+  color: var(--pt-fg);
+}
+
+.pt-code__head {
+  display: flex;
+  align-items: center;
+  gap: var(--pt-space-3);
+  height: 40px;
+  padding: 0 var(--pt-space-2) 0 var(--pt-space-4);
+  border-bottom: 1px solid var(--pt-border);
+  background: var(--pt-bg-raised);
+  font-size: var(--pt-text-xs);
+  color: var(--pt-fg-muted);
+}
+
+.pt-code__title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--pt-text-xs);
+  color: var(--pt-fg);
+}
+
+.pt-code__lang {
+  font-weight: 560;
+  letter-spacing: var(--pt-tracking-caps);
+  text-transform: uppercase;
+  color: var(--pt-fg-subtle);
+}
+
+.pt-code__copy {
+  height: 28px;
+  padding: 0 var(--pt-space-3);
+  border: 1px solid var(--pt-border-strong);
+  border-radius: var(--pt-radius-sm);
+  background: transparent;
+  color: var(--pt-fg);
+  font: 500 var(--pt-text-xs) / 1 var(--pt-font-sans);
+  cursor: pointer;
+  transition: background-color var(--pt-duration-fast) var(--pt-ease);
+}
+
+.pt-code__copy:hover {
+  background: var(--pt-border);
+}
+
+.pt-code__pre {
+  margin: 0;
+  padding: var(--pt-space-3) 0;
+  overflow-x: auto;
+  font: 400 13px / 24px var(--pt-font-mono);
+  tab-size: 2;
+}
+
+.pt-code__pre:focus-visible {
+  outline: 2px solid var(--pt-focus);
+  outline-offset: -2px;
+}
+
+.pt-code__code {
+  display: block;
+  min-width: max-content;
+  font: inherit;
+}
+
+.pt-code--wrap .pt-code__code {
+  min-width: 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.pt-code__line {
+  position: relative;
+  display: block;
+  padding: 0 var(--pt-space-4);
+}
+
+.pt-code__line.is-marked {
+  background: color-mix(in srgb, var(--pt-accent) 9%, transparent);
+}
+
+/* The mark is a dot in the margin, the same dot that edges a Callout. */
+.pt-code__line.is-marked::before {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--pt-accent);
+}
+
+.pt-code__no {
+  display: inline-block;
+  width: 2.5ch;
+  margin-right: var(--pt-space-4);
+  text-align: right;
+  color: var(--pt-fg-subtle);
+  user-select: none;
+}

@@ -17,6 +17,8 @@ import {
   Stat,
   Switch,
 } from "../../index";
+import { Colophon, Masthead } from "./formalParts";
+import { OpsPage } from "./OpsPage";
 import "./formal.css";
 
 const meta: Meta = {
@@ -28,49 +30,6 @@ export default meta;
 
 /** Ochre (the palette's lightest hue) for the accented band over an ink plate. */
 const ON_PLATE = { "--pt-pattern-accent": "var(--pt-spectrum-6)" } as CSSProperties;
-
-function Masthead({ current }: { current: string }) {
-  return (
-    <>
-      <header className="fm-mast fm-gutter">
-        <span className="fm-mast__brand">
-          <DotMark size={18} />
-          Otherwise
-        </span>
-        <nav className="fm-mast__links" aria-label="Principal">
-          {["Resumen", "Escenarios", "Método", "Ajustes"].map((l) => (
-            <a
-              key={l}
-              href={`#${l.toLowerCase()}`}
-              aria-current={l === current ? "page" : undefined}
-            >
-              {l}
-            </a>
-          ))}
-        </nav>
-        <span className="pt-folio fm-mast__issue">Nº 02 · Otoño 2026</span>
-        <Button variant="ghost" size="sm">
-          Entrar
-        </Button>
-      </header>
-      <hr className="pt-rule" />
-    </>
-  );
-}
-
-function Colophon() {
-  return (
-    <footer className="fm-foot fm-gutter">
-      <div className="fm-foot__strip">
-        <DotPattern motif="grid" falloff={0} intensity={0.34} highlight={0} origin="left" />
-      </div>
-      <div className="fm-foot__line">
-        <span>Otherwise · Punto 2, edición formal</span>
-        <span>Compuesto en Instrument Serif e Inter Tight</span>
-      </div>
-    </footer>
-  );
-}
 
 const FIGURES = [
   { label: "Trayectorias por pregunta", value: "10 000", note: "Monte Carlo, semilla fija" },
@@ -425,6 +384,20 @@ export const Portada: StoryObj = { render: () => <CoverPage /> };
 
 /** The Workspace dashboard, re-set in v2: paper panels, hairlines, folios and one ink plate. */
 export const Informe: StoryObj = { render: () => <ReportPage /> };
+
+/**
+ * A platform console built from the DevOps pieces: `Diagram`, `DataTable`, `Pipeline`,
+ * `KeyValue`, `CodeBlock`, `LogView`, `DotUptime` and `Status`. The selector in the header
+ * is a working `ThemeSwitch` + `useTheme`: try OLED.
+ */
+export const Operaciones: StoryObj = {
+  render: (_, { globals }) => (
+    <OpsPage
+      key={String(globals.theme)}
+      initialTheme={globals.theme === "dark" || globals.theme === "oled" ? globals.theme : "light"}
+    />
+  ),
+};
 
 /** The original poster, formalised: a halftone sun instead of ribbons, on paper and on ink. */
 export const Lamina: StoryObj = {

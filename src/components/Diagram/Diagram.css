@@ -1,0 +1,143 @@
+.pt-diagram {
+  margin: 0;
+  overflow-x: auto;
+  color: var(--pt-fg);
+  font-family: var(--pt-font-sans);
+}
+
+.pt-diagram__canvas {
+  position: relative;
+  margin-inline: auto;
+}
+
+/* The grid sits half a cell out, so node edges land on rows of dots. */
+.pt-diagram--grid {
+  padding: var(--pt-space-5);
+  background-image: radial-gradient(
+    circle at center,
+    var(--pt-dot-faint) 0 1.1px,
+    transparent 1.4px
+  );
+  background-size: var(--pt-dot-gap) var(--pt-dot-gap);
+}
+
+.pt-diagram__edges {
+  position: absolute;
+  inset: 0;
+  overflow: visible;
+  pointer-events: none;
+}
+
+/* Connectors are rows of dots (zero-length dashes with round caps), ending in a larger one. */
+.pt-diagram__edge {
+  --c: var(--pt-fg-subtle);
+  color: var(--c);
+}
+
+.pt-diagram__edge--accent {
+  --c: var(--pt-accent);
+}
+
+.pt-diagram__edge--negative {
+  --c: var(--pt-negative);
+}
+
+.pt-diagram__edge > path {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 0.01 8;
+}
+
+.pt-diagram__edge > circle {
+  fill: currentColor;
+}
+
+.pt-diagram__edge--flow > path {
+  animation: pt-diagram-flow 1.6s linear infinite;
+}
+
+@keyframes pt-diagram-flow {
+  to {
+    stroke-dashoffset: -16.02;
+  }
+}
+
+.pt-diagram__edgelabel {
+  position: absolute;
+  /* Sits on top of its connector, never over it: the dots stay unbroken. */
+  translate: -50% calc(-100% - 5px);
+  color: var(--pt-fg-muted);
+  font: 500 11px / 16px var(--pt-font-mono);
+  white-space: nowrap;
+}
+
+.pt-diagram__edgelabel--accent {
+  color: var(--pt-accent);
+}
+
+.pt-diagram__edgelabel--negative {
+  color: var(--pt-negative);
+}
+
+.pt-diagram__node {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2px;
+  padding: 0 var(--pt-space-4);
+  border: 1px solid var(--pt-border-strong);
+  border-radius: var(--pt-radius-md);
+  background: var(--pt-bg-raised);
+  box-sizing: border-box;
+}
+
+.pt-diagram__node--store {
+  padding: 0 var(--pt-space-5);
+  border-radius: var(--pt-radius-pill);
+}
+
+.pt-diagram__node--queue {
+  border-style: dashed;
+}
+
+.pt-diagram__node--external {
+  border-style: dashed;
+  background: transparent;
+  color: var(--pt-fg-muted);
+}
+
+.pt-diagram__label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: var(--pt-text-sm);
+  font-weight: 560;
+  letter-spacing: -0.005em;
+}
+
+.pt-diagram__sub {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 11px;
+  color: var(--pt-fg-subtle);
+}
+
+.pt-diagram__status {
+  position: absolute;
+  top: 10px;
+  right: 12px;
+}
+
+.pt-diagram__node--store > .pt-diagram__status {
+  right: 20px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pt-diagram__edge--flow > path {
+    animation: none;
+  }
+}

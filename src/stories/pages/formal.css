@@ -284,3 +284,16 @@
   line-height: 1.4;
   color: var(--pt-fg-muted);
 }
+
+/* ── Operations ─────────────────────────────────────────────── */
+.fm-cols--even {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .fm-cols--even {
+    grid-template-columns: 1fr;
+  }
+}

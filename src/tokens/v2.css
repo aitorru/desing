@@ -57,6 +57,15 @@
   --pt-glass-shine: 0;
 }
 
+/* On true black a drop shadow is invisible: OLED panels are hairline only. */
+[data-pt-version="2"][data-pt-theme="oled"],
+[data-pt-version="2"] [data-pt-theme="oled"],
+[data-pt-theme="oled"] [data-pt-version="2"] {
+  --pt-glass-bg: var(--pt-bg-raised);
+  --pt-glass-shadow: none;
+  --pt-plate: color-mix(in oklab, var(--pt-spectrum-2) 30%, #000);
+}
+
 /* Punto's magenta is too light to carry white text as a flat fill; its seal is a deeper one. */
 [data-pt-version="2"][data-pt-palette="punto"],
 [data-pt-version="2"] [data-pt-palette="punto"],

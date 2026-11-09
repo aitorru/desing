@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { DotField, GlassCard, Petals } from "../../index";
-import { heroPalette, soberPalette } from "../theme";
+import { heroPalette, isNight, soberPalette } from "../theme";
 import "./pages.css";
 
 interface PosterArgs {
@@ -76,7 +76,7 @@ export const Sober: StoryObj<PosterArgs> = {
         <GlassCard
           tone="clear"
           padding="none"
-          backdrop={<Petals tone={globals.theme === "dark" ? "ink" : "mist"} />}
+          backdrop={<Petals tone={isNight(globals) ? "ink" : "mist"} />}
           className="pg-poster__card"
         >
           <div className="pg-poster__inner">

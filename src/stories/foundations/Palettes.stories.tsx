@@ -13,6 +13,7 @@ import {
   Stat,
   Switch,
 } from "../../index";
+import { isNight } from "../theme";
 import "./Foundations.css";
 
 const meta: Meta = {
@@ -142,7 +143,7 @@ export const Current: StoryObj = {
     const p = PALETTES.find((x) => x.name === globals.palette) ?? PALETTES[0];
     return (
       <div style={{ maxWidth: 420, padding: 32 }}>
-        {p && <Sample p={p} theme={globals.theme === "dark" ? "dark" : "light"} />}
+        {p && <Sample p={p} theme={isNight(globals) ? "dark" : "light"} />}
       </div>
     );
   },

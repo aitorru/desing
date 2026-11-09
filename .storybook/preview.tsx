@@ -5,7 +5,8 @@ import { PALETTES } from "../src/tokens/palettes";
 import "./preview.css";
 
 const withTheme: Decorator = (Story, context) => {
-  const theme = context.globals.theme === "dark" ? "dark" : "light";
+  const picked = context.globals.theme;
+  const theme = picked === "dark" || picked === "oled" ? picked : "light";
   const palette = typeof context.globals.palette === "string" ? context.globals.palette : "siena";
   // A story can pin its version (`parameters.ptVersion`): the v2 pages, the v1/v2 comparison.
   const version = context.parameters.ptVersion ?? context.globals.version;
@@ -33,6 +34,7 @@ const preview: Preview = {
         items: [
           { value: "light", title: "Mist (claro)", icon: "sun" },
           { value: "dark", title: "Ink (oscuro)", icon: "moon" },
+          { value: "oled", title: "OLED (negro puro)", icon: "circle" },
         ],
         dynamicTitle: true,
       },
@@ -67,7 +69,15 @@ const preview: Preview = {
     docs: { theme: puntoTheme },
     options: {
       storySort: {
-        order: ["Punto", ["Introducción", "*"], "Foundations", "Dots", "Components", "Pages"],
+        order: [
+          "Punto",
+          ["Introducción", "*"],
+          "Foundations",
+          "Dots",
+          "Components",
+          "DevOps",
+          "Pages",
+        ],
       },
     },
     a11y: { test: "todo" },

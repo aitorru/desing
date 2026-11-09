@@ -1,0 +1,32 @@
+.pt-uptime {
+  --dot: 8px;
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: var(--dot);
+  grid-template-rows: repeat(var(--rows, 1), var(--dot));
+  gap: 4px;
+  width: max-content;
+  max-width: 100%;
+}
+
+.pt-uptime__dot {
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--pt-fg) 26%, transparent);
+}
+
+.pt-uptime__dot--warn {
+  background: var(--pt-warning);
+}
+
+.pt-uptime__dot--error {
+  background: var(--pt-negative);
+}
+
+.pt-uptime__dot--running {
+  background: var(--pt-accent);
+}
+
+.pt-uptime__dot--idle {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--pt-border-strong);
+}

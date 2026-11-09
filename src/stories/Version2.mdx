@@ -133,6 +133,37 @@ paleta, en Mist y en Ink, sin una variante de color propia.
   </div>
 </div>
 
+## Para el día a día: operaciones
+
+Punto 2 nace con las piezas de una consola de plataforma, todas hechas de puntos y filetes:
+
+| Componente | Para qué |
+| --- | --- |
+| `Status` | Un estado como punto + palabra: correcto, degradado, caído, en curso, sin datos. La forma del punto acompaña al color |
+| `DataTable` | Tabla pautada: cabeceras en versalitas, cifras en mono, orden por columna, fila seleccionada |
+| `Diagram` | Cajas y conectores de puntos sobre una rejilla: arquitectura, caminos de petición, dependencias |
+| `Pipeline` | Una ejecución como línea de puntos: compilar → probar → desplegar |
+| `KeyValue` | Metadatos con guía de puntos (commit, región, imagen) |
+| `CodeBlock` · `LogView` | Configuración y registros en IBM Plex Mono, sin colores de sintaxis |
+| `DotUptime` | Historial como tira de puntos: solo las incidencias llevan color |
+
+Están juntas en **Pages › Punto 2 › Operaciones**.
+
+## Modo noche y OLED
+
+Hay un tercer tema, `oled`: Ink sobre negro puro (`#000`). Sin sombras —no se ven sobre
+negro—, las superficies suben un paso de tinta y el filete lleva la estructura; el texto baja
+un punto de blanco para no deslumbrar.
+
+```tsx
+const { preference, setPreference } = useTheme({ night: "oled" });
+<ThemeSwitch value={preference} onChange={setPreference} />
+```
+
+`useTheme()` recuerda la elección (`localStorage`), sigue al sistema mientras la preferencia
+sea `system` y mantiene `data-pt-theme` en `<html>`. `themeInitScript()` devuelve el script
+en línea para el `<head>` que evita el destello blanco al cargar.
+
 ## Qué no cambia
 
 - La rejilla de 4 px y los puntos cada 8.
@@ -143,7 +174,8 @@ paleta, en Mist y en Ink, sin una variante de color propia.
 
 ## Dónde verlo
 
-- **Pages › Punto 2** — _Portada_, _Informe_ y _Lámina_, hechas con los componentes de siempre.
+- **Pages › Punto 2** — _Portada_, _Informe_, _Operaciones_ y _Lámina_.
+- **DevOps** — cada componente de operaciones por separado.
 - **Foundations › Versions** — la misma pantalla en v1 y en v2.
 - **Dots › DotPattern** — los motivos, los anclajes y un _playground_.
 - El selector **Versión** de la barra superior cambia todo el Storybook entre v1 y v2.

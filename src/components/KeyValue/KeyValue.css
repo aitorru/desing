@@ -1,0 +1,61 @@
+.pt-kv {
+  display: grid;
+  gap: var(--pt-space-3);
+  margin: 0;
+  font-size: var(--pt-text-sm);
+  color: var(--pt-fg);
+}
+
+.pt-kv--stacked {
+  gap: var(--pt-space-5) var(--pt-space-6);
+}
+
+.pt-kv__row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--pt-space-2);
+  min-width: 0;
+}
+
+.pt-kv--stacked .pt-kv__row {
+  flex-direction: column;
+  gap: var(--pt-space-1);
+}
+
+.pt-kv__label {
+  flex: none;
+  color: var(--pt-fg-muted);
+}
+
+.pt-kv--stacked .pt-kv__label {
+  color: var(--pt-fg-subtle);
+  font-size: var(--pt-text-xs);
+  font-weight: 560;
+  letter-spacing: var(--pt-tracking-caps);
+  text-transform: uppercase;
+}
+
+/* The leader: a row of dots on the baseline, as in an index or a price list. */
+.pt-kv__leader {
+  flex: 1;
+  min-width: var(--pt-space-5);
+  height: var(--pt-dot-gap);
+  align-self: flex-end;
+  margin-bottom: 1px;
+  background: var(--pt-border-strong);
+  mask:
+    radial-gradient(circle at center, #000 0 1px, transparent 1.4px) 0 100% / var(--pt-dot-gap)
+    var(--pt-dot-gap) repeat-x;
+  -webkit-mask:
+    radial-gradient(circle at center, #000 0 1px, transparent 1.4px) 0 100% / var(--pt-dot-gap)
+    var(--pt-dot-gap) repeat-x;
+}
+
+.pt-kv__value {
+  margin: 0;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 500;
+}
