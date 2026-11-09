@@ -9,7 +9,7 @@ import { DotField, GlassCard, Petals, Sparkle } from "../index";
       <GlassCard tone="bloom" padding="lg" style={{ width: 360 }}>
         <div style={{ display: "grid", gap: 12, textAlign: "center" }}>
           <span style={{ fontWeight: 560, letterSpacing: "-0.01em" }}>Dot</span>
-          <h1 className="pt-display" style={{ fontSize: 44, color: "#fff" }}>Un lenguaje hecho de puntos</h1>
+          <h1 className="pt-display" style={{ fontSize: 44, color: "#fff" }}>Todo verde, por ahora</h1>
         </div>
       </GlassCard>
     </div>
@@ -18,27 +18,69 @@ import { DotField, GlassCard, Petals, Sparkle } from "../index";
 
 # Dot
 
-**Dot** parte del póster de _Otherwise_: una superficie de puntos por la que pasan cintas de
-color, y encima un panel de vidrio con una tipografía serif muy tranquila. La idea es convertir
-esa imagen en un sistema: pocas piezas, reglas claras y una única textura animada que da
-personalidad sin cansar.
+**Dot** es un lenguaje de diseño hecho de puntos: tokens CSS, unos treinta componentes React y
+este Storybook. No te va a cambiar la vida. Lo que sí hace bien es lo aburrido: paneles de
+estado, informes de plataforma, post-mortems y consolas internas que se leen de un vistazo, de
+día y a las tres de la mañana.
 
-## Principios
+## Cuándo usarlo
 
-1. **El punto es la unidad.** Todo vive en una rejilla de 4 px (los puntos van cada 8 px). El
-   punto aparece como textura (`DotField`), como estado (`DotLoader`, `DotProgress`), como dato
-   (`DotBars`) y como separador. No hay spinners circulares ni barras lisas.
-2. **Color en cintas, no en bloques.** El color intenso (violeta → magenta → coral) se reserva
-   para superficies grandes y un único botón `aurora` por pantalla. La interfaz de trabajo es
-   _mist_ (lavanda muy claro) o _ink_ (tinta casi negra).
-3. **Vidrio encima del ruido.** Los contenidos se apoyan en paneles de vidrio esmerilado
-   (`GlassCard`) que dejan intuir los puntos de detrás. Radios grandes (32 px), borde de 1 px
-   blanco translúcido y un brillo curvo en la parte superior.
-4. **Serif para decir, sans para hacer.** _Instrument Serif_ para titulares y cifras grandes,
-   con interlineado apretado y tracking negativo. _Inter Tight_ para todo lo demás.
-5. **Movimiento lento y opcional.** Las animaciones duran segundos, no milisegundos: los puntos
-   fluyen, respiran o están quietos. Todo respeta `prefers-reduced-motion` y los lienzos se
-   pausan fuera de pantalla.
+- **Sí:** el panel de estado de servicios, la pantalla de despliegues, el informe semanal de
+  plataforma, el post-mortem de un incidente, la revisión mensual del coste de nube.
+- **También:** cualquier herramienta interna que necesite verse decente sin un diseñador al lado.
+- **Mejor no:** una app de consumo con marca propia, o si buscas un sistema con doscientos
+  componentes. Aquí hay los justos.
+
+## Lo que trae para operaciones
+
+| Componente | Para qué |
+| --- | --- |
+| `Status` | Estado como punto + palabra: correcto, degradado, caído, en curso, sin datos |
+| `DataTable` | La tabla de servicios: orden por columna, cifras en mono, fila seleccionada |
+| `Diagram` | El camino de una petición: servicios, almacenes y colas unidos por puntos |
+| `Pipeline` | Compilar → probar → desplegar, con el tiempo de cada etapa |
+| `KeyValue` | Commit, rama, imagen, región: metadatos con guía de puntos |
+| `CodeBlock` · `LogView` | El YAML del rollout y el registro, en IBM Plex Mono |
+| `DotUptime` | Disponibilidad por día como tira de puntos; solo los días malos llevan color |
+| `Stat` | El KPI (p95, error budget, MTTR) con su gráfico de puntos |
+| `DotProgress` · `DotBars` · `DotLoader` | Progreso, series cortas y «estoy en ello», sin spinners |
+| `Callout` | Avisos: mantenimiento, servicio caído, datos de ejemplo |
+
+Juntos, en **Pages › Dot 2 › Operaciones**.
+
+## Un ejemplo
+
+```tsx
+import { DotUptime, Pipeline, Stat, Status } from "desing";
+
+<Status tone="error">notificaciones caído</Status>
+<Stat label="Error budget" value="64 %" delta="−18 pp" trend="negative" note="Quedan 16 días" />
+<DotUptime periods={dias} label="Disponibilidad, 30 días" />
+<Pipeline
+  label="Despliegue #482"
+  stages={[
+    { id: "build", label: "Compilar", status: "ok", meta: "1 min 12 s" },
+    { id: "canary", label: "Canario 10 %", status: "running" },
+    { id: "prod", label: "Producción", status: "idle" },
+  ]}
+/>
+```
+
+Para informes y consolas, activa **Dot 2** con `data-pt-version="2"`: papel en vez de vidrio y
+un solo color de acento. Está en **Dot › Versión 2**.
+
+## Cinco reglas
+
+1. **Todo es un punto.** Rejilla de 4 px, puntos cada 8. El punto hace de textura (`DotField`),
+   de estado (`DotLoader`, `DotProgress`), de dato (`DotBars`, `DotUptime`) y de separador.
+2. **El color, para lo que importa.** Un estado caído, un botón principal. Lo demás es _mist_
+   (claro) o _ink_ (oscuro). Si todo es rojo, nada es urgente.
+3. **Vidrio encima del ruido.** En v1 los paneles son vidrio esmerilado (`GlassCard`) sobre los
+   puntos; en v2, papel con un filete.
+4. **Tres voces.** _Instrument Serif_ para titulares y cifras grandes, _Inter Tight_ para la
+   interfaz e _IBM Plex Mono_ para todo lo que se copia: hashes, rutas, versiones.
+5. **Movimiento lento y opcional.** Nada parpadea. Todo respeta `prefers-reduced-motion` y los
+   lienzos se pausan fuera de pantalla: el portátil de guardia ya sufre bastante.
 
 ## La marca
 
@@ -52,8 +94,7 @@ personalidad sin cansar.
   <Sparkle size={56} style={{ color: "var(--pt-spectrum-4)" }} />
   <div style={{ maxWidth: 360 }}>
     Cuatro teselas redondeadas (`Petals`) dejan entre sus esquinas una estrella de cuatro puntas
-    (`Sparkle`). La estrella es el glifo del sistema: logo, viñeta y marca de «contenido
-    simulado».
+    (`Sparkle`). La estrella hace de logo, de viñeta y de marca de «datos de ejemplo».
   </div>
 </div>
 
@@ -76,7 +117,7 @@ espectro de seis tonos (`--pt-spectrum-1…6`). Una paleta reasigna los neutros 
 | `mono`    | blanco puro · negro puro   | grises; color solo en estados  | Brutalista          |
 
 `mono` trae además su forma: esquinas rectas, trazo de 2 px en tinta y sombra dura en vez de
-vidrio (`mono.css`).
+vidrio (`mono.css`). Es la buena para un informe que se va a imprimir o a pegar en un ticket.
 
 Cada paleta tiene su textura de héroe en `DotField` (`aurora`, `marea`, `siena`, `citrico`, `mono`;
 `heroDotPalette(nombre)` la devuelve) y funciona en _Mist_ y en _Ink_. Compáralas en
@@ -86,7 +127,7 @@ Cada paleta tiene su textura de héroe en `DotField` (`aurora`, `marea`, `siena`
 
 | Paleta     | Uso                                                              |
 | ---------- | ---------------------------------------------------------------- |
-| `aurora`   | Héroes, pósters, portadas. La versión completa del póster.       |
+| `aurora`   | Portadas y héroes. La versión completa, con todo el color.       |
 | `ember`    | Solo cálidos (magenta, coral). Estados positivos, campañas.      |
 | `dusk`     | Solo fríos (índigo, violeta). Secciones técnicas, modo análisis. |
 | `graphite` | **Sobria.** Puntos de tinta sobre mist. Producto, dashboards.    |
@@ -112,13 +153,11 @@ intensidad) y `still` (un único fotograma).
   `KeyValue`, `CodeBlock`, `LogView`, `Pipeline`, `Diagram` y, en Dots, `DotUptime`.
 - **Tema** — `ThemeSwitch` y `useTheme()` para el selector de modo noche (sistema, claro,
   oscuro, OLED).
-- **Pages** — el póster original, una pantalla de producto y un panel de equipo
-  (`Workspace`) hecho casi solo con los transversales.
+- **Pages** — un póster de estado, una pantalla de despliegue (`Product`), el panel de guardia
+  (`Workspace`) y, en **Dot 2**, un informe semanal, un post-mortem y una consola de plataforma.
 
-> **Dot 2.** Hay una propuesta de evolución —más formal, con patrones compuestos en vez
-> de cintas— que convive con esta: está en **Dot › Versión 2** y se activa con
-> `data-pt-version="2"` o con el selector **Versión**.
+> **Dot 2.** La versión sobria, con patrones quietos en vez de cintas, convive con esta: está
+> en **Dot › Versión 2** y se activa con `data-pt-version="2"` o con el selector **Versión**.
 
-Usa el selector **Tema** de la barra superior para alternar _Mist_ (claro), _Ink_ (oscuro) y
-_OLED_ (negro puro), y
-**Paleta** para cambiar de paleta.
+En la barra superior, **Tema** alterna _Mist_ (claro), _Ink_ (oscuro) y _OLED_ (negro puro), y
+**Paleta** cambia de paleta.

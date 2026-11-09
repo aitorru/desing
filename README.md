@@ -2,32 +2,76 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/overview-dark.png">
-  <img alt="Resumen de Dot: temas Mist, Ink y OLED, cuatro paletas, la textura DotField, la marca, tipografía, componentes, consola de plataforma, estados de puntos y pipelines alrededor de una lámina de tinta con el nombre." src="docs/overview-light.png">
+  <img alt="Resumen de Dot: temas Mist, Ink y OLED, cinco paletas, la textura DotField, la marca, tipografía, componentes, estado de servicios, cargadores de puntos y un despliegue alrededor de una lámina de tinta con el nombre." src="docs/overview-light.png">
 </picture>
 
-Propuesta de lenguaje de diseño inspirada en el póster de _Otherwise_: superficies de puntos
-por las que pasan cintas de color, paneles de vidrio esmerilado encima y una serif tranquila
-para los titulares. Todo se documenta y se prueba en un Storybook.
+Dot es un lenguaje de diseño hecho de puntos: tokens CSS, unos treinta componentes React y un
+Storybook para verlos. No te va a cambiar la vida. Pero si tienes que montar un panel de estado,
+el informe semanal de plataforma o un post-mortem para mañana, trae casi todo lo que vas a
+necesitar y queda bien sin pelearte con el CSS.
 
-- **Tokens** en CSS (`--pt-*`): color (mist, ink y acentos), gradientes, tipografía, espacio,
-  radios y movimiento, con tema claro (_Mist_) y oscuro (_Ink_).
-- **Familia de puntos**: `DotField` (la textura animada, en canvas), `DotPattern` (patrones
-  compuestos y quietos, en SVG), `DotLoader`, `DotProgress` y `DotBars`.
-- **Dot 2** (`data-pt-version="2"`): la edición formal. Siena de serie, un solo acento
-  sólido, papel con filete en vez de vidrio, radios en la rejilla y patrones anclados en
-  lugar de cintas. Ver [Dot 2](#dot-2).
-- **Paletas**: `punto` (la original), `marea`, `siena`, `citrico` y `mono`, intercambiables
-  con `data-pt-palette` en el mismo elemento que `data-pt-theme`. `mono` es la brutalista:
-  blanco y negro, esquinas rectas, trazo de 2 px y sombra dura.
-- **Componentes**: `Button`, `Badge`, `GlassCard`, `TextField`, `Segmented`, `Sparkle`,
-  `Petals`, `DotMark`.
-- **Transversales**: `Stack`, `SectionHeader`, `Stat`, `Callout`, `Switch`, `Avatar` /
-  `AvatarGroup` y `DotDivider`.
-- **Páginas**: el póster original reconstruido con el sistema, una pantalla de producto
-  interactiva (pulsa «Simular») y un panel de equipo (`Workspace`).
+## Lo que viene en la caja
 
-La propuesta completa (principios, paletas y cuándo usar cada una) está en la página
-**Dot › Introducción** del Storybook.
+Para operaciones (grupo **DevOps** del Storybook; todos juntos en **Pages › Dot 2 › Operaciones**):
+
+| Componente | Para qué |
+| ---------- | -------- |
+| `Status` | estado como punto + palabra (`ok` · `warn` · `error` · `running` · `idle`); la forma del punto acompaña al color |
+| `DataTable` | la tabla de servicios: orden por columna, cifras en mono, densidad y fila seleccionada |
+| `Diagram` | el camino de una petición: nodos en rejilla (`service` · `store` · `queue` · `external`) y conectores de puntos |
+| `Pipeline` | compilar → probar → desplegar, en horizontal o en vertical |
+| `KeyValue` | commit, rama, imagen, región: metadatos con guía de puntos o en columnas |
+| `CodeBlock` | el YAML del rollout, con números de línea, líneas marcadas y copiar |
+| `LogView` | registro con hora, nivel y origen (`role="log"`) |
+| `DotUptime` | disponibilidad por día como tira de puntos; solo los días malos llevan color |
+| `Stat` | el KPI de siempre (p95, error budget, MTTR) con su gráfico de puntos |
+| `DotProgress` · `DotBars` · `DotLoader` | progreso del rollout, peticiones por hora y «estoy en ello» sin spinners |
+| `Callout` | «mantenimiento el jueves», «notificaciones caído», «datos de ejemplo» |
+
+Usan `--pt-font-mono` (IBM Plex Mono) y un rol propio para avisos, `--pt-warning`.
+
+El resto, para lo que rodea al dato:
+
+- **Tokens** en CSS (`--pt-*`): color, gradientes, tipografía, espacio, radios y movimiento.
+  Tres temas: _Mist_ (claro), _Ink_ (oscuro) y _OLED_ (para la guardia de noche).
+- **Paletas**: `punto` (la original), `marea`, `siena`, `citrico` y `mono`, intercambiables con
+  `data-pt-palette`. `mono` es blanco y negro, esquinas rectas y sombra dura: ideal para un
+  informe que alguien va a imprimir o pegar en un ticket.
+- **Dot 2** (`data-pt-version="2"`): la versión sobria. Papel en vez de vidrio, un solo acento y
+  patrones quietos. Es la que quieres para informes. Ver [Dot 2](#dot-2).
+- **Básicos**: `Button`, `Badge`, `GlassCard`, `TextField`, `Segmented`, `Switch`, `Stack`,
+  `SectionHeader`, `Avatar` / `AvatarGroup`, `DotDivider`, y la marca (`DotMark`, `Petals`,
+  `Sparkle`).
+- **Textura**: `DotField` (puntos animados en canvas) y `DotPattern` (patrones quietos en SVG).
+  Opcionales; tu dashboard no necesita fuegos artificiales.
+
+## Empezar
+
+```html
+<html data-pt-theme="light" data-pt-version="2">
+```
+
+```tsx
+import { DotUptime, Pipeline, Stat, Status } from "desing";
+
+<Status tone="warn">búsqueda degradado</Status>
+<Stat label="Latencia p95" value="182 ms" delta="+12 ms" trend="negative" />
+<DotUptime periods={dias} label="Disponibilidad, 30 días" />
+<Pipeline
+  label="Despliegue #482"
+  stages={[
+    { id: "build", label: "Compilar", status: "ok", meta: "1 min 12 s" },
+    { id: "canary", label: "Canario 10 %", status: "running" },
+    { id: "prod", label: "Producción", status: "idle" },
+  ]}
+/>
+```
+
+Importar el paquete trae los tokens, los tres temas y las fuentes. Para ver ejemplos completos:
+**Pages › Dot 2** tiene un informe semanal (_Portada_), un post-mortem (_Informe_), una consola de
+plataforma (_Operaciones_) y un póster de estado para la pantalla de la oficina (_Lámina_).
+**Pages › Product** es una pantalla de despliegue (pulsa «Desplegar») y **Pages › Workspace**, el
+panel de quien está de guardia.
 
 > Antes se llamaba **Punto**. El nombre cambia; la API no: los tokens, las clases y los
 > atributos siguen con el prefijo `pt-` (`--pt-*`, `.pt-folio`, `data-pt-theme`), y la paleta
@@ -99,26 +143,8 @@ propias. Sin `data-pt-palette`, un ámbito v2 usa Siena. La pieza nueva es `DotP
 | `tone`, `intensity`, `period`, `falloff`, `motion` | tinta, opacidad, separación, caída y respiración |
 
 Es geometría determinista sobre la rejilla, lee los roles del tema (sirve en cualquier
-paleta, en Mist y en Ink) y pinta como mucho diez `<path>` por patrón. La propuesta completa
-está en **Dot › Versión 2**; las páginas, en **Pages › Dot 2**.
-
-## DevOps
-
-Componentes para consolas y paneles de operación (grupo **DevOps** del Storybook; juntos en
-**Pages › Dot 2 › Operaciones**):
-
-| Componente | Para qué |
-| ---------- | -------- |
-| `Status` | estado como punto + palabra (`ok` · `warn` · `error` · `running` · `idle`) |
-| `DataTable` | tabla pautada con orden por columna, cifras en mono, densidad y fila seleccionada |
-| `Diagram` | nodos en una rejilla (`service` · `store` · `queue` · `external`) unidos por conectores de puntos |
-| `Pipeline` | etapas de una ejecución, horizontal o vertical |
-| `KeyValue` | metadatos con guía de puntos, o apilados en columnas |
-| `CodeBlock` | código o configuración, con números, líneas marcadas y copiar |
-| `LogView` | líneas de registro con hora, nivel y origen (`role="log"`) |
-| `DotUptime` | historial por periodos como tira de puntos |
-
-Usan `--pt-font-mono` (IBM Plex Mono) y un rol nuevo, `--pt-warning`.
+paleta, en Mist y en Ink) y pinta como mucho diez `<path>` por patrón. Más detalle en
+**Dot › Versión 2**; las páginas, en **Pages › Dot 2**.
 
 ## Temas y modo noche
 

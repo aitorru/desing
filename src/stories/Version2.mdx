@@ -19,19 +19,19 @@ import { DotMark, DotPattern, GlassCard } from "../index";
 >
   <DotPattern motif="rings" anchor="top-right" cols={64} rows={36} period={7} highlight={4} intensity={0.36} />
   <div style={{ position: "relative", display: "grid", gap: 12, maxWidth: 440 }}>
-    <span className="pt-folio">Propuesta · Dot 2</span>
+    <span className="pt-folio">data-pt-version="2"</span>
     <h1 className="pt-display" style={{ fontSize: 52 }}>
-      El mismo punto, <em>compuesto</em>
+      Para <em>informes</em>
     </h1>
   </div>
 </div>
 
 # Dot 2
 
-Dot 1 convirtió un póster en un sistema. Funciona, pero habla siempre en voz alta: cintas de
-color que fluyen, vidrio esmerilado y un degradado en cada llamada a la acción. **Dot 2
-conserva la unidad —el punto, la rejilla, la serif tranquila— y cambia el tono**: del póster
-al informe. Menos textura, más composición.
+Dot 2 es la versión sobria de Dot: la misma rejilla y los mismos componentes, pero con papel en
+vez de vidrio, un solo color de acento y patrones quietos en lugar de cintas que se mueven. Es
+la que quieres para un informe semanal, un post-mortem o una consola que alguien va a mirar con
+sueño.
 
 Se activa con un atributo, junto al tema, y no rompe nada de v1:
 
@@ -39,7 +39,14 @@ Se activa con un atributo, junto al tema, y no rompe nada de v1:
 <html data-pt-theme="light" data-pt-version="2">
 ```
 
-## Cinco decisiones
+## Cuándo usar cuál
+
+- **Dot 1:** portadas, demos, la pantalla de un lanzamiento. Donde un poco de color en
+  movimiento suma.
+- **Dot 2:** todo lo que se lee con calma o se imprime: informes, post-mortems, paneles de
+  estado, revisiones de coste. En la duda, esta.
+
+## Qué cambia
 
 | | Dot 1 | Dot 2 |
 | --- | --- | --- |
@@ -49,20 +56,18 @@ Se activa con un atributo, junto al tema, y no rompe nada de v1:
 | **Forma** | Radios 8 / 14 / 22 / 32 y botones píldora | **Todo en la rejilla**: 4 / 8 / 12 / 16 y controles rectos |
 | **Paleta** | Punto (lavanda) | **Siena** de serie: papel hueso, tinta café, terracota |
 
-1. **El patrón sustituye a la cinta.** Un patrón no es ruido: es geometría sobre la rejilla de
-   8 px, sale siempre igual y se coloca con intención —en una esquina, en un borde, detrás de
-   una cifra—. Uno por superficie.
-2. **Un solo sello.** El color intenso deja de ser un degradado y pasa a ser una marca: el
-   botón principal, un anillo del patrón, un folio. Si hay dos sellos en pantalla, sobra uno.
-3. **Papel antes que vidrio.** Los paneles son papel con un filete. El tinte `bloom` se
-   convierte en una **lámina de tinta**: la superficie oscura que lleva la cita o la cifra
-   elegida, con su patrón en ocre.
-4. **Orden editorial.** Folios (`.pt-folio`, `SectionHeader index="01"`), filetes (`.pt-rule`)
-   y cursivas de la serif para el énfasis. Las cifras van en fila pautada, no en cuatro
-   tarjetas.
-5. **Quieto por defecto.** Un patrón no se mueve; como mucho respira (`motion="breathe"`, un
-   ciclo de siete segundos). `DotField` sigue existiendo para lo ceremonial: una portada, un
-   lanzamiento.
+En la práctica:
+
+- **Un patrón por superficie**, en una esquina o detrás de una cifra. Sale siempre igual, así
+  que la captura del informe de esta semana se parece a la de la anterior.
+- **Un solo acento.** El botón principal, un anillo del patrón, un folio. Si hay dos en
+  pantalla, sobra uno; el rojo queda libre para lo que está caído.
+- **La lámina de tinta** (`GlassCard tone="bloom"`) es la superficie oscura para la cifra que
+  importa: la severidad del incidente, el error budget que queda.
+- **Orden de informe**: folios (`.pt-folio`, `SectionHeader index="01"`), filetes (`.pt-rule`)
+  y cifras en una fila pautada, no en cuatro tarjetas.
+- **Quieto por defecto.** Como mucho, `motion="breathe"` (un ciclo de siete segundos).
+  `DotField` sigue ahí para la portada.
 
 ## Los motivos
 
@@ -127,18 +132,18 @@ paleta, en Mist y en Ink, sin una variante de color propia.
 >
   <DotMark size={72} />
   <div style={{ maxWidth: 420 }}>
-    Nueve puntos y un sello (`DotMark`). Es la rejilla mínima del sistema; la estrella
-    (`Sparkle`) queda como puntuación.
+    Nueve puntos y un sello (`DotMark`). Cabe en un favicon y en la esquina de un PDF; la
+    estrella (`Sparkle`) queda como puntuación.
   </div>
 </div>
 
-## Para el día a día: operaciones
+## Componentes de operaciones
 
-Dot 2 nace con las piezas de una consola de plataforma, todas hechas de puntos y filetes:
+Todos hechos de puntos y filetes, y todos funcionan también en v1:
 
 | Componente | Para qué |
 | --- | --- |
-| `Status` | Un estado como punto + palabra: correcto, degradado, caído, en curso, sin datos. La forma del punto acompaña al color |
+| `Status` | Un estado como punto + palabra: correcto, degradado, caído, en curso, sin datos. La forma del punto acompaña al color, para quien no distingue el rojo del verde |
 | `DataTable` | Tabla pautada: cabeceras en versalitas, cifras en mono, orden por columna, fila seleccionada |
 | `Diagram` | Cajas y conectores de puntos sobre una rejilla: arquitectura, caminos de petición, dependencias |
 | `Pipeline` | Una ejecución como línea de puntos: compilar → probar → desplegar |
@@ -150,9 +155,9 @@ Están juntas en **Pages › Dot 2 › Operaciones**.
 
 ## Modo noche y OLED
 
-Hay un tercer tema, `oled`: Ink sobre negro puro (`#000`). Sin sombras —no se ven sobre
-negro—, las superficies suben un paso de tinta y el filete lleva la estructura; el texto baja
-un punto de blanco para no deslumbrar.
+Para la guardia de noche hay un tercer tema, `oled`: Ink sobre negro puro (`#000`). Sin
+sombras (sobre negro no se ven), las superficies suben un paso de tinta y el filete lleva la
+estructura; el texto baja un punto de blanco para no deslumbrar a las tres de la mañana.
 
 ```tsx
 const { preference, setPreference } = useTheme({ night: "oled" });
@@ -168,12 +173,13 @@ en línea para el `<head>` que evita el destello blanco al cargar.
 - La rejilla de 4 px y los puntos cada 8.
 - Instrument Serif para decir, Inter Tight para hacer.
 - Los puntos como estado y como dato: `DotLoader`, `DotProgress`, `DotBars`, `DotDivider`.
-- Mist e Ink, y las cuatro paletas: en v2 cada una aporta su sello y su lámina.
+- Mist, Ink y OLED, y las cinco paletas: en v2 cada una aporta su sello y su lámina.
 - `prefers-reduced-motion`.
 
 ## Dónde verlo
 
-- **Pages › Dot 2** — _Portada_, _Informe_, _Operaciones_ y _Lámina_.
+- **Pages › Dot 2** — _Portada_ (informe semanal de plataforma), _Informe_ (post-mortem de un
+  incidente), _Operaciones_ (consola de plataforma) y _Lámina_ (póster de estado).
 - **DevOps** — cada componente de operaciones por separado.
 - **Foundations › Versions** — la misma pantalla en v1 y en v2.
 - **Dots › DotPattern** — los motivos, los anclajes y un _playground_.

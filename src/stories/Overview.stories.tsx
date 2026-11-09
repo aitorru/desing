@@ -107,18 +107,18 @@ function Board({ palette, night }: { palette: ReturnType<typeof heroPalette>; ni
             Serif <em>tranquila</em>
           </span>
           <span className="ov-type__sans">Inter Tight para la interfaz</span>
-          <span className="pt-mono ov-type__mono">IBM Plex Mono · 1,8 M€</span>
+          <span className="pt-mono ov-type__mono">IBM Plex Mono · p95 141 ms</span>
         </div>
       </Tile>
 
       <Tile area="comps" title="Componentes">
         <div className="ov-comps">
-          <Button>Simular</Button>
-          <Button variant="ghost">Cancelar</Button>
+          <Button>Desplegar</Button>
+          <Button variant="ghost">Revertir</Button>
           <Badge tone="positive" dot>
-            +12,4 %
+            SLO ok
           </Badge>
-          <Switch label="Modo informe" defaultChecked />
+          <Switch label="Alertas" defaultChecked />
         </div>
       </Tile>
 
@@ -146,7 +146,7 @@ function Board({ palette, night }: { palette: ReturnType<typeof heroPalette>; ni
         </GlassCard>
       </Tile>
 
-      <Tile area="status" title="Consola de plataforma">
+      <Tile area="status" title="Estado de servicios">
         <div className="ov-status">
           <div className="ov-status__list">
             <Status tone="ok">Correcto</Status>
@@ -168,18 +168,18 @@ data-pt-version="2"`}
         </pre>
       </Tile>
 
-      <Tile area="loaders" title="Estados de puntos">
+      <Tile area="loaders" title="Mientras esperas">
         <div className="ov-loaders">
           <div className="ov-loaders__row">
             <DotLoader variant="wave" tone="accent" size="lg" label="Cargando" />
             <DotLoader variant="pulse" size="lg" label="Cargando" />
             <DotLoader variant="orbit" size="lg" label="Cargando" />
           </div>
-          <DotProgress value={62} tone="accent" label="Progreso" />
+          <DotProgress value={62} tone="accent" label="Réplicas listas" />
         </div>
       </Tile>
 
-      <Tile area="pipe" title="Pipelines">
+      <Tile area="pipe" title="Despliegues">
         <div className="ov-pipe">
           <Pipeline
             label="Despliegue"
