@@ -52,7 +52,7 @@ function Sample({ version, theme }: { version: "1" | "2"; theme: ThemeName }) {
       className="fd-ver"
     >
       <Stack gap={1} className="fd-ver__label">
-        <span className="pt-folio">{v2 ? "Punto 2" : "Punto 1"}</span>
+        <span className="pt-folio">{v2 ? "Dot 2" : "Dot 1"}</span>
         <span className="fd-ver__desc">
           {v2
             ? "Siena · patrón compuesto · papel y filete · un sello"
@@ -136,7 +136,7 @@ function Sample({ version, theme }: { version: "1" | "2"; theme: ThemeName }) {
   );
 }
 
-/** Punto 1 next to Punto 2: same components, same content, only the tokens differ. */
+/** Dot 1 next to Dot 2: same components, same content, only the tokens differ. */
 export const BeforeAfter: StoryObj = {
   name: "Antes y después",
   render: (_, { globals }) => {

@@ -56,6 +56,8 @@ const ALL: DotPaletteName[] = [
   "marea",
   "siena",
   "citrico",
+  "mono",
+  "monoNight",
 ];
 const NOTES: Record<DotPaletteName, string> = {
   aurora: "Completa · héroes y pósters",
@@ -67,9 +69,11 @@ const NOTES: Record<DotPaletteName, string> = {
   marea: "Héroe de la paleta Marea",
   siena: "Héroe de la paleta Siena",
   citrico: "Héroe de la paleta Cítrico",
+  mono: "Héroe de la paleta Mono",
+  monoNight: "Mono en oscuro",
 };
 
-/** Every palette side by side. `graphite`, `night` and `paper` are the sober ones for product UI; the last three are the heroes of the alternative colour palettes. */
+/** Every palette side by side. `graphite`, `night` and `paper` are the sober ones for product UI; the rest are the heroes of the alternative colour palettes. */
 export const Palettes: Story = {
   render: (args) => (
     <div

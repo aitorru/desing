@@ -1,0 +1,41 @@
+/*
+ * Mono — the brutalist shape of the black-and-white palette.
+ *
+ * The colours are in tokens.css with the other palettes; this file adds the form that goes
+ * with them and only re-tunes tokens, like v2.css. It loads after v2.css and doubles the
+ * attribute in the first selector so it also wins over v2's `[data-pt-version="2"] […]`.
+ *
+ *   · Square         every radius is 0, controls included.
+ *   · Stroke         2px borders in solid ink, no translucent hairlines.
+ *   · Hard shadow    panels cast a flat offset block, not a blur.
+ *   · No glass       no blur, no shine, no gradient: the seal is plain ink (or paper at night).
+ */
+[data-pt-palette="mono"][data-pt-palette],
+[data-pt-palette="mono"] [data-pt-theme],
+[data-pt-palette="mono"] [data-pt-version] {
+  --pt-radius-sm: 0;
+  --pt-radius-md: 0;
+  --pt-radius-lg: 0;
+  --pt-radius-xl: 0;
+  --pt-radius-pill: 0;
+  --pt-radius-control: 0;
+  --pt-stroke: 2px;
+
+  --pt-border: var(--pt-fg);
+  --pt-border-strong: var(--pt-fg);
+  --pt-dot-faint: color-mix(in srgb, var(--pt-fg) 14%, transparent);
+
+  /* The accent already flips with the theme (ink on paper, paper on ink). */
+  --pt-seal: var(--pt-accent);
+  --pt-on-aurora: var(--pt-accent-fg);
+  --pt-gradient-aurora: linear-gradient(var(--pt-seal), var(--pt-seal));
+  --pt-gradient-ember: linear-gradient(var(--pt-seal), var(--pt-seal));
+  --pt-gradient-dusk: linear-gradient(var(--pt-fg), var(--pt-fg));
+  --pt-plate: #000;
+
+  --pt-glass-bg: var(--pt-bg-raised);
+  --pt-glass-border: var(--pt-fg);
+  --pt-glass-shadow: 6px 6px 0 var(--pt-fg);
+  --pt-glass-blur: none;
+  --pt-glass-shine: 0;
+}

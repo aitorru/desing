@@ -12,7 +12,7 @@ export interface SparkleProps extends Omit<SVGProps<SVGSVGElement>, "children"> 
 
 /**
  * The four-point star with concave sides: the shape left between four rounded tiles
- * (see `Petals`). Used as Punto's logo glyph, bullet and "AI / simulated" marker.
+ * (see `Petals`). Used as Dot's logo glyph, bullet and "AI / simulated" marker.
  */
 export function Sparkle({ size = 24, twinkle = false, title, className, ...rest }: SparkleProps) {
   return (

@@ -162,7 +162,7 @@
   background: var(--pt-gradient-aurora);
 }
 
-/* ── Versions: Punto 1 next to Punto 2 ──────────────────────── */
+/* ── Versions: Dot 1 next to Dot 2 ──────────────────────── */
 .fd-ver__pair {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(min(520px, 100%), 1fr));

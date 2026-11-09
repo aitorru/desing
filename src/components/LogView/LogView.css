@@ -1,7 +1,7 @@
 .pt-log {
   overflow: auto;
   padding: var(--pt-space-3) 0;
-  border: 1px solid var(--pt-border-strong);
+  border: var(--pt-stroke) solid var(--pt-border-strong);
   border-radius: var(--pt-radius-md);
   background: var(--pt-bg-sunken);
   color: var(--pt-fg);

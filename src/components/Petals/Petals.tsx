@@ -17,7 +17,7 @@ export interface PetalsProps {
 }
 
 /**
- * Punto's mark: four soft tiles whose rounded corners leave a glowing sparkle between
+ * Dot's mark: four soft tiles whose rounded corners leave a glowing sparkle between
  * them. Works at any aspect ratio (corners stay round); keep it square for the logo.
  */
 export function Petals({

@@ -7,7 +7,7 @@
   height: var(--h);
   padding: var(--pad);
   border-radius: var(--pt-radius-control);
-  border: 1px solid var(--pt-border);
+  border: var(--pt-stroke) solid var(--pt-border);
   background: color-mix(in srgb, var(--pt-bg-sunken) 60%, transparent);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);

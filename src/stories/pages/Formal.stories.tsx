@@ -22,7 +22,7 @@ import { OpsPage } from "./OpsPage";
 import "./formal.css";
 
 const meta: Meta = {
-  title: "Pages/Punto 2",
+  title: "Pages/Dot 2",
   // These pages are the v2 proposal: they render in v2 whatever the toolbar says.
   parameters: { layout: "fullscreen", ptVersion: "2" },
 };

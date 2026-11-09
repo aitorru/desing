@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { soberPalette } from "../../stories/theme";
+import { heroPalette, isNight, soberPalette } from "../../stories/theme";
 import { Badge } from "../Badge/Badge";
 import { DotBars } from "../DotBars/DotBars";
 import { DotField } from "../DotField/DotField";
@@ -41,8 +41,13 @@ function Content() {
 }
 
 export const Playground: Story = {
-  render: (args) => (
-    <DotField palette="aurora" seed={4} style={{ height: "100vh" }}>
+  render: (args, { globals }) => (
+    <DotField
+      palette={heroPalette(globals)}
+      surface={isNight(globals) ? "theme" : "palette"}
+      seed={4}
+      style={{ height: "100vh" }}
+    >
       <div style={{ height: "100%", display: "grid", placeItems: "center" }}>
         <GlassCard {...args} style={{ width: 320 }}>
           <Content />
@@ -83,8 +88,15 @@ export const Tones: Story = {
 
 /** The poster card: bloom glass with the Petals mark as its backdrop. */
 export const WithPetals: Story = {
-  render: () => (
-    <DotField palette="aurora" pixel={3} gap={7} seed={11} style={{ height: "100vh" }}>
+  render: (_, { globals }) => (
+    <DotField
+      palette={heroPalette(globals)}
+      surface={isNight(globals) ? "theme" : "palette"}
+      pixel={3}
+      gap={7}
+      seed={11}
+      style={{ height: "100vh" }}
+    >
       <div style={{ height: "100%", display: "grid", placeItems: "center" }}>
         <GlassCard
           tone="bloom"

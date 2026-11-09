@@ -1,7 +1,7 @@
 import type { DotPaletteName } from "../components/DotField/field";
 
 /** Colour palettes: set one with `data-pt-palette` next to `data-pt-theme`. */
-export type PaletteName = "punto" | "marea" | "siena" | "citrico";
+export type PaletteName = "punto" | "marea" | "siena" | "citrico" | "mono";
 
 export interface PaletteInfo {
   name: PaletteName;
@@ -36,6 +36,12 @@ export const PALETTES: readonly PaletteInfo[] = [
     label: "Cítrico",
     description: "Piedra y negro oliva; esmeralda → lima → oro. Fresco, enérgico.",
     hero: "citrico",
+  },
+  {
+    name: "mono",
+    label: "Mono",
+    description: "Blanco y negro, esquinas rectas, trazo de 2 px y sombra dura. Brutalista.",
+    hero: "mono",
   },
 ];
 

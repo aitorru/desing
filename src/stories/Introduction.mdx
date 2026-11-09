@@ -1,14 +1,14 @@
 import { Meta } from "@storybook/addon-docs/blocks";
 import { DotField, GlassCard, Petals, Sparkle } from "../index";
 
-<Meta title="Punto/Introducción" />
+<Meta title="Dot/Introducción" />
 
 <div className="sb-unstyled" style={{ borderRadius: 28, overflow: "hidden", margin: "8px 0 40px" }}>
   <DotField palette="aurora" seed={3} style={{ height: 320 }}>
     <div style={{ height: "100%", display: "grid", placeItems: "center" }}>
       <GlassCard tone="bloom" padding="lg" style={{ width: 360 }}>
         <div style={{ display: "grid", gap: 12, textAlign: "center" }}>
-          <span style={{ fontWeight: 560, letterSpacing: "-0.01em" }}>Punto</span>
+          <span style={{ fontWeight: 560, letterSpacing: "-0.01em" }}>Dot</span>
           <h1 className="pt-display" style={{ fontSize: 44, color: "#fff" }}>Un lenguaje hecho de puntos</h1>
         </div>
       </GlassCard>
@@ -16,9 +16,9 @@ import { DotField, GlassCard, Petals, Sparkle } from "../index";
   </DotField>
 </div>
 
-# Punto — propuesta de lenguaje de diseño
+# Dot
 
-**Punto** parte del póster de _Otherwise_: una superficie de puntos por la que pasan cintas de
+**Dot** parte del póster de _Otherwise_: una superficie de puntos por la que pasan cintas de
 color, y encima un panel de vidrio con una tipografía serif muy tranquila. La idea es convertir
 esa imagen en un sistema: pocas piezas, reglas claras y una única textura animada que da
 personalidad sin cansar.
@@ -73,8 +73,12 @@ espectro de seis tonos (`--pt-spectrum-1…6`). Una paleta reasigna los neutros 
 | `marea`   | niebla marina · azul marino | azur → turquesa → verde mar    | Sereno, técnico     |
 | `siena`   | papel hueso · tinta café   | vino → terracota → ocre        | Cálido, editorial   |
 | `citrico` | piedra · negro oliva       | esmeralda → lima → oro         | Fresco, enérgico    |
+| `mono`    | blanco puro · negro puro   | grises; color solo en estados  | Brutalista          |
 
-Cada paleta tiene su textura de héroe en `DotField` (`aurora`, `marea`, `siena`, `citrico`;
+`mono` trae además su forma: esquinas rectas, trazo de 2 px en tinta y sombra dura en vez de
+vidrio (`mono.css`).
+
+Cada paleta tiene su textura de héroe en `DotField` (`aurora`, `marea`, `siena`, `citrico`, `mono`;
 `heroDotPalette(nombre)` la devuelve) y funciona en _Mist_ y en _Ink_. Compáralas en
 **Foundations › Palettes** o cambia la de todo el Storybook con el selector **Paleta**.
 
@@ -88,7 +92,7 @@ Cada paleta tiene su textura de héroe en `DotField` (`aurora`, `marea`, `siena`
 | `graphite` | **Sobria.** Puntos de tinta sobre mist. Producto, dashboards.    |
 | `night`    | **Sobria** en oscuro. Puntos claros sobre ink.                   |
 | `paper`    | **Casi invisible.** Un fondo con textura, no una imagen.         |
-| `marea` · `siena` · `citrico` | Héroes de las paletas alternativas.  |
+| `marea` · `siena` · `citrico` · `mono` | Héroes de las paletas alternativas (`monoNight` para Mono en oscuro). |
 
 Y tres movimientos: `flow` (las cintas se desplazan), `breathe` (quietas, solo pulsan la
 intensidad) y `still` (un único fotograma).
@@ -111,8 +115,8 @@ intensidad) y `still` (un único fotograma).
 - **Pages** — el póster original, una pantalla de producto y un panel de equipo
   (`Workspace`) hecho casi solo con los transversales.
 
-> **Punto 2.** Hay una propuesta de evolución —más formal, con patrones compuestos en vez
-> de cintas— que convive con esta: está en **Punto › Versión 2** y se activa con
+> **Dot 2.** Hay una propuesta de evolución —más formal, con patrones compuestos en vez
+> de cintas— que convive con esta: está en **Dot › Versión 2** y se activa con
 > `data-pt-version="2"` o con el selector **Versión**.
 
 Usa el selector **Tema** de la barra superior para alternar _Mist_ (claro), _Ink_ (oscuro) y

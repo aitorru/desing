@@ -1,34 +1,35 @@
 import { Meta } from "@storybook/addon-docs/blocks";
 import { DotMark, DotPattern, GlassCard } from "../index";
 
-<Meta title="Punto/Versión 2" />
+<Meta title="Dot/Versión 2" />
 
 <div
   className="sb-unstyled"
-  data-pt-theme="light"
   data-pt-version="2"
   style={{
     position: "relative",
     overflow: "hidden",
-    borderRadius: 16,
+    borderRadius: "var(--pt-radius-xl)",
     border: "1px solid var(--pt-border-strong)",
     margin: "8px 0 40px",
     padding: "96px 40px 40px",
+    background: "var(--pt-bg-raised)",
+    color: "var(--pt-fg)",
   }}
 >
   <DotPattern motif="rings" anchor="top-right" cols={64} rows={36} period={7} highlight={4} intensity={0.36} />
   <div style={{ position: "relative", display: "grid", gap: 12, maxWidth: 440 }}>
-    <span className="pt-folio">Propuesta · Punto 2</span>
+    <span className="pt-folio">Propuesta · Dot 2</span>
     <h1 className="pt-display" style={{ fontSize: 52 }}>
       El mismo punto, <em>compuesto</em>
     </h1>
   </div>
 </div>
 
-# Punto 2 — la edición formal
+# Dot 2
 
-Punto 1 convirtió un póster en un sistema. Funciona, pero habla siempre en voz alta: cintas de
-color que fluyen, vidrio esmerilado y un degradado en cada llamada a la acción. **Punto 2
+Dot 1 convirtió un póster en un sistema. Funciona, pero habla siempre en voz alta: cintas de
+color que fluyen, vidrio esmerilado y un degradado en cada llamada a la acción. **Dot 2
 conserva la unidad —el punto, la rejilla, la serif tranquila— y cambia el tono**: del póster
 al informe. Menos textura, más composición.
 
@@ -40,7 +41,7 @@ Se activa con un atributo, junto al tema, y no rompe nada de v1:
 
 ## Cinco decisiones
 
-| | Punto 1 | Punto 2 |
+| | Dot 1 | Dot 2 |
 | --- | --- | --- |
 | **Puntos** | Textura: cintas aleatorias que fluyen (`DotField`) | **Patrón**: seis motivos geométricos, quietos y anclados (`DotPattern`) |
 | **Color** | Degradado violeta → magenta → coral | **Un sello**: un único acento sólido por pantalla |
@@ -67,7 +68,6 @@ Se activa con un atributo, junto al tema, y no rompe nada de v1:
 
 <div
   className="sb-unstyled"
-  data-pt-theme="light"
   data-pt-version="2"
   style={{
     display: "grid",
@@ -122,7 +122,6 @@ paleta, en Mist y en Ink, sin una variante de color propia.
 
 <div
   className="sb-unstyled"
-  data-pt-theme="light"
   data-pt-version="2"
   style={{ display: "flex", gap: 32, alignItems: "center", margin: "24px 0", background: "transparent" }}
 >
@@ -135,7 +134,7 @@ paleta, en Mist y en Ink, sin una variante de color propia.
 
 ## Para el día a día: operaciones
 
-Punto 2 nace con las piezas de una consola de plataforma, todas hechas de puntos y filetes:
+Dot 2 nace con las piezas de una consola de plataforma, todas hechas de puntos y filetes:
 
 | Componente | Para qué |
 | --- | --- |
@@ -147,7 +146,7 @@ Punto 2 nace con las piezas de una consola de plataforma, todas hechas de puntos
 | `CodeBlock` · `LogView` | Configuración y registros en IBM Plex Mono, sin colores de sintaxis |
 | `DotUptime` | Historial como tira de puntos: solo las incidencias llevan color |
 
-Están juntas en **Pages › Punto 2 › Operaciones**.
+Están juntas en **Pages › Dot 2 › Operaciones**.
 
 ## Modo noche y OLED
 
@@ -174,7 +173,7 @@ en línea para el `<head>` que evita el destello blanco al cargar.
 
 ## Dónde verlo
 
-- **Pages › Punto 2** — _Portada_, _Informe_, _Operaciones_ y _Lámina_.
+- **Pages › Dot 2** — _Portada_, _Informe_, _Operaciones_ y _Lámina_.
 - **DevOps** — cada componente de operaciones por separado.
 - **Foundations › Versions** — la misma pantalla en v1 y en v2.
 - **Dots › DotPattern** — los motivos, los anclajes y un _playground_.

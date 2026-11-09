@@ -28,7 +28,7 @@ const meta: Meta<PosterArgs> = {
 };
 export default meta;
 
-/** The reference poster, rebuilt only with Punto pieces. */
+/** The reference poster, rebuilt only with Dot pieces. */
 export const Original: StoryObj<PosterArgs> = {
   render: ({ brand, title, subtitle, pixel, seed }, { globals }) => (
     <DotField

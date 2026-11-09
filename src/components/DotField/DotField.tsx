@@ -56,7 +56,7 @@ function dotPattern(ctx: CanvasRenderingContext2D, cell: number, size: number, c
 
 /**
  * A dot-matrix surface with slow ribbons of colour running through it — the signature
- * texture of Punto. Decorative: the canvas is hidden from assistive tech, and with
+ * texture of Dot. Decorative: the canvas is hidden from assistive tech, and with
  * `prefers-reduced-motion` it renders a single still frame.
  */
 export function DotField({

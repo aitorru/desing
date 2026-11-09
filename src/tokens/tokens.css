@@ -1,5 +1,5 @@
 /*
- * Punto — design tokens.
+ * Dot — design tokens.
  *
  * Layers: raw palette (--pt-<hue>-<step>) and its spectrum (--pt-spectrum-*), semantic
  * roles (--pt-bg, --pt-fg…) that switch with the theme, and component recipes (glass,
@@ -98,8 +98,10 @@
   --pt-radius-lg: 22px;
   --pt-radius-xl: 32px;
   --pt-radius-pill: 999px;
-  /* Buttons and segmented controls: a pill in v1, a squared control in Punto 2. */
+  /* Buttons and segmented controls: a pill in v1, a squared control in Dot 2. */
   --pt-radius-control: var(--pt-radius-pill);
+  /* Border width of panels and controls (Mono doubles it). */
+  --pt-stroke: 1px;
 
   /* ── Motion ──────────────────────────────────────────────── */
   --pt-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -113,7 +115,7 @@
   --pt-dot-gap: 8px;
   --pt-dot-size: 3px;
 
-  /* ── Glass knobs (Punto 2 turns the blur down and the shine off) ── */
+  /* ── Glass knobs (Dot 2 turns the blur down and the shine off) ── */
   --pt-glass-blur: blur(22px) saturate(150%);
   --pt-glass-shine: 1;
 }
@@ -290,10 +292,10 @@
 
 /*
  * Siena — bone paper and espresso ink; wine → terracotta → ochre. Warm, editorial.
- * It is also the house palette of Punto 2: a v2 scope without a palette gets Siena.
+ * It is also the house palette of Dot 2: a v2 scope with no palette on it or above gets Siena.
  */
 [data-pt-palette="siena"],
-[data-pt-version="2"]:not([data-pt-palette]) {
+[data-pt-version="2"]:not([data-pt-palette], [data-pt-palette] *) {
   --pt-mist-50: #faf7f2;
   --pt-mist-100: #f3eee5;
   --pt-mist-200: #e7dfd2;
@@ -356,6 +358,39 @@
     radial-gradient(100% 100% at 100% 100%, rgb(140 190 40 / 0.9) 0%, transparent 65%),
     linear-gradient(160deg, #1d5e4a 0%, #2f9a5a 100%);
   --pt-bloom-wash: rgb(220 245 160);
+}
+
+/*
+ * Mono — black and white, nothing in between but greys; colour is left to status alone.
+ * The brutalist shape that goes with it (square corners, 2px strokes, hard offset shadow)
+ * lives in mono.css, loaded after v2.css so it holds in both versions.
+ */
+[data-pt-palette="mono"] {
+  --pt-mist-50: #ffffff;
+  --pt-mist-100: #ffffff;
+  --pt-mist-200: #ebebeb;
+  --pt-mist-300: #cccccc;
+  --pt-mist-400: #a3a3a3;
+  --pt-ink-500: #6b6b6b;
+  --pt-ink-600: #474747;
+  --pt-ink-700: #2b2b2b;
+  --pt-ink-800: #141414;
+  --pt-ink-900: #000000;
+  --pt-spectrum-1: #000000;
+  --pt-spectrum-2: #1f1f1f;
+  --pt-spectrum-3: #3d3d3d;
+  --pt-spectrum-4: #5c5c5c;
+  --pt-spectrum-5: #8a8a8a;
+  --pt-spectrum-6: #c2c2c2;
+  --pt-spectrum-accent: #000000;
+  --pt-spectrum-soft: #ffffff;
+  --pt-on-aurora: #fff;
+  --pt-positive-hue: #1a7f37;
+  --pt-negative-hue: #d1242f;
+  --pt-warning-hue: #9a6700;
+  --pt-shadow-hue: rgb(0 0 0);
+  --pt-gradient-bloom: linear-gradient(#000, #000);
+  --pt-bloom-wash: transparent;
 }
 
 /* ── Base type helpers ──────────────────────────────────────── */

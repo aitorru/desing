@@ -10,7 +10,7 @@ export interface DotDividerProps extends HTMLAttributes<HTMLDivElement> {
   label?: ReactNode;
 }
 
-/** A separator drawn as a row of dots on the 8px grid: Punto never draws solid rules. */
+/** A separator drawn as a row of dots on the 8px grid: Dot never draws solid rules. */
 export function DotDivider({
   orientation = "horizontal",
   tone = "subtle",

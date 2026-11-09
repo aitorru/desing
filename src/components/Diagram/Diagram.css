@@ -88,7 +88,7 @@
   justify-content: center;
   gap: 2px;
   padding: 0 var(--pt-space-4);
-  border: 1px solid var(--pt-border-strong);
+  border: var(--pt-stroke) solid var(--pt-border-strong);
   border-radius: var(--pt-radius-md);
   background: var(--pt-bg-raised);
   box-sizing: border-box;

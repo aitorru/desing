@@ -6,7 +6,7 @@
   height: 24px;
   padding: 0 10px;
   border-radius: var(--pt-radius-pill);
-  border: 1px solid var(--pt-border);
+  border: var(--pt-stroke) solid var(--pt-border);
   background: color-mix(in srgb, var(--c) 8%, transparent);
   color: var(--c);
   font: 500 var(--pt-text-xs) / 1 var(--pt-font-sans);

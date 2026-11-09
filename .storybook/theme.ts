@@ -2,7 +2,7 @@ import { create } from "storybook/theming";
 
 export const puntoTheme = create({
   base: "light",
-  brandTitle: "Punto · design language",
+  brandTitle: "Dot · design language",
   brandUrl: "https://github.com/aitorru/desing",
   brandTarget: "_self",
   fontBase: '"Inter Tight Variable", "Inter Tight", system-ui, sans-serif',

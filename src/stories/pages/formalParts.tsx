@@ -52,7 +52,7 @@ export function Colophon() {
         <DotPattern motif="grid" falloff={0} intensity={0.34} highlight={0} origin="left" />
       </div>
       <div className="fm-foot__line">
-        <span>Otherwise · Punto 2, edición formal</span>
+        <span>Otherwise · Dot 2, edición formal</span>
         <span>Compuesto en Instrument Serif, Inter Tight e IBM Plex Mono</span>
       </div>
     </footer>

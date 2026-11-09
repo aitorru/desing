@@ -13,5 +13,7 @@ export function soberPalette(globals: Record<string, unknown>): DotPaletteName {
 
 /** The hero DotField palette for the colour palette picked in the toolbar. */
 export function heroPalette(globals: Record<string, unknown>): DotPaletteName {
+  // Mono's ink dots would vanish on a night page: it is the one palette with a night field.
+  if (globals.palette === "mono" && isNight(globals)) return "monoNight";
   return heroDotPalette(globals.palette as PaletteName | undefined);
 }

@@ -5,6 +5,7 @@ import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/500.css";
 import "./tokens/tokens.css";
 import "./tokens/v2.css";
+import "./tokens/mono.css";
 
 export {
   Avatar,

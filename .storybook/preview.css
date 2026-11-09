@@ -21,3 +21,8 @@ body {
 .docs-story .sb-pt-pad {
   min-height: 0;
 }
+
+/* Docs tables: zebra rows on the paper scale instead of Storybook's grey. */
+.sbdocs.sbdocs-content table tr:nth-of-type(2n) {
+  background: var(--pt-bg-raised);
+}

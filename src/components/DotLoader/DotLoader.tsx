@@ -21,7 +21,7 @@ const WAVE = [0, 1, 2, 1, 2, 3, 2, 3, 4];
 /** Orbit order: clockwise around the rim, centre stays dim. */
 const ORBIT = [0, 1, 2, 7, -1, 3, 6, 5, 4];
 
-/** A 3×3 dot grid. The loading state of every Punto component. */
+/** A 3×3 dot grid. The loading state of every Dot component. */
 export function DotLoader({
   variant = "wave",
   size = "md",
