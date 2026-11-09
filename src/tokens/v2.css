@@ -9,14 +9,14 @@
  *   · One seal             the aurora gradient becomes a single solid accent.
  *   · Ink plates           the `bloom` tint becomes a deep ink plate that carries patterns.
  *   · Radii on the grid    4 / 8 / 12 / 16, and controls stop being pills.
- *   · Siena by default     a v2 scope without `data-pt-palette` gets Siena (see tokens.css).
+ *   · Siena by default     a v2 scope with no palette on it or above gets Siena (tokens.css).
  *
  * The selector list repeats the scope on nested theme / palette elements because a custom
  * property resolves its var()s where it is declared, not where it is used; the `:not()`
  * line only matches the specificity of the Siena default so these recipes still win.
  */
 [data-pt-version="2"],
-[data-pt-version="2"]:not([data-pt-palette]),
+[data-pt-version="2"]:not([data-pt-palette], [data-pt-palette] *),
 [data-pt-version="2"] [data-pt-theme],
 [data-pt-version="2"] [data-pt-palette] {
   /* ── Shape ───────────────────────────────────────────────── */

@@ -290,10 +290,10 @@
 
 /*
  * Siena — bone paper and espresso ink; wine → terracotta → ochre. Warm, editorial.
- * It is also the house palette of Punto 2: a v2 scope without a palette gets Siena.
+ * It is also the house palette of Punto 2: a v2 scope with no palette on it or above gets Siena.
  */
 [data-pt-palette="siena"],
-[data-pt-version="2"]:not([data-pt-palette]) {
+[data-pt-version="2"]:not([data-pt-palette], [data-pt-palette] *) {
   --pt-mist-50: #faf7f2;
   --pt-mist-100: #f3eee5;
   --pt-mist-200: #e7dfd2;
