@@ -156,6 +156,8 @@ export function DataTable<T>({
                 onKeyDown={
                   onRowClick
                     ? (e) => {
+                        // Keys pressed on a button or link inside a cell belong to that control.
+                        if (e.target !== e.currentTarget) return;
                         if (e.key === "Enter" || e.key === " ") {
                           e.preventDefault();
                           onRowClick(row);

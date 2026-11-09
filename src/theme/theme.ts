@@ -121,5 +121,6 @@ export function themeInitScript(
   storageKey: string = THEME_STORAGE_KEY,
   night: "dark" | "oled" = "dark",
 ): string {
-  return `(function(){try{var p=localStorage.getItem(${JSON.stringify(storageKey)});var t=p==="light"||p==="dark"||p==="oled"?p:matchMedia("(prefers-color-scheme: dark)").matches?${JSON.stringify(night)}:"light";document.documentElement.setAttribute("data-pt-theme",t)}catch(e){}})()`;
+  // Storage is read in its own try: if it is blocked, the device preference still applies.
+  return `(function(){var p;try{p=localStorage.getItem(${JSON.stringify(storageKey)})}catch(e){}try{var t=p==="light"||p==="dark"||p==="oled"?p:matchMedia("(prefers-color-scheme: dark)").matches?${JSON.stringify(night)}:"light";document.documentElement.setAttribute("data-pt-theme",t)}catch(e){}})()`;
 }
