@@ -10,7 +10,8 @@ type Globals = Record<string, unknown>;
 export function ptAttributes(globals: Globals, version?: unknown) {
   const theme = globals.theme === "dark" || globals.theme === "oled" ? globals.theme : "light";
   const palette = typeof globals.palette === "string" ? globals.palette : "siena";
-  const v = (version ?? globals.version) === "2" ? "2" : undefined;
+  // String(): a global read from the URL (`globals=version:2`) arrives as a number.
+  const v = String(version ?? globals.version) === "2" ? "2" : undefined;
   return { theme, palette, version: v };
 }
 
