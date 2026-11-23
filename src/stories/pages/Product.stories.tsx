@@ -213,6 +213,7 @@ function ProductScreen({ hero }: { hero: DotPaletteName }) {
 }
 
 /** A full deploy screen. Press «Desplegar» to see every dot component work together. */
-export const Despliegue: StoryObj = {
+export const Scenarios: StoryObj = {
+  name: "Despliegue",
   render: (_, { globals }) => <ProductScreen hero={heroPalette(globals)} />,
 };

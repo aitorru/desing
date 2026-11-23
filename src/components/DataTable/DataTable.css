@@ -1,6 +1,6 @@
 .pt-table {
   /* Guaranteed breathing room: no density or edge column ever drops below 12px × 8px. */
-  --row: 52px;
+  --row: 48px;
   --px: var(--pt-space-4);
   --py: var(--pt-space-3);
   width: 100%;
@@ -11,7 +11,7 @@
 }
 
 .pt-table--compact {
-  --row: 40px;
+  --row: 36px;
   --px: var(--pt-space-3);
   --py: var(--pt-space-2);
 }
@@ -46,7 +46,7 @@
 
 /* Header: small caps over a strong hairline, like the head of a ledger. */
 .pt-table__th {
-  height: 44px;
+  height: 36px;
   border-bottom: 1px solid var(--pt-fg);
   color: var(--pt-fg-subtle);
   font-size: var(--pt-text-xs);
@@ -131,6 +131,7 @@
 
 .pt-table__empty {
   height: 96px;
+  padding: var(--py) var(--px);
   text-align: center;
   color: var(--pt-fg-subtle);
   border-bottom: 1px solid var(--pt-border-strong);

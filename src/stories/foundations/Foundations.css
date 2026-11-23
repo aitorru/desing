@@ -176,11 +176,6 @@
   padding: 40px;
 }
 
-.fd-ver__desc {
-  font-size: var(--pt-text-sm);
-  color: var(--pt-fg-muted);
-}
-
 .fd-ver__hero {
   position: relative;
   overflow: hidden;

@@ -50,14 +50,11 @@ function Sample({ version, theme }: { version: "1" | "2"; theme: ThemeName }) {
       data-pt-version={v2 ? "2" : undefined}
       className="fd-ver"
     >
-      <Stack gap={1} className="fd-ver__label">
-        <span className="pt-folio">{v2 ? "Punto 2" : "Punto 1"}</span>
-        <span className="fd-ver__desc">
-          {v2
-            ? "Siena · patrón compuesto · vidrio líquido · un sello"
-            : "Punto · cintas en movimiento · vidrio · degradado aurora"}
-        </span>
-      </Stack>
+      <span className="pt-folio fd-ver__label">
+        {v2
+          ? "Punto 2 · Siena · patrón · vidrio líquido · un sello"
+          : "Punto 1 · cintas · vidrio esmerilado · degradado aurora"}
+      </span>
 
       {v2 ? (
         <div className="fd-ver__hero fd-ver__hero--paper">
