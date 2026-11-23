@@ -47,6 +47,7 @@
 /* Header: small caps over a strong hairline, like the head of a ledger. */
 .pt-table__th {
   height: 36px;
+  padding-block: var(--pt-space-2);
   border-bottom: 1px solid var(--pt-fg);
   color: var(--pt-fg-subtle);
   font-size: var(--pt-text-xs);
@@ -132,6 +133,7 @@
 .pt-table__empty {
   height: 96px;
   padding: var(--py) var(--px);
+  box-sizing: border-box;
   text-align: center;
   color: var(--pt-fg-subtle);
   border-bottom: 1px solid var(--pt-border-strong);
