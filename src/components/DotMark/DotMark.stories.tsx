@@ -34,7 +34,7 @@ export const Wordmark: Story = {
             letterSpacing: "-0.02em",
           }}
         >
-          <DotMark size={size} /> Otherwise
+          <DotMark size={size} /> dot
         </span>
       ))}
     </div>

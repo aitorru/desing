@@ -9,8 +9,9 @@ para los titulares. Todo se documenta y se prueba en un Storybook.
 - **Familia de puntos**: `DotField` (la textura animada, en canvas), `DotPattern` (patrones
   compuestos y quietos, en SVG), `DotLoader`, `DotProgress` y `DotBars`.
 - **Punto 2** (`data-pt-version="2"`): la edición formal. Siena de serie, un solo acento
-  sólido, papel con filete en vez de vidrio, radios en la rejilla y patrones anclados en
-  lugar de cintas. Ver [Punto 2](#punto-2).
+  sólido, vidrio líquido con radios cortos (4 / 6 / 8 / 10), Geist y Geist Mono, más contraste
+  en el texto secundario, sin subtítulos y patrones anclados en lugar de cintas. Ver
+  [Punto 2](#punto-2).
 - **Paletas**: `punto` (la original), `marea`, `siena` y `citrico`, intercambiables con
   `data-pt-palette` en el mismo elemento que `data-pt-theme`.
 - **Componentes**: `Button`, `Badge`, `GlassCard`, `TextField`, `Segmented`, `Sparkle`,
@@ -59,9 +60,9 @@ corresponde a cada una.
 <html data-pt-theme="light" data-pt-version="2">
 ```
 
-`src/tokens/v2.css` solo reajusta tokens y recetas (radios, vidrio → papel, degradado →
-sello, `bloom` → lámina de tinta), así que todos los componentes lo siguen sin reglas
-propias. Sin `data-pt-palette`, un ámbito v2 usa Siena. La pieza nueva es `DotPattern`:
+`src/tokens/v2.css` solo reajusta tokens y recetas (radios, letra, vidrio esmerilado →
+vidrio líquido, degradado → sello, `bloom` → lámina de tinta), así que todos los componentes
+lo siguen sin reglas propias. Sin `data-pt-palette`, un ámbito v2 usa Siena. La pieza nueva es `DotPattern`:
 
 ```tsx
 <GlassCard backdrop={<DotPattern motif="rings" anchor="top-right" cols={22} rows={14} highlight={2} />}>
@@ -97,7 +98,9 @@ Componentes para consolas y paneles de operación (grupo **DevOps** del Storyboo
 | `LogView` | líneas de registro con hora, nivel y origen (`role="log"`) |
 | `DotUptime` | historial por periodos como tira de puntos |
 
-Usan `--pt-font-mono` (IBM Plex Mono) y un rol nuevo, `--pt-warning`.
+Usan `--pt-font-mono` (IBM Plex Mono en v1, Geist Mono en v2) y un rol nuevo, `--pt-warning`.
+`DataTable` garantiza 12–16 px a cada lado de cada celda, también en la primera y la última
+columna.
 
 ## Temas y modo noche
 

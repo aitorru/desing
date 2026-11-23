@@ -8,8 +8,7 @@ const meta = {
   component: Switch,
   parameters: { layout: "padded" },
   args: {
-    label: "Notificarme al terminar",
-    description: "Te escribimos cuando la simulación acabe.",
+    label: "Avisarme al terminar",
     size: "md",
     disabled: false,
     defaultChecked: true,
@@ -28,22 +27,17 @@ function Settings() {
   return (
     <Stack gap={5} style={{ maxWidth: 420 }}>
       <Switch
-        label="Simulación en directo"
-        description="Recalcula al cambiar cualquier supuesto."
+        label="Registro en directo"
         checked={live}
         onChange={(e) => setLive(e.target.checked)}
       />
       <Switch
-        label="Compartir con el equipo"
+        label="Despertar a la guardia"
         checked={share}
         onChange={(e) => setShare(e.target.checked)}
       />
       <Switch label="Modo compacto" size="sm" defaultChecked />
-      <Switch
-        label="Exportar a contabilidad"
-        description="Disponible en el plan Empresa."
-        disabled
-      />
+      <Switch label="Desplegar los viernes" disabled />
     </Stack>
   );
 }

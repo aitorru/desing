@@ -7,7 +7,7 @@ const meta = {
   title: "Components/Button",
   component: Button,
   parameters: { layout: "padded" },
-  args: { children: "Simular escenario", variant: "primary", size: "md", loading: false },
+  args: { children: "Desplegar", variant: "primary", size: "md", loading: false },
   argTypes: {
     variant: { control: "inline-radio", options: ["primary", "aurora", "glass", "ghost"] },
     size: { control: "inline-radio", options: ["sm", "md", "lg"] },
@@ -34,7 +34,7 @@ export const Variants: Story = {
             Ghost
           </Button>
           <Button {...args} size={size} variant="primary" loading>
-            Simulando
+            Desplegando
           </Button>
           <Button {...args} size={size} variant="ghost" disabled>
             Disabled
@@ -61,10 +61,10 @@ export const OnDots: Story = {
         }}
       >
         <Button {...args} variant="glass">
-          Comparar
+          Ver registro
         </Button>
         <Button {...args} variant="primary">
-          Empezar
+          Revertir
         </Button>
       </div>
     </DotField>

@@ -6,7 +6,6 @@ import "./pages.css";
 interface PosterArgs {
   brand: string;
   title: string;
-  subtitle: string;
   pixel: number;
   seed: number;
 }
@@ -15,9 +14,8 @@ const meta: Meta<PosterArgs> = {
   title: "Pages/Poster",
   parameters: { layout: "fullscreen" },
   args: {
-    brand: "Otherwise",
-    title: "Test the decision before you make it",
-    subtitle: "Simulate outcomes, compare scenarios, and move with more confidence",
+    brand: "plataforma",
+    title: "Todo verde, por ahora",
     pixel: 3,
     seed: 11,
   },
@@ -28,9 +26,9 @@ const meta: Meta<PosterArgs> = {
 };
 export default meta;
 
-/** The reference poster, rebuilt only with Punto pieces. */
+/** A status poster for the office screen, built only with Punto pieces. */
 export const Original: StoryObj<PosterArgs> = {
-  render: ({ brand, title, subtitle, pixel, seed }, { globals }) => (
+  render: ({ brand, title, pixel, seed }, { globals }) => (
     <DotField
       palette={heroPalette(globals)}
       pixel={pixel}
@@ -49,7 +47,6 @@ export const Original: StoryObj<PosterArgs> = {
             <span className="pg-poster__brand">{brand}</span>
             <div className="pg-poster__copy">
               <h1 className="pt-display pg-poster__title">{title}</h1>
-              <p className="pg-poster__subtitle">{subtitle}</p>
             </div>
           </div>
         </GlassCard>
@@ -61,7 +58,7 @@ export const Original: StoryObj<PosterArgs> = {
 /** Same layout, sober: graphite dots and a clear glass card. */
 export const Sober: StoryObj<PosterArgs> = {
   args: { pixel: 1 },
-  render: ({ brand, title, subtitle, pixel, seed }, { globals }) => (
+  render: ({ brand, title, pixel, seed }, { globals }) => (
     <DotField
       palette={soberPalette(globals)}
       surface="theme"
@@ -83,7 +80,6 @@ export const Sober: StoryObj<PosterArgs> = {
             <span className="pg-poster__brand">{brand}</span>
             <div className="pg-poster__copy">
               <h1 className="pt-display pg-poster__title">{title}</h1>
-              <p className="pg-poster__subtitle">{subtitle}</p>
             </div>
           </div>
         </GlassCard>

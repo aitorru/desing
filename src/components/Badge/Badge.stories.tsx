@@ -5,7 +5,7 @@ const meta = {
   title: "Components/Badge",
   component: Badge,
   parameters: { layout: "padded" },
-  args: { children: "Simulado", tone: "neutral", dot: false },
+  args: { children: "staging", tone: "neutral", dot: false },
   argTypes: {
     tone: {
       control: "inline-radio",
@@ -25,16 +25,16 @@ export const Tones: Story = {
     <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
       <Badge>Borrador</Badge>
       <Badge tone="accent" dot>
-        Escenario B
+        canario
       </Badge>
       <Badge tone="positive" dot>
-        +12,4 %
+        SLO ok
       </Badge>
       <Badge tone="negative" dot>
-        −3,1 %
+        p95 +40 ms
       </Badge>
       <Badge tone="accent" dot="pulse">
-        Simulando
+        Desplegando
       </Badge>
     </div>
   ),

@@ -9,11 +9,10 @@ const meta = {
   component: Stat,
   parameters: { layout: "padded" },
   args: {
-    label: "Ingresos p50",
-    value: "1,8 M€",
-    delta: "+12,4 %",
+    label: "Disponibilidad · 30 d",
+    value: "99,95 %",
+    delta: "+0,02 pp",
     trend: "positive",
-    note: "A 12 meses · riesgo medio",
     size: "md",
   },
   argTypes: {
@@ -47,43 +46,34 @@ export const Row: Story = {
       }}
     >
       <GlassCard tone="solid">
+        <Stat label="Peticiones / s" value="12 480" delta="+3,2 %" trend="positive" />
+      </GlassCard>
+      <GlassCard tone="solid">
         <Stat
-          label="Clientes activos"
-          value="12 480"
-          delta="+3,2 %"
+          label="Tasa de error"
+          value="0,21 %"
+          delta="−0,04 pp"
           trend="positive"
-          note="Últimos 30 días"
+          chart={<DotBars values={[7, 6, 6, 5, 5, 4, 4, 3]} rows={6} label="Errores por hora" />}
         />
       </GlassCard>
       <GlassCard tone="solid">
         <Stat
-          label="Abandono"
-          value="2,1 %"
-          delta="−0,4 pp"
-          trend="positive"
-          note="Bajar es bueno"
-          chart={<DotBars values={[7, 6, 6, 5, 5, 4, 4, 3]} rows={6} label="Abandono mensual" />}
-        />
-      </GlassCard>
-      <GlassCard tone="solid">
-        <Stat
-          label="Objetivo Q3"
+          label="Error budget"
           value="64 %"
-          delta="−6 %"
+          delta="−18 pp"
           trend="negative"
-          note="Por debajo del plan"
-          chart={<DotProgress value={64} count={20} label="Objetivo Q3" />}
+          chart={<DotProgress value={64} count={20} label="Error budget restante" />}
         />
       </GlassCard>
       <GlassCard tone="bloom">
         <Stat
-          label="Subir precio 8 %"
-          value="1,8 M€"
-          delta="+12,4 %"
+          label="Coste de nube"
+          value="18,4 k€"
+          delta="−6,1 %"
           trend="positive"
-          note="Escenario elegido"
           chart={
-            <DotBars values={SERIES} rows={6} highlight={SERIES.length - 1} label="Evolución" />
+            <DotBars values={SERIES} rows={6} highlight={SERIES.length - 1} label="Coste mensual" />
           }
         />
       </GlassCard>

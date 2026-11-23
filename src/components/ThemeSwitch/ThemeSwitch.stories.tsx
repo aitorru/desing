@@ -29,10 +29,14 @@ export const Playground: Story = {
         <ThemeSwitch {...args} value={value} onChange={setValue} />
         <div
           data-pt-theme={resolveTheme(value, "oled")}
-          style={{ padding: 32, borderRadius: 16, border: "1px solid var(--pt-border-strong)" }}
+          style={{
+            padding: 32,
+            borderRadius: "var(--pt-radius-xl)",
+            border: "1px solid var(--pt-border-strong)",
+          }}
         >
           <GlassCard style={{ width: 280 }}>
-            <Stat label="Disponibilidad" value="99,98 %" note="Últimos 30 días" />
+            <Stat label="Disponibilidad" value="99,98 %" />
           </GlassCard>
         </div>
       </Stack>
@@ -75,10 +79,14 @@ export const Remembered: Story = {
         <div
           ref={setPanel}
           data-testid="panel"
-          style={{ padding: 32, borderRadius: 16, border: "1px solid var(--pt-border-strong)" }}
+          style={{
+            padding: 32,
+            borderRadius: "var(--pt-radius-xl)",
+            border: "1px solid var(--pt-border-strong)",
+          }}
         >
           <GlassCard style={{ width: 280 }}>
-            <Stat label="Tema aplicado" value={theme} note={`Preferencia: ${preference}`} />
+            <Stat label="Tema aplicado" value={theme} />
           </GlassCard>
         </div>
       </Stack>

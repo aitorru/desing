@@ -11,7 +11,7 @@ const meta = {
     rows: 8,
     highlight: 9,
     animated: true,
-    label: "Ingresos por mes, en tendencia ascendente",
+    label: "Peticiones por hora, en aumento",
   },
 } satisfies Meta<typeof DotBars>;
 

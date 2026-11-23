@@ -8,10 +8,10 @@ const meta: Meta = {
 export default meta;
 
 const DISPLAY = [
-  ["Display XL", "--pt-display-xl", "Test the decision"],
-  ["Display L", "--pt-display-lg", "before you make it"],
-  ["Display M", "--pt-display-md", "Compare scenarios"],
-  ["Display S", "--pt-display-sm", "Move with more confidence"],
+  ["Display XL", "--pt-display-xl", "99,95 %"],
+  ["Display L", "--pt-display-lg", "Todo verde, por ahora"],
+  ["Display M", "--pt-display-md", "Estado de la plataforma"],
+  ["Display S", "--pt-display-sm", "Post-mortem de INC-212"],
 ] as const;
 
 const TEXT = [
@@ -25,8 +25,9 @@ export const Scale: StoryObj = {
   render: () => (
     <div className="fd-section">
       <p className="pt-body" style={{ maxWidth: 600 }}>
-        <strong>Instrument Serif</strong> para titulares y cifras (interlineado 0.98, tracking −2.5
-        %). <strong>Inter Tight</strong> para interfaz y texto. Nunca serif por debajo de 24 px.
+        Punto 2: <strong>Geist</strong> a 600 para titulares y cifras (tracking −3,5 %) y a 400 para
+        interfaz y texto; <strong>Geist Mono</strong> para lo que escribe una máquina. Punto 1:
+        Instrument Serif para titulares, Inter Tight para el resto.
       </p>
       <div>
         {DISPLAY.map(([name, token, sample]) => (
@@ -49,13 +50,13 @@ export const Scale: StoryObj = {
               {token}
             </code>
             <p style={{ margin: 0, fontSize: `var(${token})` }}>
-              Simulate outcomes, compare scenarios, and move with more confidence.
+              El despliegue de checkout terminó en 9 min, sin reintentos ni sustos.
             </p>
           </div>
         ))}
         <div className="fd-type-row">
           <code>Eyebrow</code>
-          <span className="pt-eyebrow">Escenario B · 12 variables</span>
+          <span className="pt-eyebrow">eu-west-1 · 6 servicios</span>
         </div>
       </div>
     </div>
@@ -66,13 +67,10 @@ export const Pairing: StoryObj = {
   name: "Combinación",
   render: () => (
     <div style={{ maxWidth: 560, display: "grid", gap: 16 }}>
-      <span className="pt-eyebrow">Simulación</span>
+      <span className="pt-eyebrow">Informe semanal</span>
       <h2 className="pt-display" style={{ fontSize: "var(--pt-display-lg)" }}>
-        Test the decision <em>before</em> you make it
+        Una semana <em>casi</em> tranquila
       </h2>
-      <p className="pt-body" style={{ fontSize: "var(--pt-text-lg)" }}>
-        Simulate outcomes, compare scenarios, and move with more confidence.
-      </p>
     </div>
   ),
 };

@@ -66,7 +66,7 @@ export const Palette: StoryObj = {
         <Swatch name="Aurora" token="--pt-gradient-aurora" note="Héroes, un botón por pantalla" />
         <Swatch name="Ember" token="--pt-gradient-ember" note="Cálido" />
         <Swatch name="Dusk" token="--pt-gradient-dusk" note="Frío" />
-        <Swatch name="Bloom" token="--pt-gradient-bloom" note="La tarjeta del póster" />
+        <Swatch name="Bloom" token="--pt-gradient-bloom" note="La tarjeta destacada" />
       </Group>
     </div>
   ),
