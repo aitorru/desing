@@ -6,7 +6,7 @@ const meta = {
   title: "Dots/DotProgress",
   component: DotProgress,
   parameters: { layout: "padded" },
-  args: { value: 62, count: 24, tone: "accent", label: "Simulando escenarios" },
+  args: { value: 62, count: 24, tone: "accent", label: "Desplegando réplicas" },
   argTypes: { value: { control: { type: "range", min: 0, max: 100 } } },
 } satisfies Meta<typeof DotProgress>;
 
@@ -39,11 +39,11 @@ function Running() {
   return (
     <div style={{ maxWidth: 360, display: "grid", gap: 12 }}>
       <div style={{ display: "flex", justifyContent: "space-between", fontSize: 13 }}>
-        <span>Simulando 10 000 trayectorias</span>
+        <span>Subiendo la imagen al registro</span>
         <span style={{ fontVariantNumeric: "tabular-nums" }}>{v}%</span>
       </div>
-      <DotProgress value={v} label="Simulación" />
-      <DotProgress value={v} label="Simulación" tone="current" count={32} />
+      <DotProgress value={v} label="Subida de la imagen" />
+      <DotProgress value={v} label="Subida de la imagen" tone="current" count={32} />
     </div>
   );
 }

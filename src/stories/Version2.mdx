@@ -10,7 +10,7 @@ import { DotMark, DotPattern, GlassCard } from "../index";
   style={{
     position: "relative",
     overflow: "hidden",
-    borderRadius: 16,
+    borderRadius: 10,
     border: "1px solid var(--pt-border-strong)",
     margin: "8px 0 40px",
     padding: "96px 40px 40px",
@@ -29,8 +29,8 @@ import { DotMark, DotPattern, GlassCard } from "../index";
 
 Punto 1 convirtió un póster en un sistema. Funciona, pero habla siempre en voz alta: cintas de
 color que fluyen, vidrio esmerilado y un degradado en cada llamada a la acción. **Punto 2
-conserva la unidad —el punto, la rejilla, la serif tranquila— y cambia el tono**: del póster
-al informe. Menos textura, más composición.
+conserva la unidad —el punto, la rejilla— y cambia el tono**: del póster a la consola. Menos
+textura, más composición, letra más clara y más contraste.
 
 Se activa con un atributo, junto al tema, y no rompe nada de v1:
 
@@ -38,14 +38,15 @@ Se activa con un atributo, junto al tema, y no rompe nada de v1:
 <html data-pt-theme="light" data-pt-version="2">
 ```
 
-## Cinco decisiones
+## Seis decisiones
 
 | | Punto 1 | Punto 2 |
 | --- | --- | --- |
 | **Puntos** | Textura: cintas aleatorias que fluyen (`DotField`) | **Patrón**: seis motivos geométricos, quietos y anclados (`DotPattern`) |
 | **Color** | Degradado violeta → magenta → coral | **Un sello**: un único acento sólido por pantalla |
-| **Superficie** | Vidrio esmerilado con brillo | **Papel y filete**: panel casi opaco, borde de 1 px, sombra corta |
-| **Forma** | Radios 8 / 14 / 22 / 32 y botones píldora | **Todo en la rejilla**: 4 / 8 / 12 / 16 y controles rectos |
+| **Superficie** | Vidrio esmerilado con brillo curvo | **Vidrio líquido**: panel claro con borde especular, brillo diagonal y grosor interior |
+| **Forma** | Radios 8 / 14 / 22 / 32 y botones píldora | **Radios cortos**: 4 / 6 / 8 / 10 y controles rectos |
+| **Letra** | Instrument Serif + Inter Tight + IBM Plex Mono | **Geist** para titulares e interfaz, **Geist Mono** para lo que escribe una máquina |
 | **Paleta** | Punto (lavanda) | **Siena** de serie: papel hueso, tinta café, terracota |
 
 1. **El patrón sustituye a la cinta.** Un patrón no es ruido: es geometría sobre la rejilla de
@@ -53,12 +54,15 @@ Se activa con un atributo, junto al tema, y no rompe nada de v1:
    una cifra—. Uno por superficie.
 2. **Un solo sello.** El color intenso deja de ser un degradado y pasa a ser una marca: el
    botón principal, un anillo del patrón, un folio. Si hay dos sellos en pantalla, sobra uno.
-3. **Papel antes que vidrio.** Los paneles son papel con un filete. El tinte `bloom` se
-   convierte en una **lámina de tinta**: la superficie oscura que lleva la cita o la cifra
-   elegida, con su patrón en ocre.
-4. **Orden editorial.** Folios (`.pt-folio`, `SectionHeader index="01"`), filetes (`.pt-rule`)
-   y cursivas de la serif para el énfasis. Las cifras van en fila pautada, no en cuatro
-   tarjetas.
+3. **Vidrio líquido.** Los paneles son vidrio claro: dejan ver el patrón de detrás, pero
+   llevan tinte suficiente para que el texto mantenga todo su contraste. El borde hace el
+   trabajo —un filo de luz arriba, otro más tenue abajo y un brillo interior que da grosor—.
+   El tinte `bloom` se convierte en una **lámina de tinta**: la superficie oscura que lleva la
+   cita o la cifra elegida, con su patrón en ocre.
+4. **Orden, sin subtítulos.** Folios (`.pt-folio`, `SectionHeader index="01"`), filetes
+   (`.pt-rule`) y un titular por bloque: nada de subtítulos debajo. El énfasis es un cambio de
+   peso de Geist (600 → 400), no una cursiva. Las cifras van en fila pautada y las tablas con
+   12–16 px a cada lado de la celda, también en la primera y la última columna.
 5. **Quieto por defecto.** Un patrón no se mueve; como mucho respira (`motion="breathe"`, un
    ciclo de siete segundos). `DotField` sigue existiendo para lo ceremonial: una portada, un
    lanzamiento.
@@ -144,7 +148,7 @@ Punto 2 nace con las piezas de una consola de plataforma, todas hechas de puntos
 | `Diagram` | Cajas y conectores de puntos sobre una rejilla: arquitectura, caminos de petición, dependencias |
 | `Pipeline` | Una ejecución como línea de puntos: compilar → probar → desplegar |
 | `KeyValue` | Metadatos con guía de puntos (commit, región, imagen) |
-| `CodeBlock` · `LogView` | Configuración y registros en IBM Plex Mono, sin colores de sintaxis |
+| `CodeBlock` · `LogView` | Configuración y registros en Geist Mono, sin colores de sintaxis |
 | `DotUptime` | Historial como tira de puntos: solo las incidencias llevan color |
 
 Están juntas en **Pages › Punto 2 › Operaciones**.
@@ -167,7 +171,6 @@ en línea para el `<head>` que evita el destello blanco al cargar.
 ## Qué no cambia
 
 - La rejilla de 4 px y los puntos cada 8.
-- Instrument Serif para decir, Inter Tight para hacer.
 - Los puntos como estado y como dato: `DotLoader`, `DotProgress`, `DotBars`, `DotDivider`.
 - Mist e Ink, y las cuatro paletas: en v2 cada una aporta su sello y su lámina.
 - `prefers-reduced-motion`.

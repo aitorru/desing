@@ -81,6 +81,10 @@
   --pt-leading-body: 1.5;
   --pt-tracking-display: -0.025em;
   --pt-tracking-caps: 0.12em;
+  /* Display knobs: the serif is set at 400 with italic emphasis; Punto 2 swaps both. */
+  --pt-display-weight: 400;
+  --pt-display-em-style: italic;
+  --pt-display-em-weight: inherit;
 
   /* ── Space · 4px grid, the same grid the dots live on ───── */
   --pt-space-1: 4px;
@@ -142,8 +146,8 @@
   --pt-bg-raised: var(--pt-mist-50);
   --pt-bg-sunken: var(--pt-mist-200);
   --pt-fg: var(--pt-ink-900);
-  --pt-fg-muted: var(--pt-ink-600);
-  --pt-fg-subtle: var(--pt-ink-500);
+  --pt-fg-muted: var(--pt-ink-700);
+  --pt-fg-subtle: var(--pt-ink-600);
   --pt-border: color-mix(in srgb, var(--pt-ink-900) 10%, transparent);
   --pt-border-strong: color-mix(in srgb, var(--pt-ink-900) 22%, transparent);
   --pt-accent: var(--pt-spectrum-accent);
@@ -156,6 +160,8 @@
 
   --pt-glass-bg: linear-gradient(160deg, rgb(255 255 255 / 0.55), rgb(255 255 255 / 0.3));
   --pt-glass-border: rgb(255 255 255 / 0.7);
+  /* Specular rim of liquid glass: how much light its edge catches on this paper. */
+  --pt-glass-rim: rgb(255 255 255 / 0.9);
   --pt-glass-shadow:
     0 1px 0 rgb(255 255 255 / 0.8) inset,
     0 24px 60px -24px color-mix(in srgb, var(--pt-shadow-hue) 28%, transparent),
@@ -170,8 +176,8 @@
   --pt-bg-raised: var(--pt-ink-800);
   --pt-bg-sunken: color-mix(in srgb, var(--pt-ink-900), #000 33%);
   --pt-fg: var(--pt-mist-50);
-  --pt-fg-muted: var(--pt-mist-300);
-  --pt-fg-subtle: var(--pt-mist-400);
+  --pt-fg-muted: var(--pt-mist-200);
+  --pt-fg-subtle: var(--pt-mist-300);
   --pt-border: rgb(255 255 255 / 0.1);
   --pt-border-strong: rgb(255 255 255 / 0.22);
   --pt-accent: var(--pt-spectrum-soft);
@@ -184,6 +190,7 @@
 
   --pt-glass-bg: linear-gradient(160deg, rgb(255 255 255 / 0.12), rgb(255 255 255 / 0.04));
   --pt-glass-border: rgb(255 255 255 / 0.16);
+  --pt-glass-rim: rgb(255 255 255 / 0.24);
   --pt-glass-shadow:
     0 1px 0 rgb(255 255 255 / 0.12) inset, 0 24px 60px -24px rgb(0 0 0 / 0.6),
     0 2px 6px rgb(0 0 0 / 0.2);
@@ -361,11 +368,16 @@
 /* ── Base type helpers ──────────────────────────────────────── */
 .pt-display {
   font-family: var(--pt-font-display);
-  font-weight: 400;
+  font-weight: var(--pt-display-weight);
   line-height: var(--pt-leading-tight);
   letter-spacing: var(--pt-tracking-display);
   margin: 0;
   text-wrap: balance;
+}
+
+.pt-display em {
+  font-style: var(--pt-display-em-style);
+  font-weight: var(--pt-display-em-weight);
 }
 
 .pt-eyebrow {

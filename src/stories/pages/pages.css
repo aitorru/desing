@@ -14,7 +14,7 @@
 .pg-poster__card {
   width: min(420px, 100%);
   aspect-ratio: 5 / 7.6;
-  border-radius: 24px;
+  border-radius: min(24px, var(--pt-radius-xl));
 }
 
 .pg-poster__inner {

@@ -1,6 +1,8 @@
 .pt-table {
+  /* Guaranteed breathing room: no density or edge column ever drops below 12px × 8px. */
   --row: 48px;
   --px: var(--pt-space-4);
+  --py: var(--pt-space-3);
   width: 100%;
   overflow-x: auto;
   color: var(--pt-fg);
@@ -11,6 +13,7 @@
 .pt-table--compact {
   --row: 36px;
   --px: var(--pt-space-3);
+  --py: var(--pt-space-2);
 }
 
 .pt-table__table {
@@ -30,19 +33,10 @@
 .pt-table__th,
 .pt-table__td {
   height: var(--row);
-  padding: 0 var(--px);
+  padding: var(--py) var(--px);
   text-align: start;
   white-space: nowrap;
-}
-
-.pt-table__th:first-child,
-.pt-table__td:first-child {
-  padding-inline-start: 0;
-}
-
-.pt-table__th:last-child,
-.pt-table__td:last-child {
-  padding-inline-end: 0;
+  box-sizing: border-box;
 }
 
 .pt-table__th.is-end,
@@ -53,6 +47,7 @@
 /* Header: small caps over a strong hairline, like the head of a ledger. */
 .pt-table__th {
   height: 36px;
+  padding-block: var(--pt-space-2);
   border-bottom: 1px solid var(--pt-fg);
   color: var(--pt-fg-subtle);
   font-size: var(--pt-text-xs);
@@ -133,11 +128,12 @@
 
 .pt-table__row.is-selected > .pt-table__td:first-child {
   box-shadow: inset 2px 0 0 var(--pt-accent);
-  padding-inline-start: var(--pt-space-3);
 }
 
 .pt-table__empty {
   height: 96px;
+  padding: var(--py) var(--px);
+  box-sizing: border-box;
   text-align: center;
   color: var(--pt-fg-subtle);
   border-bottom: 1px solid var(--pt-border-strong);

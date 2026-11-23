@@ -51,7 +51,7 @@ function Sample({ p, theme }: { p: PaletteInfo; theme: "light" | "dark" }) {
             <span className="fd-pal__brand">
               <Sparkle size={12} /> {p.label}
             </span>
-            <p className="pt-display fd-pal__title">Prueba la decisión</p>
+            <p className="pt-display fd-pal__title">Todo verde</p>
           </GlassCard>
         </div>
       </DotField>
@@ -85,7 +85,7 @@ function Sample({ p, theme }: { p: PaletteInfo; theme: "light" | "dark" }) {
         <div className="fd-pal__gradient" />
         <Stack direction="row" gap={2} wrap>
           <Button variant="aurora" size="sm" icon={<Sparkle size={12} />}>
-            Simular
+            Desplegar
           </Button>
           <Button size="sm">Guardar</Button>
           <Button variant="ghost" size="sm">
@@ -97,25 +97,30 @@ function Sample({ p, theme }: { p: PaletteInfo; theme: "light" | "dark" }) {
             En directo
           </Badge>
           <Badge tone="positive" dot>
-            +12 %
+            SLO ok
           </Badge>
           <Badge tone="negative" dot>
-            −6 %
+            p95 +40 ms
           </Badge>
         </Stack>
         <GlassCard tone="solid" padding="sm">
           <Stat
-            label="Ingresos p50"
-            value="1,8 M€"
-            delta="+12,4 %"
+            label="Disponibilidad · 30 d"
+            value="99,95 %"
+            delta="+0,02 pp"
             trend="positive"
             chart={
-              <DotBars values={SERIES} rows={5} highlight={SERIES.length - 1} label="Ingresos" />
+              <DotBars
+                values={SERIES}
+                rows={5}
+                highlight={SERIES.length - 1}
+                label="Peticiones por hora"
+              />
             }
           />
         </GlassCard>
-        <Switch label="Simulación en directo" size="sm" defaultChecked />
-        <DotProgress value={64} count={28} label="Progreso" />
+        <Switch label="Registro en directo" size="sm" defaultChecked />
+        <DotProgress value={64} count={28} label="Error budget restante" />
       </Stack>
     </section>
   );

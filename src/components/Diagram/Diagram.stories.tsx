@@ -6,7 +6,7 @@ const NODES: DiagramNode[] = [
   { id: "cdn", label: "CDN", sub: "14 PoP", col: 0, row: 1, kind: "external" },
   { id: "gw", label: "api-gateway", sub: ":443 · 6 réplicas", col: 1, row: 1, status: "ok" },
   { id: "web", label: "web", sub: "3 réplicas", col: 2, row: 0, status: "ok" },
-  { id: "sim", label: "simulador", sub: "3/4 réplicas", col: 2, row: 1, status: "warn" },
+  { id: "sim", label: "búsqueda", sub: "3/4 réplicas", col: 2, row: 1, status: "warn" },
   { id: "notif", label: "notificaciones", sub: "0/2 réplicas", col: 2, row: 2, status: "error" },
   { id: "pg", label: "postgres", sub: "primario + 2", col: 3, row: 0, kind: "store", status: "ok" },
   { id: "redis", label: "redis", sub: "caché", col: 3, row: 1, kind: "store", status: "ok" },
